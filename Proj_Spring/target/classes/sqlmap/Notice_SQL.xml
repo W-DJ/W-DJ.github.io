@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 매퍼 파일 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bbs">
+
+
+<!--/////////////////////////////// BBS - 공지사항 시작 ///////////////////////////////-->
+<!-- 공지사항 글쓰기 -->
+<insert id="insertBBS" parameterType="hashMap" useGeneratedKeys="true" keyProperty="BBS_id">
+		<![CDATA[
+		insert into adminWriteTbl (aName,asubject,acontent)
+		values
+		(#{aName}, #{asubject}, #{acontent}) 
+		]]>
+</insert>
+
+<!-- 공지사항 자세히 보기 -->
+ <select id="select_not_detail" parameterType="hashMap" resultType="hashMap">
+ <![CDATA[
+ select * from adminWriteTbl where num = #{num}
+ ]]>
+</select>
+
+<!-- 공지사항 리스트 보기 -->
+<select id="select_not_list" parameterType="hashMap" resultType="hashMap">
+ <![CDATA[
+ select * from adminWriteTbl order by num desc
+ ]]>
+</select> 
+
+<!-- 공지사항 수정하기(DB가져오기) -->
+ <select id="select_not_update" parameterType="hashMap" resultType="hashMap">
+ <![CDATA[
+ select * from adminWriteTbl where num = #{num}
+ ]]>
+</select>
+
+<!-- 공지사항 수정하기(업데이트) -->
+<update id="update_not"  parameterType="hashMap">
+ <![CDATA[
+ update adminWriteTbl set asubject = #{asubject}, acontent = #{acontent} where num= #{num}
+ ]]>
+</update>
+
+<!-- 공지사항 삭제하기 -->
+<delete id="delete_not" parameterType="hashMap">
+<![CDATA[
+ delete from adminWriteTbl where num= #{num}
+ ]]>
+
+</delete>
+<!--/////////////////////////////// BBS - 공지사항 끝/////////////////////////////// -->
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
