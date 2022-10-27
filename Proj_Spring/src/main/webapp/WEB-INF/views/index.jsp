@@ -52,7 +52,7 @@
 	           		<div>
 	           			<h1>인기상품</h1>
 	           		</div>
-	              	<iframe src="/product/mainLayout_ProdList.jsp?orderBy=salesVolumn_desc"  
+	              	<iframe src="/prodList?orderBy=salesVolumn_desc&ifrm=t"  
 	              		scrolling="no" frameborder="0" class="mainProd"></iframe>
 	              	<div class="prodMoreMoveBtn">
 		              	<button type="button" class="orderBy" data-orderBy = "salesVolumn_desc">상품 더보기</button>	
@@ -60,7 +60,7 @@
 	            </div>
 	            <div class="iframeArea">
 	            	<h1>새로운 상품</h1>
-	            	<iframe src="/product/mainLayout_ProdList.jsp?orderBy=num_desc"  
+	            	<iframe src="/prodList?orderBy=num_desc&ifrm=t"  
 	              		scrolling="no" frameborder="0" class="mainProd"></iframe>
 	              	<div class="prodMoreMoveBtn">
 		              	<button type="button" class="orderBy" data-orderBy = "num_desc">상품 더보기</button>	
@@ -69,7 +69,7 @@
 	            </div>
 	            <div class="iframeArea">
 	            	<h1>스킨케어</h1>
-	            	<iframe src="/product/mainLayout_ProdList.jsp?typeSearch=스킨케어&orderBy=salesVolumn_desc"  
+	            	<iframe src="/prodList?typeSearch=스킨케어&orderBy=salesVolumn_desc&ifrm=t"  
 	              		scrolling="no" frameborder="0" class="mainProd"></iframe>
 	            	<div class="prodMoreMoveBtn">
 		              	<button type="button" class="typeSearch" data-typeSearch = "스킨케어">상품 더보기</button>		
@@ -78,7 +78,7 @@
 	            <div class="iframeArea">
 	            	<div></div>
 	            	<h1>로션</h1>
-	            	<iframe src="/product/mainLayout_ProdList.jsp?typeSearch=로션&orderBy=salesVolumn_desc"  
+	            	<iframe src="/prodList?typeSearch=로션&orderBy=salesVolumn_desc&ifrm=t"  
 	              		scrolling="no" frameborder="0" class="mainProd" ></iframe>
 	              	<div class="prodMoreMoveBtn">
 		              	<button type="button" class="typeSearch" data-typeSearch = "로션">상품 더보기</button>		
@@ -86,7 +86,7 @@
 	            </div>
 	            <div class="iframeArea">
 	            	<h1>핸드크림</h1>
-	            	<iframe src="/product/mainLayout_ProdList.jsp?typeSearch=핸드크림&orderBy=salesVolumn_desc"  
+	            	<iframe src="/prodList?typeSearch=핸드크림&orderBy=salesVolumn_desc&ifrm=t"  
 	              		scrolling="no" frameborder="0" class="mainProd"></iframe>
 	              	<div class="prodMoreMoveBtn">
 		              	<button type="button" class="typeSearch" data-typeSearch = "핸드크림">상품 더보기</button>		

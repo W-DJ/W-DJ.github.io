@@ -19,8 +19,8 @@
 	 	<header id="pageHeader">
 	 		<div id="headerTopArea">
 	 			<div id="main-penel-top">
-	 			<c:choose>
-				 <c:when test="${user.uId == null}">
+<c:choose>
+		<c:when test="${user.uId == null && admin.uId == null}">
 				 <ul class="dFlex">
 				   <li><button type="button" id="homeBtn">홈</button></li>
 				 	<li class="bar">|<li>
@@ -44,8 +44,8 @@
 				 	      <button type="button" id="PrListBtn">상품게시판</button>
 				 	 </li>
 				 </ul>
-				 	 </c:when>
-				 	 <c:when test= "${user.uId != null}">
+		</c:when>
+		<c:when test= "${user.uId != null || admin.uId != null}">
 				 <ul class="dFlex">
 				 	<li>
 				 		<button type="button" id="homeBtn">홈</button>
@@ -59,12 +59,14 @@
 				 		<button type="button" id="MypageBtn">마이페이지</button>
 				 	</li>
 				 	<li class="bar">|<li>
-	<%-- 			 	<c:when test= "${aId_Session != null}">
+				<c:choose>
+					<c:when test= "${aId_Session != null}">
 				 	<li>
 				 		<button type="button" id="MemberListBtn">회원목록/수정/탈퇴</button>
 				 	</li>
 				 	<li class="bar">|<li>
-				   </c:when>
+					</c:when>
+				</c:choose>
 				 	<li>
 				 		<button type="button" id="InquireBtn">고객센터</button>
 				 	</li>
@@ -75,11 +77,11 @@
 				 	<li class="bar">|<li>
 				 	<li>
 				 	<button type="button" id="OftenBtn">자주하는질문</button>
-				 	</li> --%>
+				 	</li>
 				 </ul>
 				
-				 </c:when>
-				 </c:choose>
+		</c:when>
+</c:choose>
 				 </div>
 			 <!-- div#main-penel-top -->
 			 </div>

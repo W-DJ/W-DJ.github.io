@@ -21,6 +21,21 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+		<!-- 파일 업로드를 처리하는 객체 생성 -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="defaultEncoding" value="utf-8"></beans:property>
+		<beans:property name="maxUploadSize" value="104857560"></beans:property>
+		<beans:property name="uploadTempDir"
+			value="file:C:\upload\tmp"></beans:property>
+		<beans:property name="maxInMemorySize" value="10485756"></beans:property>
+	</beans:bean>
+
+	<!-- 현재 파일시스템에 업로드 된 파일 저장할 경로 -->
+	<beans:bean id="uploadPath" class="java.lang.String">
+		<beans:constructor-arg value="C:/silsp/p08_Spring/Proj_Spring_TeamProj_Test/src/main/webapp/resources/fileUpload"></beans:constructor-arg>
+	</beans:bean>
+	
 	<context:component-scan base-package="pack.spring.domain" />
 	
 	

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="product">
+	<insert id="post" parameterType="pack.spring.domain.product.ProdBoardBean">
+		<![CDATA[
+		insert into goodsTbl (regId, pName, pType, stockVolumn, salesVolumn, oriPrice, sellPrice, sellLabel, content, regTM, readCnt, oriFileName, sysFileName, fileSize)
+		values
+		(#{regId}, #{pName}, #{pType}, #{stockVolumn}, #{salesVolumn}, #{oriPrice}, #{sellPrice}, #{sellLabel}, #{content}, now(), 0, #{oriFileName}, #{sysFileName}, #{fileSize})
+		]]>
+	</insert>
+
+	<update id="readCntAdd">
+		 <![CDATA[
+		update goodsTbl set readCnt = readCnt+1 where num = #{num}
+		 ]]>
+	</update>
+
+	<select id="read" resultType="pack.spring.domain.product.ProdBoardBean">
+		 <![CDATA[
+		 select * from goodsTbl where num = #{num}
+		 ]]>
+	</select>
+
+
+	<select id="countBoard" parameterType="hashMap"
+		resultType="Integer">
+
+		select count(*) from goodsTbl
+		<trim prefix="WHERE" prefixOverrides="AND">
+			<if test="keyWord neq ''.toString() and keyWord neq null">
+				AND pName like concat('%',#{keyWord},'%' )
+			</if>
+			<if test="typeSearch neq '전체'.toString() and typeSearch neq null">
+				AND pType = #{typeSearch}
+			</if>
+		</trim>
+	</select>
+
+	<select id="list" parameterType="hashMap" resultType="hashMap">
+
+		select * from goodsTbl
+		<trim prefix="WHERE" prefixOverrides="AND">
+			<if test="keyWord neq ''.toString() and keyWord neq null">
+				AND pName like concat('%',#{keyWord},'%' )
+			</if>
+			<if test="typeSearch neq '전체'.toString() and typeSearch neq null">
+				AND pType = #{typeSearch}
+			</if>
+		</trim>
+		<choose>
+			<when test="orderBy == 'num_desc'.toString()">
+				order by num desc
+			</when>
+			<when test="orderBy == 'salesVolumn_desc'.toString()">
+				order by salesVolumn desc
+			</when>
+			<when test="orderBy == 'sellPrice_desc'.toString()">
+				order by sellPrice desc
+			</when>
+			<when test="orderBy == 'sellPrice_asc'.toString()">
+				order by sellPrice asc
+			</when>
+			<otherwise>
+				order by num desc
+			</otherwise>
+		</choose>
+		 limit #{pageStart}, #{perPageNum}
+	</select>
+	
+	
+	
+	<update id="mod" parameterType="pack.spring.domain.product.ProdBoardBean">
+		<![CDATA[
+		update goodsTbl set pName=#{pName}, pType=#{pType}, stockVolumn=#{stockVolumn}, 
+		salesVolumn = #{salesVolumn}, oriPrice=#{oriPrice}, sellPrice=#{sellPrice}, sellLabel=#{sellLabel}, 
+		content=#{content} where num=#{num}
+		]]>
+	</update>
+	
+	<delete id="del">
+		 <![CDATA[
+		delete from goodsTbl where num = #{num}
+		 ]]>
+	</delete>
+
+</mapper>
