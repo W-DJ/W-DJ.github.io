@@ -1,11 +1,13 @@
 $(function () {
 	//이메일 주소 병합 소스 만들기 시작 //
-	let phEfck = /^(\d{3})-(\d{4})-(\d{4})$/;
 
 	$("button#joinBtn").click(function () {
+	    let phEfck = /^(\d{3})-(\d{4})-(\d{4})$/;
+        let chk0 = $(".joinAgree .termArea").eq(0).find("input").prop("checked");
+		let chk1 = $(".joinAgree .termArea").eq(1).find("input").prop("checked");
+		let chk4 = $(".joinAgree .termArea").eq(4).find("input").prop("checked");
          
 		let uId = $("#uId").val();
-		let checked_id = $("#checked_id").val();
 		let uPw = $("#uPw").val();
 		let uPwdpChk = $("#uPwdpChk").val();
 		// DB로 보낼 값 소스 만들기 //	
@@ -45,22 +47,10 @@ $(function () {
 		// today변수에서 가져온 year - 고객생년 + 1 (한국나이)
 		$("input#uAge").val(age);  // → 계산된 고객의 나이를 DB로 전송
 
-		
-
-		let phEfres = phEfck.test(uPw); // → uPw 유효성 검사
-        
-
-
-		let chk0 = $(".joinAgree .termArea").eq(0).find("input").prop("checked");
-		let chk1 = $(".joinAgree .termArea").eq(1).find("input").prop("checked");
-		let chk4 = $(".joinAgree .termArea").eq(4).find("input").prop("checked");
+		let phEfres = phEfck.test(uPhone); // → uPw 유효성 검사
 
         if (uId == "") {
 			alert("아이디가 입력하세요");
-			$("#uId").focus();
-
-		} else if (checked_id =="f") {
-			alert("아이디 중복확인 해주세요.");
 			$("#uId").focus();
 
 		} else if (uPw.search(uId) > 0) {
@@ -84,7 +74,7 @@ $(function () {
 		} else if (year == "" || month== "" || day == "") {
 			alert("생년월일을 선택해주세요");
 
-		} else if (uPhone == "" || phEfres) {
+		} else if (uPhone == "" || !phEfres) {
 			alert("전화번호를 다시 입력해주세요");
 			$("#uPhone").focus();
 
@@ -93,8 +83,7 @@ $(function () {
 			$("#address").focus();
         } else if (uGender < 1) {
 			alert("성별을 선택해주세요");
-
-		} else if (chk0 == false) {
+		}else if (chk0 == false) {
 			alert("이용약관 동의(필수)체크해주세요");
 			$(".joinAgree .termArea").eq(0).find("input");
 			$(".joinAgree .termArea").eq(0).focus();
@@ -105,7 +94,7 @@ $(function () {
 			alert("본인은 만14세이상입니다(필수)체크해주세요");
 			$(".joinAgree .termArea").eq(0).find("input");
 		} else {
-			$("form#joinFrm").submit();
+           $("form#joinFrm").submit();
 		}
 	});
 
@@ -158,31 +147,31 @@ $(function () {
 		//최초 클릭 시 함수 발생
 		//.addEventListener("이벤트명", fuction 함수명(event){})
 		for (let i = 1920; i <= 2022; i++) {
-			let YearOption = document.createElement('option')
+			let YearOption = document.createElement('option');
 			// createElement메서드 사용 → option 요소생성
-			YearOption.setAttribute("value", i) //생성되는 option의 value값에 i를 추가
-			YearOption.innerText = i // option태그에 추가한 i의 값을 가져오기
+			YearOption.setAttribute("value", i); //생성되는 option의 value값에 i를 추가
+			YearOption.innerText = i; // option태그에 추가한 i의 값을 가져오기
 			//innerText → 태그안의 텍스트를 가져오거나 바꾸는 기능
 			// birthYearEl의 자식 요소로 추가
 			yElem.appendChild(YearOption);
 		}
-	}, { once: true });
+	}, {once: true });
 	mElem.addEventListener("click", function () {
 		for (let i = 1; i <= 12; i++) {
-			let MonthOption = document.createElement('option')
-			MonthOption.setAttribute("value", i)
-			MonthOption.innerText = i
+			let MonthOption = document.createElement('option');
+			MonthOption.setAttribute("value", i);
+			MonthOption.innerText = i ;
 			mElem.appendChild(MonthOption);
 		}
 	}, { once: true });
 	dElem.addEventListener("click", function () {
 		for (let i = 1; i <= 31; i++) {
-			let DayOption = document.createElement('option')
-			DayOption.setAttribute("value", i)
-			DayOption.innerText = i
+			let DayOption = document.createElement('option');
+			DayOption.setAttribute("value", i);
+			DayOption.innerText = i;
 			dElem.appendChild(DayOption);
 		}
-	}, { once: true });
+	}, {once: true });
 
 	//→ 회원가입 체크 관련 소스
 
@@ -229,7 +218,7 @@ $(function () {
 		}else{
 			let uId = $("input[name=uId]").val();
 
-			let url = "/idCheck?uId=" + uId;
+			let url = "/Member/idCheck.jsp?uId=" + uId;
 			let nickName = "idChkPop";
 
 			let w = screen.width;     // 1920
@@ -247,11 +236,7 @@ $(function () {
 		}
 	});
 	
-	$("input#uId").change(function(){
-		$("#checked_id").val("f");
-	});
 
-	
 
 
 });

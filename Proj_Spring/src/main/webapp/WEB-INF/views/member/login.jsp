@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="resources/style/common_style.css">
-	<link rel="stylesheet" href="resources/style/join&login_style.css">
+	<link rel="stylesheet" href="resources/style/login_style.css">
 	<link rel = "shortcut icon" href="#">
 	<script src ="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 

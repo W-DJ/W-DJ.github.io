@@ -14,10 +14,10 @@ $(function() {
 		window.parent.location.href="/login";
 	});
 	$("button#MypageBtn").click(function(){
-		window.parent.location.href="/Member/MyPage.jsp";
+		window.parent.location.href="/myPage";
 	});
 	$("button#InquireBtn").click(function(){
-		window.parent.location.href="/bbs_Notice/ServiceMain.jsp";
+		window.parent.location.href="/Notlist";
 	});
 	$("button#PrListBtn").click(function(){
 		window.parent.location.href="/prodList";
@@ -36,7 +36,7 @@ $(function() {
 	});
 	
 	$("div#mypageImg").click(function(){
-		window.parent.location.href="/Member/MyPage.jsp";
+		window.parent.location.href="/myPage";
 	});
 	
 	$("div#cartImg").click(function(){
@@ -62,7 +62,7 @@ $(function() {
 			
 			/* 푸터 영역 시작*/
 	$("a#InquireMove").click(function(){
-		window.parent.location.href="/bbs_Notice/ServiceMain.jsp";
+		window.parent.location.href="/Notlist";
 	});
 			
 			/* 푸터 영역 끝*/
@@ -87,7 +87,7 @@ $(function() {
 		/* 메인메뉴 pulldown 끝*/	
 	
 	function home() {
-	location.href='/bbs_Notice/noticebbs.jsp';
+	location.href='/Notlist';
 	}
 
 	setInterval(fnSlide, 5000);

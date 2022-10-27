@@ -100,7 +100,7 @@
 		        <div id="sideBar">
 						<ul>
 							<li><img src="/resources/img/새벽.png" alt="" /></li>
-							<li><a href="/bbs_Notice/noticebbs.jsp">고객센터</a></li>
+							<li><a href="/Notlist">고객센터</a></li>
 							<li><a href="/Member/MyPage.jsp">마이페이지</a></li>
 							<li><a href="">이벤트</a></li>
 						</ul>

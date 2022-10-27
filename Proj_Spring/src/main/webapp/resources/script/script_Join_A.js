@@ -38,12 +38,17 @@ $(function(){
     //비밀번호 확인 소스 끝 //
 
      // 이메일 선택요소 시작//
-     $("select#valSel").change(function(){
-     $("input#aEmail2").val($(this).val());
-	
-     });
-     // 이메일 선택요소 종료//
-
+ $("select#valSel").change(function() {
+		$('#valSel option:selected').each(function() {
+			if ($(this).val() == "") {
+				$("#aEmail2").val("");
+				$("#aEmail2").attr("disabled", false);
+			} else {
+				$("#aEmail2").val($(this).text());
+				$("#aEmail2").attr("disabled", true);
+			}
+	    });  //→ 이메일 선택요소
+	});
 
 });
 	//로그인 Select 시작 //
