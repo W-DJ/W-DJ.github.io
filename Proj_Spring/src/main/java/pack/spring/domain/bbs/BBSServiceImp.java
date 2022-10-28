@@ -52,4 +52,44 @@ public class BBSServiceImp implements BBSService {
 		return this.bbsDao.delnot(map);
 	}
 	
+	//고객문의 글쓰기
+		@Override
+		public String writeInq(Map<String, Object> map) {
+			
+			int affectRowCnt = this.bbsDao.insert_inq(map);
+			if(affectRowCnt == 1) {
+						return map.get("BBS_id").toString();
+			}
+			return null;
+		}
+		
+		// 고객문의 상세보기
+		@Override
+		public Map<String, Object> Inqdetail(Map<String, Object> map){
+			return this.bbsDao.selectDetail_inq(map);
+		}
+
+		//고객문의 전체보기
+		@Override
+		public List<Map<String, Object>> InqList(Map<String, Object> map){
+			return this.bbsDao.selectList_inq(map);
+		}
+		
+		//고객문의 수정하기(가져오기)
+		@Override
+		public Map<String, Object> Inqupd(Map<String, Object> map) {
+			return this.bbsDao.selectMod_inq(map);
+		}
+		
+		
+		@Override
+		public int modifyinq(Map<String, Object> map){
+			return this.bbsDao.modifyinq(map);
+		}
+		//고객문의 삭제하기
+		@Override
+		public int delinq(Map<String, Object> map) {
+			return this.bbsDao.delinq(map);
+		}
+	
 }

@@ -17,6 +17,11 @@ public class BBSController {
 	public ModelAndView NotWrite() {
 		return new ModelAndView("/BBS/NotWrite");
 	}
+	
+	@RequestMapping(value = "/InqWrite", method = RequestMethod.GET)
+	public ModelAndView InqWrite() {
+		return new ModelAndView("/BBS_Inq/InqWrite");
+	}
 	// 모델과 뷰를 연결하는 컨트롤러 완성
 
 	@Autowired
@@ -106,6 +111,22 @@ public class BBSController {
 	
 
 	// ///////////////////공지사항 삭제하기 끝
+	
+	///////////////////// 고객문의 글 쓰기 시작
+	
+	@RequestMapping(value = "/InqWrite", method = RequestMethod.POST)
+	public ModelAndView InqWritePost(@RequestParam Map<String, Object> map) {
+		
+		ModelAndView mav = new ModelAndView();
+		String customer = this.bbsService.writeInq(map);
+		mav.addObject("data",customer);
+		
+		if(customer == null) {
+			mav.setViewName("/InqWrite");
+		}
+		mav.setViewName("/Inqdetail?num"+customer);
+		return mav;
+	}
 	
 	
 }
