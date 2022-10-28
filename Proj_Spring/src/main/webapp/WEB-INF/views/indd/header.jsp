@@ -20,7 +20,7 @@
 	 		<div id="headerTopArea">
 	 			<div id="main-penel-top">
 <c:choose>
-		<c:when test="${user.uId == null && admin.uId == null}">
+		<c:when test="${user.uId == null && admin.aId == null}">
 				 <ul class="dFlex">
 				   <li><button type="button" id="homeBtn">홈</button></li>
 				 	<li class="bar">|<li>
@@ -45,7 +45,7 @@
 				 	 </li>
 				 </ul>
 		</c:when>
-		<c:when test= "${user.uId != null || admin.uId != null}">
+		<c:when test= "${user.uId != null || admin.aId != null}">
 				 <ul class="dFlex">
 				 	<li>
 				 		<button type="button" id="homeBtn">홈</button>
@@ -60,7 +60,7 @@
 				 	</li>
 				 	<li class="bar">|<li>
 				<c:choose>
-					<c:when test= "${aId_Session != null}">
+					<c:when test= "${admin.aId != null}">
 				 	<li>
 				 		<button type="button" id="MemberListBtn">회원목록/수정/탈퇴</button>
 				 	</li>

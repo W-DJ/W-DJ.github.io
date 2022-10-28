@@ -75,7 +75,7 @@ public class MemberController {
 	public String logout(HttpSession session) throws Exception {
 		  session.invalidate();
 	// == session.removeAttribute("login");
-	return "redirect:/";
+	return "/member/logout";
 	}
 	  
 	// 회원정보수정	

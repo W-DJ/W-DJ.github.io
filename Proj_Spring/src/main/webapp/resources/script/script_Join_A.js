@@ -12,8 +12,8 @@ $(function(){
       let address= $("input#address").val().trim();
       let detailAddress =$("input#detailAddress").val().trim();
       let extraAddress = $("input#extraAddress").val().trim();
-      let uAddr=  "("+postcode+")"+ address +detailAddress + extraAddress;
-      $("input#uAddr").val(uAddr);
+      let aAddr= postcode + address +detailAddress + extraAddress;
+      $("input#aAddr").val(aAddr);
 
 
     // 주소 병합 소스만들기 끝 //
