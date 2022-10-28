@@ -29,7 +29,7 @@ $(function() {
 		window.parent.location.href="/logout";
 	});
 	$("button#OftenBtn").click(function(){
-		window.parent.location.href="/bbs_Often/list.jsp";
+		window.parent.location.href="/OftenList";
 	});	
 	$("div#headerLogoArea").click(function(){
 		window.parent.location.href="/";

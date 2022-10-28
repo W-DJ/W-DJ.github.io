@@ -19,7 +19,7 @@ $(function(){
 			alert("제목은 필수입력입니다.");
 			$("#subject").focus();
 		} else {
-			$("#writeFrm").attr("action", "/bbs_Often/writeProc.jsp");
+			$("#writeFrm").attr("action", "/Often_write");
 			$("#writeFrm").submit();
 		}
 	
