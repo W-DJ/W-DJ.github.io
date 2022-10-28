@@ -9,7 +9,7 @@ $(function(){
 		let orderCnt = $("input#orderCnt").val();
 		if(orderCnt > 0) {
 			let prodNum = $("input#prodNum").val();
-			location.href="/bbs_Review/reviewPost.jsp?prodNum="+prodNum;	
+			location.href="/reviewPost?prodNum="+prodNum;	
 		} else {
 			alert("상품을 구매한 고객님만 리뷰를 작성할 수 있습니다.");
 		}
@@ -117,16 +117,20 @@ $(function(){
 		let nowPage = $("input#nowPage").val();
 		let prodNum	= $("input#prodNum").val();
 		let totalReviewNum = $(this).siblings("input.totalReviewNum").val();	
-
+		
 		let p3 = $("#pKeyField").val().trim();  // p3 : keyField
 	    let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
 		
-		let url = "/bbs_Review/reviewRecomProc.jsp?";
-			url +="prodNum="+prodNum;
-			url += "&totalReviewNum="+totalReviewNum+"&nowPage="+nowPage;
-			url += "&keyField="+p3;
-			url += "&keyWord="+p4;
-		location.href=url;
+		if (p4 != null && p4 != "") {
+			let url = "/bbs_Review/reviewRecomProc.jsp?";
+				url +="prodNum="+prodNum;
+				url += "&totalReviewNum="+totalReviewNum+"&nowPage="+nowPage;
+				url += "&keyField="+p3;
+				url += "&keyWord="+p4;
+			location.href=url;		
+		} else {
+			alert("검색어를 입력해주세요");
+		}
 	});
 	
 	/* 리뷰게시물 추천버튼 끝 */

@@ -104,7 +104,7 @@
 						${board.content}
 					</div>
 					<div id="review">
-						<iframe src="/reviewPost?prodNum=${board.num}" 
+						<iframe src="/reviewList?prodNum=${board.num}" 
 							scrolling="no" frameborder=0 id="reviewIfm" ></iframe>
 					</div>
 					<!-- 수정함 -->

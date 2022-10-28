@@ -33,7 +33,7 @@
 
 	<!-- 현재 파일시스템에 업로드 된 파일 저장할 경로 -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="C:/silsp/p08_Spring/Proj_Spring_TeamProj_Test/src/main/webapp/resources/fileUpload"></beans:constructor-arg>
+		<beans:constructor-arg value="C:/Users/EZEN201/git/Proj_Spring/Proj_Spring/src/main/webapp/resources/fileUpload"></beans:constructor-arg>
 	</beans:bean>
 	
 	<context:component-scan base-package="pack.spring.domain" />

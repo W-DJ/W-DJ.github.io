@@ -16,5 +16,43 @@
 		(#{tblReviewNum}, #{prodNum}, #{regId}, #{regName}, #{subject}, #{content}, now(), #{ip}, 0, #{oriFileName}, #{sysFileName}, #{fileSize})
 		]]>
 	</insert>
+	
+	<select id="countBoard" parameterType="hashMap" resultType="Integer">
+
+		select count(*) from reviewTbl where prodNum = #{prodNum}
+			<choose>
+				<when test="keyField == 'subject'.toString()">
+					and subject like concat('%',#{keyWord},'%' )
+				</when>
+				<when test="keyField == 'uName'.toString()">
+					and uName like concat('%',#{keyWord},'%' )
+				</when>
+				<when test="keyField == 'content'.toString()">
+					and subject like concat('%',#{keyWord},'%' )
+				</when>
+				<otherwise>
+					
+				</otherwise>
+			</choose>
+	</select>
+	
+	<select id="list" parameterType="hashMap" resultType="hashMap">
+		select * from reviewTbl where prodNum = #{prodNum}
+			<choose>
+				<when test="keyField == 'subject'.toString()">
+					and subject like concat('%',#{keyWord},'%' )
+				</when>
+				<when test="keyField == 'uName'.toString()">
+					and uName like concat('%',#{keyWord},'%' )
+				</when>
+				<when test="keyField == 'content'.toString()">
+					and subject like concat('%',#{keyWord},'%' )
+				</when>
+				<otherwise>
+					
+				</otherwise>
+			</choose>
+			order by tblReviewNum limit #{pageStart}, #{perPageNum}
+	</select>
 
 </mapper>

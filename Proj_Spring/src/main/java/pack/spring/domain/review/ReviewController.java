@@ -1,5 +1,8 @@
 package pack.spring.domain.review;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import pack.spring.domain.product.Criteria;
+import pack.spring.domain.product.PageMaker;
 import pack.spring.domain.product.ProdService;
 
 @Controller
@@ -57,6 +62,30 @@ public class ReviewController {
 			mav.setViewName("redirect:/reviewList");
 		}
 		return mav;
+	}
+	
+	@RequestMapping(value = "/reviewList", method = RequestMethod.GET)
+	public ModelAndView prodList(Criteria cri, @RequestParam Map<String, Object> map) {
+		ModelAndView mav = new ModelAndView();
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+
+		pageMaker.setTotalCount(this.reviewService.countBoardListTotal(map));
+		map.put("pageStart", cri.getPageStart());
+		map.put("perPageNum", cri.getPerPageNum());
+
+		List<Map<String, Object>> reviewList = this.reviewService.reviewList(map);
+		if (reviewList != null) {
+			mav.addObject("reviewList", reviewList);
+			mav.addObject("pageMaker", pageMaker);
+			mav.addObject("search", map);
+			mav.setViewName("review/reviewList");
+		} else {
+			mav.setViewName("redirect:/");
+		}
+		return mav;
+
 	}
 	
 }

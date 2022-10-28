@@ -1,5 +1,6 @@
 package pack.spring.domain.review;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -21,8 +22,15 @@ public class ReviewDao {
 		if (rt != null) {
 			tblReviewNum =Integer.parseInt(rt.get("max(tblReviewNum)").toString());
 		}
-		reviewBoardBean.setTblReviewNum(tblReviewNum);
+		reviewBoardBean.setTblReviewNum(tblReviewNum+1);
 		return this.sqlSessionTemplate.insert("review.post", reviewBoardBean);
+	}
+	
+	public int getCountBoard(Map<String, Object> map) {
+		return (Integer) this.sqlSessionTemplate.selectOne("review.countBoard", map);
+	}
+	public List<Map<String, Object>> getProdList (Map<String, Object> map) {
+		return this.sqlSessionTemplate.selectList("review.list", map);
 	}
 	
 }

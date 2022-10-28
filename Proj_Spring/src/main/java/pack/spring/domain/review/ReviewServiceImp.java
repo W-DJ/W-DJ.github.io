@@ -1,5 +1,8 @@
 package pack.spring.domain.review;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +19,15 @@ public class ReviewServiceImp implements ReviewService {
 			return "등록성공";
 		}
 		return null;
+	};
+	
+	@Override
+	public int countBoardListTotal(Map<String, Object> map) {
+		return this.reviewDao.getCountBoard(map);
+	};
+	
+	@Override
+	public List<Map<String, Object>> reviewList(Map<String, Object> map) {
+		return this.reviewDao.getProdList(map);
 	};
 }
