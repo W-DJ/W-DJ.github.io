@@ -23,4 +23,20 @@ public interface ProdService {
 	
 	
 	String prodDel(int num);
+	
+	int wishDpChk(WishlistBean wishlistBean);	
+
+	int wishInsert (WishlistBean wishlistBean);
+	
+	
+	Map<String, Object> cartDpChk(CartBean cartBean);	
+	int cartInsert (CartBean cartBean);
+	int cartPlus (CartBean cartBean);
+	
+	
+	int countWishlistTotal(String uId);
+	List<WishlistBean> wishlist(String uId);
+	
+	List<CartBean> cartList(String uId);
+	int cartMod (CartBean cartBean);
 }

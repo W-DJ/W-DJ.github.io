@@ -202,13 +202,13 @@ $(function(){
 		let uId = $("input#uId").val();
 		if(uId=="null" || uId=="" || uId ==null) {
 			alert("로그인 후 이용 가능합니다.");
-			location.href ="/Member/Login.jsp";
+			location.href="/login";
 		} else {
 
 			let pNum = $("input#num").val().trim();
 			let pVolumn = $("input#orderVolumn").val().trim();
 		    
-			let url = "/cart/cartInsertProc.jsp?";
+			let url = "/cartInsert?";
 				url += "pNum="+pNum+"&pVolumn="+pVolumn+"&uId="+uId;
 			$(this).siblings("iframe.cartInsertIfr").attr("src", url);
 		}
@@ -221,12 +221,12 @@ $(function(){
 		let uId = $("input#uId").val();
 		if(uId=="null" || uId=="" || uId ==null) {
 			alert("로그인 후 이용 가능합니다.");
-			location.href="/Member/Login.jsp";
+			location.href="/login";
 		} else {
 
 			let pNum = $("input#num").val().trim();
 		    
-			let url = "/wishlist/wishInsertProc.jsp?";
+			let url = "/wishInsert?";
 				url += "pNum="+pNum+"&uId="+uId;
 			$(this).siblings("iframe.wishInsertIfr").attr("src", url);
 		}
@@ -240,13 +240,14 @@ $(function(){
 		let uId = $("input#uId").val();
 		if(uId=="null" || uId=="" || uId ==null) {
 			alert("로그인 후 이용 가능합니다.");
-			location.href="/Member/Login.jsp";
+			location.href="/login";
 		} else {
 			let pVolumn = $("input#orderVolumn").val();
 			let pNum = $("input#num").val();
-			url = "/order/order.jsp?pNum="+pNum;
+			let pName = $("div.pName").text();
+			url = "/order?pNum="+pNum;
 			url+= "&pVolumn="+pVolumn;
-			url+= "&flag=o";
+			url+= "&pName="+pName;
 			location.href = url;		
 		}
 	});

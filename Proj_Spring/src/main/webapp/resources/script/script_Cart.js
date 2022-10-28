@@ -21,7 +21,7 @@ $(function(){
 		let num = $(this).parents("tr").find("input.num").val().trim();
 		let pVolumn = orderVolumn;
 		    
-		let url = "/cart/cartModProc.jsp?";
+		let url = "/cartMod?";
 			url += "num="+num+"&pVolumn="+pVolumn;
 		$("iframe.cartModIfr").attr("src", url);
 		
@@ -45,7 +45,7 @@ $(function(){
 		let num = $(this).parents("tr").find("input.num").val().trim();
 		let pVolumn = orderVolumn;
 		    
-		let url = "/cart/cartModProc.jsp?";
+		let url = "/cartMod?";
 			url += "num="+num+"&pVolumn="+pVolumn;
 		$("iframe.cartModIfr").attr("src", url);
 		
@@ -72,7 +72,7 @@ $(function(){
 		let num = $(this).parents("tr").find("input.num").val().trim();
 		let pVolumn = orderVolumn;
 		    
-		let url = "/cart/cartModProc.jsp?";
+		let url = "/cartMod?";
 			url += "num="+num+"&pVolumn="+pVolumn;
 		$("iframe.cartModIfr").attr("src", url);
 		

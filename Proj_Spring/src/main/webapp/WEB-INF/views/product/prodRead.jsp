@@ -85,7 +85,7 @@
 						<div>
 							<button type="button" class="directOrderBtn size">바로 구매</button>						
 						</div>
-						<c:if test="${aId_Session!=null}">
+						<c:if test="${admin.aId!=null}">
 						<div>
 							<button type="button" id="modBtn" class="size">수 정</button>
 							<button type="button" id="delBtn" class="size">삭 제</button>
@@ -104,7 +104,7 @@
 						${board.content}
 					</div>
 					<div id="review">
-						<iframe src="/bbs_Review/reviewList.jsp?prodNum=${board.num}" 
+						<iframe src="/reviewList?prodNum=${board.num}" 
 							scrolling="no" frameborder=0 id="reviewIfm" ></iframe>
 					</div>
 					<!-- 수정함 -->
@@ -113,7 +113,7 @@
 
 			<input type="hidden" name="page" value="${param.page}" id="nowPage"> 
 			<input type="hidden" name="num" value="${board.num}" id="num">
-			<input type="hidden" name="uId" value="${uId_Session}" id="uId">
+			<input type="hidden" name="uId" id="uId" value="${user.uId}">
 	
 			<!-- 검색어전송 시작 -->
 			<input type="hidden" id="orderBy" value="${search.orderBy}">

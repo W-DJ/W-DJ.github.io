@@ -137,7 +137,7 @@ $(function(){
 
 			</ul>
 			<div id="listBtnArea">
-				<c:if test="${aId_Session!=null}">
+				<c:if test="${admin.aId!=null}">
 					<button type="button" onclick="location.href='/prodPost'">글쓰기</button>
 				</c:if>
 
@@ -177,6 +177,7 @@ $(function(){
 
 				</form>
 
+				
 				<!-- 검색결과 유지용 매개변수 데이터시작 -->
 				<input type="hidden" id="nowPage" value="${pageMaker.cri.page}">
 				<input type="hidden" id="pKeyWord" value="${search.keyWord}">

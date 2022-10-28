@@ -82,5 +82,64 @@
 		delete from goodsTbl where num = #{num}
 		 ]]>
 	</delete>
+	
+	<select id="whishDpChk" parameterType="pack.spring.domain.product.WishlistBean" resultType="int">
+		 <![CDATA[
+		 select count(*) from wishlist where uId = #{uId} and pNum = #{pNum}
+	]]>
+	</select>
+	
+	<insert id="whishInsert" parameterType="pack.spring.domain.product.WishlistBean">
+		<![CDATA[
+		insert into wishlist (uId, pNum)
+		values
+		(#{uId}, #{pNum})
+		]]>
+	</insert>
+	
+	<select id="cartDpChk" parameterType="pack.spring.domain.product.CartBean" resultType="hashMap">
+		 <![CDATA[
+		 select num from cart where uId = #{uId} and pNum = #{pNum}
+	]]>
+	</select>
+	
+	<insert id="cartInsert" parameterType="pack.spring.domain.product.CartBean">
+		<![CDATA[
+		insert into cart (uId, pNum, pVolumn)
+		values
+		(#{uId}, #{pNum}, #{pVolumn})
+		]]>
+	</insert>
+	<update id="cartPlus" parameterType="pack.spring.domain.product.CartBean">
+		<![CDATA[
+		update cart set pVolumn = pVolumn + #{pVolumn} where num = #{num}
+		]]>
+	</update>
+	
+	
+	<select id="countWishlist" resultType="int">
+		 <![CDATA[
+		 select count(*) from wishlist where uId = #{uId}
+		 ]]>
+	</select>
+	
+	
+	<select id="getWishlist" resultType="pack.spring.domain.product.WishlistBean">
+		 <![CDATA[
+		 select * from wishlist where uId = #{uId}
+		 ]]>
+	</select>
+	
+	<select id="getCartList" resultType="pack.spring.domain.product.CartBean">
+		 <![CDATA[
+		 select * from cart where uId = #{uId}
+		 ]]>
+	</select>
+	
+	<update id="cartMod" parameterType="pack.spring.domain.product.CartBean">
+		<![CDATA[
+		update cart set pVolumn = #{pVolumn} where num = #{num}
+		]]>
+	</update>
 
 </mapper>

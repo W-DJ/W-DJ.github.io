@@ -14,6 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import pack.spring.domain.member.MemberDTO;
+
 @Controller
 public class ProdController {
 	
@@ -21,8 +23,14 @@ public class ProdController {
 	ProdService prodService;
 	
 	@RequestMapping(value="/prodPost", method=RequestMethod.GET)
-	public ModelAndView prodPost() {
-		return new ModelAndView("product/prodPost");
+	public ModelAndView prodPost(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		if (session.getAttribute("admin") != null) {
+			mav.setViewName("product/prodPost");
+		} else {
+			mav.setViewName("redirect:/");
+		}
+		return mav;
 	}
 	
 	@RequestMapping(value="/prodPost", method=RequestMethod.POST)
@@ -137,10 +145,14 @@ public class ProdController {
 	public ModelAndView prodModGet(@RequestParam Map<String, Object> map, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("search", map);
-		if (session.getAttribute("board") != null) {
-			mav.setViewName("product/prodMod");
+		if (session.getAttribute("admin") != null) {
+			if (session.getAttribute("board") != null) {
+				mav.setViewName("product/prodMod");
+			} else {
+				mav.setViewName("redirect:/prodList");
+			}	
 		} else {
-			mav.setViewName("redirect:/prodList");
+			mav.setViewName("redirect:/");
 		}
 		return mav;
 		
@@ -180,7 +192,7 @@ public class ProdController {
 		public ModelAndView prodDel(@RequestParam("num") int num, @RequestParam Map<String, Object> map, HttpSession session) {
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("search", map);
-			if (session.getAttribute("aId_Session") != null) {
+			if (session.getAttribute("admin") != null) {
 				
 				String del_Msg = this.prodService.prodDel(num);
 				mav.addObject("del_Msg", del_Msg);
@@ -192,5 +204,115 @@ public class ProdController {
 		// 상품 삭제 페이지 끝
 	
 	
+		
+		// 위시리스트 insert 시작
+		
+		@RequestMapping(value="/wishInsert", method=RequestMethod.GET)
+		public ModelAndView wishInsert(WishlistBean wishlistBean) {
+			ModelAndView mav = new ModelAndView();
+			String wish_Msg = "";
+			int dpChk = this.prodService.wishDpChk(wishlistBean);
+			if (dpChk == 0) {
+				int affectRow = this.prodService.wishInsert(wishlistBean);
+				if (affectRow == 1) {
+					wish_Msg = "위시리스트에 추가되었습니다.";
+				} else {
+					wish_Msg = "위시리스트 추가에 문제가 발생했습니다.";
+				}				
+				
+			} else {
+				wish_Msg = "이미 위시리스트에 있는 상품입니다.";
+			}
+			mav.addObject("wish_Msg", wish_Msg);
+			mav.setViewName("product/dumyMsg");
+			return mav;
+		}
+		
+		
+		
+		// 상품 상세보기페이지에서 장바구니 insert 시작
+		
+		@RequestMapping(value="/cartInsert", method=RequestMethod.GET)
+		public ModelAndView cartInsert(CartBean cartBean) {
+			ModelAndView mav = new ModelAndView();
+			String cart_Msg = "";
+			int affectRow = 0;
+			Map <String, Object>map = this.prodService.cartDpChk(cartBean);
+			if (map == null) {
+				affectRow = this.prodService.cartInsert(cartBean);
+			} else {
+				int num = Integer.parseInt(map.get("num").toString());
+				cartBean.setNum(num);
+				affectRow = this.prodService.cartPlus(cartBean);
+			}
+			
+			if (affectRow == 1) {
+				cart_Msg = "장바구니에 추가되었습니다.";
+			} else {
+				cart_Msg = "장바구니 추가에 문제가 발생했습니다.";
+			}				
+			
+			mav.addObject("cart_Msg", cart_Msg);
+			mav.setViewName("product/dumyMsg");
+			return mav;
+		}
+		
+		
+		
+		@RequestMapping(value="/wishlist", method=RequestMethod.GET)
+		public ModelAndView wishlist(Criteria cri, HttpSession session) {
+			ModelAndView mav = new ModelAndView();
+			String uId = ((MemberDTO)session.getAttribute("user")).getuId();
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(cri);
+			
+			int totalCnt = this.prodService.countWishlistTotal(uId);
+
+			pageMaker.setTotalCount(totalCnt);
+
+			
+			if (totalCnt != 0) {
+				List<WishlistBean> wishlist = this.prodService.wishlist(uId);
+				mav.addObject("wishlist", wishlist);
+				mav.addObject("pageMaker", pageMaker);
+			} else {
+				mav.addObject("wishlist", null);
+			}
+			mav.setViewName("wishlist/wishlist");
+			return mav;
+			
+		}
+		
+		
+		@RequestMapping(value="/cartList", method=RequestMethod.GET)
+		public ModelAndView cartList(HttpSession session) {
+			ModelAndView mav = new ModelAndView();
+			String uId = ((MemberDTO)session.getAttribute("user")).getuId();
+	
+			
+			List<CartBean> cartList = this.prodService.cartList(uId);
+			mav.addObject("cartList", cartList);
+
+			mav.setViewName("cart/cartList");
+			return mav;
+			
+		}
+		
+		
+		@RequestMapping(value="/cartMod", method=RequestMethod.GET)
+		public ModelAndView cartMod(CartBean cartBean) {
+			ModelAndView mav = new ModelAndView();
+			String cart_Msg = null;
+			int affectRow = this.prodService.cartMod(cartBean);
+			
+			if (affectRow != 1) {
+				cart_Msg = "장바구니 변경에 문제가 발생했습니다.";
+			} 			
+			
+			mav.addObject("cart_Msg", cart_Msg);
+			mav.setViewName("product/dumyMsg");
+			return mav;
+		}
+		
 	
 }

@@ -138,6 +138,10 @@ cartListWrap table#cartTbl td:nth-child(5) {
 	
 }
 
+.cartListWrap table#cartTbl td#nullCart {
+	text-align: center;
+}
+
 .cartListWrap table#cartTbl tfoot tr:first-child>td:first-child {
 	padding-top: 20px;
 	vertical-align: top;

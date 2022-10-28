@@ -85,4 +85,77 @@ public class ProdServiceImp implements ProdService {
 		}
 		return "삭제오류";
 	};
+	
+	
+	@Override
+	public int wishDpChk(WishlistBean wishlistBean) {
+		return this.prodDao.wishDpChk(wishlistBean);
+	};	
+	
+	
+	@Override
+	public int wishInsert (WishlistBean wishlistBean) {
+		return this.prodDao.wishInsert(wishlistBean);
+	};
+	
+	
+	@Override
+	public Map<String, Object> cartDpChk(CartBean cartBean) {
+		return this.prodDao.cartDpChk(cartBean);
+	};	
+	
+	@Override
+	public int cartInsert (CartBean cartBean) {
+		return this.prodDao.cartInsert(cartBean);
+	};
+	
+	@Override
+	public int cartPlus (CartBean cartBean) {
+		return this.prodDao.cartPlus(cartBean);
+	};
+	
+	@Override
+	public int countWishlistTotal(String uId) {
+		return this.prodDao.getCountWishlist(uId);
+	};
+	
+	@Override
+	public List<WishlistBean> wishlist(String uId) {
+		List<WishlistBean> wishlist = this.prodDao.getWishlist(uId);
+		for (int i = 0; i < wishlist.size(); i++) {
+			WishlistBean wishlistRow =wishlist.get(i);
+			int pNum = wishlistRow.getpNum();
+			ProdBoardBean prodBean = this.prodDao.prodRead(pNum);
+			wishlistRow.setpName(prodBean.getpName());
+			wishlistRow.setSellPrice(prodBean.getSellPrice());
+			wishlistRow.setSysFileName(prodBean.getSysFileName());
+			wishlist.set(i, wishlistRow);
+		}
+		return wishlist;
+	};
+	
+	@Override
+	public List<CartBean> cartList(String uId) {
+		List<CartBean> cartList = this.prodDao.getCartList(uId);
+		System.out.println(cartList.toString());
+		if (cartList != null) {
+			for (int i = 0; i < cartList.size(); i++) {
+				CartBean cartListRow =cartList.get(i);
+				int pNum = cartListRow.getpNum();
+				ProdBoardBean prodBean = this.prodDao.prodRead(pNum);
+				cartListRow.setpName(prodBean.getpName());
+				cartListRow.setSellPrice(prodBean.getSellPrice());
+				cartListRow.setSysFileName(prodBean.getSysFileName());
+				cartListRow.setStockVolumn(prodBean.getStockVolumn());
+				cartList.set(i, cartListRow);
+			}
+		}
+		return cartList;
+	};
+	
+	@Override
+	public int cartMod (CartBean cartBean) {
+		return this.prodDao.cartMod(cartBean);
+	};
+	
 }

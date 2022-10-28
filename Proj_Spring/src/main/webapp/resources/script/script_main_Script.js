@@ -40,7 +40,7 @@ $(function() {
 	});
 	
 	$("div#cartImg").click(function(){
-		window.parent.location.href="/cart/cartList.jsp";
+		window.parent.location.href="/cartList";
 	});
 	
 	
