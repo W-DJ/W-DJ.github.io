@@ -130,6 +130,12 @@
 		 ]]>
 	</select>
 	
+	<delete id="wishDel">
+		 <![CDATA[
+		delete from wishlist where num = #{num}
+		 ]]>
+	</delete>
+	
 	<select id="getCartList" resultType="pack.spring.domain.product.CartBean">
 		 <![CDATA[
 		 select * from cart where uId = #{uId}
@@ -141,5 +147,11 @@
 		update cart set pVolumn = #{pVolumn} where num = #{num}
 		]]>
 	</update>
+	
+	<delete id="cartDel">
+		 <![CDATA[
+		delete from cart where num = #{num}
+		 ]]>
+	</delete>
 
 </mapper>

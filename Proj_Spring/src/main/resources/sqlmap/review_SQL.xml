@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="review">
+
+	<select id="getTblReviewNum" resultType="hashMap">
+		 <![CDATA[
+		 select max(tblReviewNum) from reviewTbl where prodNum = #{prodNum}
+		 ]]>
+	</select>
+
+
+	<insert id="post" parameterType="pack.spring.domain.review.ReviewBoardBean">
+		<![CDATA[
+		insert into reviewTbl (tblReviewNum, prodNum, regId, regName, subject, content, regDate, ip, love, oriFileName, sysFileName, fileSize )
+		values
+		(#{tblReviewNum}, #{prodNum}, #{regId}, #{regName}, #{subject}, #{content}, now(), #{ip}, 0, #{oriFileName}, #{sysFileName}, #{fileSize})
+		]]>
+	</insert>
+
+</mapper>

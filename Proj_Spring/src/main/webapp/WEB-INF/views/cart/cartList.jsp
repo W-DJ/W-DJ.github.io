@@ -12,6 +12,14 @@
 		<link rel="shortcut icon" href="#">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="resources/script/script_Cart.js"></script>
+		<script>
+		if('${param.cart_Msg}') {
+			window.parent.alert('${param.cart_Msg}');
+	  	}
+		if('${param.del_Msg}') {
+			window.parent.alert('${param.del_Msg}');
+	  	}
+		</script>
 	</head>
 	<body>
 	  	<header>
@@ -148,7 +156,7 @@
 		<iframe src="/footer" scrolling="no" width="100%" frameborder=0 id="footerIfm"></iframe>
 		
 		<form action="/order" id="orderFrm"></form>
-		<form action="/cart/cartMulDelProc.jsp" id="multiDelFrm"></form>
+		<form action="/cartDel" id="multiDelFrm"></form>
 		<iframe width="0" height="0" class="cartModIfr" style="display: none"></iframe>
 	</body>
 </html>

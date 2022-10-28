@@ -64,11 +64,18 @@ public class ProdDao {
 	public List<WishlistBean> getWishlist (String uId) {
 		return this.sqlSessionTemplate.selectList("product.getWishlist", uId);
 	}
+	
+	public int wishDel (int num) {
+		return this.sqlSessionTemplate.delete("product.wishDel", num);
+	}
 	public List<CartBean> getCartList (String uId) {
 		return this.sqlSessionTemplate.selectList("product.getCartList", uId);
 	}
 	
 	public int cartMod (CartBean cartBean) { 
 		return this.sqlSessionTemplate.update("product.cartMod", cartBean);
+	}
+	public int cartDel (int num) {
+		return this.sqlSessionTemplate.delete("product.cartDel", num);
 	}
 }

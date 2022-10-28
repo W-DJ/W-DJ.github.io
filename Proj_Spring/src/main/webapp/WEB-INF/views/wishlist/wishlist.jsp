@@ -12,6 +12,11 @@
 		<link rel="shortcut icon" href="#">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="resources/script/script_Wishlist.js"></script>
+		<script>
+		if('${param.cart_Msg}') {
+			window.parent.alert('${param.cart_Msg}');
+	  	}
+		</script>
 	</head>
 	<body>
 	  	<header>
@@ -141,7 +146,7 @@
 		<!-- div#wrap -->
 		<iframe src="/footer" scrolling="no" width="100%" frameborder=0 id="footerIfm"></iframe>
 		
-		<form action="/wishlist/wishMulDelProc.jsp" id="multiDelFrm"></form>
-		<form action="/cart/cartMulInsertProc.jsp" id="cartMulInsertFrm"></form>
+		<form action="/wishDel" id="multiDelFrm"></form>
+		<form action="/cartMultiInsert" id="cartMulInsertFrm"></form>
 	</body>
 </html>

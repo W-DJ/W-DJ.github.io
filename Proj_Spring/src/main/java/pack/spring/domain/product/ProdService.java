@@ -36,7 +36,9 @@ public interface ProdService {
 	
 	int countWishlistTotal(String uId);
 	List<WishlistBean> wishlist(String uId);
+	int wishDel(int num);
 	
 	List<CartBean> cartList(String uId);
 	int cartMod (CartBean cartBean);
+	int cartDel(int num);
 }

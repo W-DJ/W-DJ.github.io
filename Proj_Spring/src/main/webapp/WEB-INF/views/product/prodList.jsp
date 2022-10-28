@@ -41,7 +41,8 @@ $(function(){
 
 			<div id="pageInfo" class="dFlex">
 				<div id="tblNumInfo">
-					<span> <c:choose>
+					<span> 
+						<c:choose>
 							<c:when test="${search.keyWord == null || search.keyWord ==''}">
 						 	전체 상품
 						 </c:when>
@@ -49,7 +50,8 @@ $(function(){
 							검색 결과
 						 </c:otherwise>
 						</c:choose> : ${pageMaker.totalCount} 개
-					</span> <span>현재 페이지 : ${pageMaker.cri.page} / ${pageMaker.tempEndPage}</span>
+					</span> 
+					<span>현재 페이지 : ${pageMaker.cri.page} / ${pageMaker.tempEndPage}</span>
 				</div>
 				<div id="orderArea">
 					<ul class="dFlex">

@@ -187,7 +187,7 @@ $(function(){
 		let delToF = confirm("정말로 삭제하시겠습니까?");
 		if (delToF) {
 			let num = $(this).parents("tr").find("input.num").val();
-			location.href="/cart/cartOneDelProc.jsp?num="+num;
+			location.href="/cartDel?num="+num;
 		} else {
 			alert("취소하셨습니다.");
 		}

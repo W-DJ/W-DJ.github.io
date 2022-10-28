@@ -65,7 +65,7 @@ $(function(){
 		let delToF = confirm("정말로 삭제하시겠습니까?");
 		if (delToF) {
 			let num = $(this).parents("tr").find("input.delNum").val();
-			location.href="/wishlist/wishOneDelProc.jsp?num="+num;
+			location.href="/wishDel?num="+num;
 		} else {
 			alert("취소하셨습니다.");
 		}

@@ -135,6 +135,11 @@ public class ProdServiceImp implements ProdService {
 	};
 	
 	@Override
+	public int wishDel(int num) {
+		return this.prodDao.wishDel(num);
+	};
+	
+	@Override
 	public List<CartBean> cartList(String uId) {
 		List<CartBean> cartList = this.prodDao.getCartList(uId);
 		System.out.println(cartList.toString());
@@ -156,6 +161,11 @@ public class ProdServiceImp implements ProdService {
 	@Override
 	public int cartMod (CartBean cartBean) {
 		return this.prodDao.cartMod(cartBean);
+	};
+	
+	@Override
+	public int cartDel(int num) {
+		return this.prodDao.cartDel(num);
 	};
 	
 }
