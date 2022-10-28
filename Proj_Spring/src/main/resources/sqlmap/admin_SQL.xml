@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin">
+
+
+<insert id="insert" parameterType="hashMap" useGeneratedKeys="true" keyProperty="admin">
+<![CDATA[
+insert into adminList (aId, aPw, aName, aEmail, aPhone,joinTM) values
+ (#{aId}, #{aPw}, #{aName}, #{aEmail},#{aPhone},now());
+]]>
+</insert>
+
+
+<select id="login" parameterType ="pack.spring.domain.admin.AdminDTO" resultType="pack.spring.domain.admin.AdminDTO">
+<![CDATA[
+select aId, aPw, aName, aEmail, aPhone, joinTM from adminList where aId = #{aId} and aPw =#{aPw}
+]]>
+</select>
+
+</mapper>
