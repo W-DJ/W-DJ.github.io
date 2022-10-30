@@ -14,7 +14,7 @@ $(function(){
 		let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
 		let p6 = $("#typeSearch").val().trim();
 		
-		let param = "/product/prodList.jsp?";
+		let param = "/prodList?";
 			param += "&keyWord="+p4;
 			param += "&typeSearch="+p6;
 			window.parent.location.href=param; 
@@ -26,7 +26,7 @@ $(function(){
 			let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
 			let p6 = $("#typeSearch").val().trim();
 			
-			let param = "/product/prodList.jsp?";
+			let param = "/prodList?";
 				param += "&keyWord="+p4;
 				param += "&typeSearch="+p6;
 				window.parent.location.href=param; 
