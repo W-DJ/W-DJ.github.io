@@ -7,14 +7,19 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>글쓰기</title>
-	<link rel="stylesheet" href="resources/style/style_Common.css">
+	<link rel="stylesheet" href="resources/style/common_style.css">
 	<link rel="stylesheet" href="resources/style/review_style.css">
-	<script src="resources/source/jquery-3.6.0.min.js"></script>
+	<script src="resources/script/jquery-3.6.0.min.js"></script>
 	<script src="resources/script/script_Review.js"></script>
 </head>
 
 <body>
-    <div id="wrap">
+	<header>
+	    <!--  헤더템플릿 시작, iframe으로 변경 -->
+			<iframe src="/header" scrolling="no" width="100%" frameborder=0 id="headerIfm"></iframe>
+	    <!--  헤더템플릿 끝 -->   
+  	</header>
+    <div id="wrap" class="reviewPostWrap">
     	
 		
 	    	<form action="/reviewPost" method="post" enctype="multipart/form-data">
@@ -29,7 +34,7 @@
 								<td>
 									${user.uName}
 									<input type="hidden" name="regId" value="${user.uId}">
-									<input type="hidden" name="regName" value="${user.uName}">					
+									<input type="hidden" name="regName" value="${user.uName}">			
 								</td>
 								
 							</tr>
@@ -68,15 +73,14 @@
 				</div>
 			</aside>
 			<input type="hidden" name ="prodNum" value="${param.prodNum}">
-			
-
+			<input type="hidden" name ="orderNum" value="${param.orderNum}">
 		</form>
     		    	
     
         
     </div>
     <!-- div#wrap -->
-
+	<iframe src="/footer" scrolling="no" width="100%" frameborder=0 id="footerIfm"></iframe>
 </body>
 
 </html>

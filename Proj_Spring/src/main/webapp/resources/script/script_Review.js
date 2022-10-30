@@ -1,23 +1,5 @@
 $(function(){
-	/* 리뷰게시판 글쓰기 버튼 시작 /bbs/list.jsp */	
-	$("#loginAlertBtn").click(function(){		
-		alert("로그인 후 게시글을 작성하실 수 있습니다.");
-	});	
-	
-	
-	$("#writeBtn").click(function(){
-		let orderCnt = $("input#orderCnt").val();
-		
-			let prodNum = $("input#prodNum").val();
-			location.href="/reviewPost?prodNum="+prodNum;	
-	
-	});
-	
-	
-	/* 리뷰게시판 페이지 글쓰기 버튼 끝 /bbs/list.jsp */
-	
 
-	
 	/* 상품 게시글 내용보기페이지에서 수정버튼 시작 /bbs/read.jsp */
 	$("button.modBtn").click(function(){
 		let nowPage = $("input#nowPage").val().trim();

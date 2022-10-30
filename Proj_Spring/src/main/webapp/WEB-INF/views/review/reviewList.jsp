@@ -60,7 +60,7 @@ $(function(){
 										</tr>
 								
 										<tr>
-											<td colspan="2">${board.regDate}</td>
+											<td colspan="2" class="regDate"></td>
 										</tr>
 								 <c:choose>
 									<c:when test="${board.sysFileName}">
@@ -77,7 +77,7 @@ $(function(){
 										<tr>
 											<td colspan="2" id="btnAreaTd" class="read">
 								<c:choose>
-								 <c:when test="${user.uId != null && board.regName != user.uId}">
+								 <c:when test="${user.uId != null && board.regId != user.uId}">
 												<button type="button" class="recommendBtn">도움이 돼요</button> 
 								 </c:when>
 								 </c:choose>
@@ -95,6 +95,14 @@ $(function(){
 									</tbody>
 								</table>
 								<hr>
+								<script>
+									$(function () {
+										let index = "${status.index}";
+										let regDate = "${board.regDate}";
+										regDate = regDate.substr(0, 10);
+										$("td.regDate").text(regDate);
+									});
+								</script>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
@@ -116,19 +124,7 @@ $(function(){
 					<table>
 						<tbody>
 							<tr id="listBtnArea">
-								<td colspan="2">
-								<input type="hidden" id="orderCnt" value="orderCnt"> 
-<c:if test="${user.uId != null}">
-									<button type="button" id="writeBtn" class="listBtnStyle">글쓰기</button>
-</c:if>
-<c:if test="${user.uId == null}">
-									<button type="button" id="loginAlertBtn" class="listBtnStyle">글쓰기</button>
-</c:if>
-							
-
-								</td>
-
-								<td colspan="3">
+								<td colspan="5">
 
 									<form class="dFlex" id="searchFrm" action="/reviewList">
 

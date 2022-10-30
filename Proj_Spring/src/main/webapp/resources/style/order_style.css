@@ -114,27 +114,28 @@ div#wrap.orderListWrap div#contents{
 
 
 .orderListWrap table#orderListTbl td:nth-child(2) div.oName {
-	width: 230px;
+	width: 200px;
 }
 .orderListWrap table#orderListTbl td:nth-child(2) div.oVolumn {
-	width: 30px;
+	width: 40px;
+}
+.orderListWrap table#orderListTbl td:nth-child(2) div.reviewPost {
+	font-size: 15px;
 }
 
-.orderListWrap table#orderListTbl th:nth-child(3),
-.orderListWrap table#orderListTbl td:nth-child(3) {
-	width: 150px;
-	text-align: center;
+.orderListWrap table#orderListTbl th:nth-child(3) {
+	width: 100px;
 }
 
-.orderListWrap table#orderListTbl td:nth-child(3) {
-	font-size: 18px;
+.orderListWrap table#orderListTbl th:nth-child(4) {
+	width: 100px;
+}
+.orderListWrap table#orderListTbl th:nth-child(5) {
+	width: 100px;
 }
 
-.orderListWrap table#orderListTbl td:last-child button {
-	width: 24px;
-	height: 24px;
-	font-size: 18px;
-	line-height: 24px;
+.orderListWrap table#orderListTbl th:last-child {
+	width: 100px;
 }
 
 

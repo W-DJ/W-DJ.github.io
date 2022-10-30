@@ -57,7 +57,9 @@ public class OrderController {
 	}
 	
 	@RequestMapping(value="/orderProc", method=RequestMethod.POST)
-	public ModelAndView orderSet(OrderGoodsBean orderGoodsBean, UOrderBean uOrderBean) {
+	public ModelAndView orderSet(OrderGoodsBean orderGoodsBean, UOrderBean uOrderBean, 
+			@RequestParam(value = "cartNum", required = false) List<Integer> cartNumList) {
+		
 		ModelAndView mav = new ModelAndView();
 		int orderNum = this.orderService.uOrderSet(uOrderBean);
 		if(orderNum == 0) {
@@ -66,6 +68,11 @@ public class OrderController {
 			int rtCnt = 0;
 			rtCnt += this.orderService.orderGoodsSet(orderGoodsBean, orderNum);
 			if (rtCnt == orderGoodsBean.getOrderGoodsList().size()) {
+				if (cartNumList != null) {
+					for (int i = 0; i < cartNumList.size(); i++) {
+						this.prodService.cartDel(cartNumList.get(i));
+					}					
+				}
 				mav.setViewName("redirect:/orderList");				
 			} else {
 				mav.setViewName("redirect:/");				

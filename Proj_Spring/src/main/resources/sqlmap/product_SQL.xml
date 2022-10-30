@@ -161,7 +161,7 @@
 	
 	<select id="getCartForOrder" resultType="pack.spring.domain.product.CartBean">
 		 <![CDATA[
-		 select pNum, pVolumn, sellPrice, pName from cart 
+		 select cart.num, pNum, pVolumn, sellPrice, pName from cart 
 		 inner join goodsTbl on cart.pNum = goodsTbl.num 
 		 where cart.num = #{cartNum}
 		 ]]>

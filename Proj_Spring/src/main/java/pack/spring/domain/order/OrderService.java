@@ -14,4 +14,6 @@ public interface OrderService {
 	List<UOrderBean> uOrderList (Map<String, Object> map);
 	
 	List<OrderGoodsBean> OrderGoodsList (int orderNum);
+	
+	int modReviewStatus(int orderNum, int prodNum, String reviewStatus);
 }

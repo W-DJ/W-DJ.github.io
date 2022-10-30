@@ -59,6 +59,7 @@
 								<div>
 									${board.pName}
 									<input type="hidden" value="${board.pName}">
+									<input type="hidden" value="${board.num}" name="cartNum">
 									<input type="hidden" name="orderGoodsList[${status.index}].pNum" value="${board.pNum}">
 								</div>
 								<div>

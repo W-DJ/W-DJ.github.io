@@ -32,5 +32,9 @@ public class OrderDao {
 	public List<OrderGoodsBean> getOrderGoodsList (int orderNum) {
 		return this.sqlSessionTemplate.selectList("order.getOrderGoodsList", orderNum);
 	}
+	
+	public int modReviewStatus (OrderGoodsBean orderGoods) {
+		return this.sqlSessionTemplate.update("order.modReviewStatus", orderGoods);
+	}
 
 }

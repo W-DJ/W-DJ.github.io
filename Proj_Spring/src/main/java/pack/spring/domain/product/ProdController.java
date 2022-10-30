@@ -39,7 +39,7 @@ public class ProdController {
 
 		ModelAndView mav = new ModelAndView();
 
-		if (imgFile != null) {
+		if (imgFile.getSize() != 0) {
 			String oriFileName = imgFile.getOriginalFilename();
 			int fileSize = (int) imgFile.getSize();
 			String sysFileName = this.prodService.fileUpload(imgFile);
@@ -362,16 +362,16 @@ public class ProdController {
 	}
 	
 	@RequestMapping(value = "/cartDel", method = RequestMethod.GET)
-	public ModelAndView cartDel(@RequestParam("num")  List<Integer> pNumList) {
+	public ModelAndView cartDel(@RequestParam("num")  List<Integer> cartNumList) {
 		int affectRow = 0;
 		String del_Msg=null;
 		
 		ModelAndView mav = new ModelAndView();
-		for (int i = 0; i < pNumList.size(); i++) {
-			affectRow += this.prodService.cartDel(pNumList.get(i));
+		for (int i = 0; i < cartNumList.size(); i++) {
+			affectRow += this.prodService.cartDel(cartNumList.get(i));
 		}
 		
-		if (affectRow !=pNumList.size()) {
+		if (affectRow !=cartNumList.size()) {
 			del_Msg = "삭제에 문제가 발생했습니다.";
 		}
 

@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import pack.spring.domain.member.MemberDTO;
+import pack.spring.domain.order.OrderService;
 import pack.spring.domain.product.Criteria;
 import pack.spring.domain.product.PageMaker;
 import pack.spring.domain.product.ProdService;
@@ -27,15 +28,13 @@ public class ReviewController {
 	
 	@Autowired
 	ProdService prodService;
+	@Autowired
+	OrderService orderService;
 	
 	@RequestMapping(value = "/reviewPost", method = RequestMethod.GET)
-	public ModelAndView reviewPost(HttpSession session, @RequestParam("prodNum") int prodNum) {
+	public ModelAndView reviewPost(HttpSession session, @RequestParam("prodNum") int prodNum, @RequestParam("orderNum") int orderNum) {
 		ModelAndView mav = new ModelAndView();
-		if (session.getAttribute("user") != null) {
-			mav.setViewName("review/reviewPost");
-		} else {
-			mav.setViewName("/unauthAccess");
-		}
+		mav.setViewName("review/reviewPost");
 		return mav;
 	}
 	
@@ -44,7 +43,7 @@ public class ReviewController {
 			HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 
-		if (imgFile != null) {
+		if (imgFile.getSize() != 0) {
 			String oriFileName = imgFile.getOriginalFilename();
 			int fileSize = (int) imgFile.getSize();
 			String sysFileName = this.prodService.fileUpload(imgFile);
@@ -56,11 +55,14 @@ public class ReviewController {
 		String ip = request.getRemoteAddr();
 		reviewBoardBean.setIp(ip);
 		int prodNum = reviewBoardBean.getProdNum();
+		int orderNum =reviewBoardBean.getOrderNum();
 		String post_OK = reviewService.post(reviewBoardBean);
 		if (post_OK == null) {
-			mav.setViewName("redirect:/reviewPost?prodNum="+prodNum);
+			mav.setViewName("redirect:/reviewPost?prodNum="+prodNum+"&orderNum="+orderNum);
 		} else {
-			mav.setViewName("redirect:/reviewList?prodNum="+prodNum);
+			String reviewStatus = "1";
+			this.orderService.modReviewStatus(orderNum, prodNum, reviewStatus);
+			mav.setViewName("redirect:/orderList");
 		}
 		return mav;
 	}

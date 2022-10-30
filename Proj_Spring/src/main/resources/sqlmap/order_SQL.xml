@@ -12,8 +12,8 @@
 	
 	<insert id="insertOrderGoods" parameterType="pack.spring.domain.order.OrderGoodsBean">
 		<![CDATA[
-		insert into orderGoods (orderNum, pNum, pVolumn) 
-		values (#{orderNum}, #{pNum}, #{pVolumn})
+		insert into orderGoods (orderNum, pNum, pVolumn, reviewStatus) 
+		values (#{orderNum}, #{pNum}, #{pVolumn}, '0')
 		]]>
 	</insert>
 	
@@ -32,9 +32,15 @@
 	
 	<select id="getOrderGoodsList" resultType="pack.spring.domain.order.OrderGoodsBean">
 		 <![CDATA[
-		 select pNum, pVolumn, pName from orderGoods inner join goodsTbl on orderGoods.pNum = goodsTbl.num where orderNum = #{orderNum}
+		 select pNum, pVolumn, pName, reviewStatus from orderGoods inner join goodsTbl on orderGoods.pNum = goodsTbl.num where orderNum = #{orderNum}
 		 ]]>
 	</select>
+	
+	<update id="modReviewStatus" parameterType="pack.spring.domain.order.OrderGoodsBean">
+		<![CDATA[
+		update orderGoods set reviewStatus = #{reviewStatus} where orderNum = #{orderNum} and pNum = #{pNum}
+		]]>
+	</update>
 	
 
 </mapper>

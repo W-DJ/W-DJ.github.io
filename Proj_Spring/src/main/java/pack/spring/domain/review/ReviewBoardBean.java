@@ -2,7 +2,7 @@ package pack.spring.domain.review;
 
 public class ReviewBoardBean {
 	int totalReviewNum;
-	int tblReviewNum;
+	int orderNum;
 	int prodNum;
 	String regId;
 	String regName;
@@ -21,11 +21,11 @@ public class ReviewBoardBean {
 	public void setTotalReviewNum(int totalReviewNum) {
 		this.totalReviewNum = totalReviewNum;
 	}
-	public int getTblReviewNum() {
-		return tblReviewNum;
+	public int getOrderNum() {
+		return orderNum;
 	}
-	public void setTblReviewNum(int tblReviewNum) {
-		this.tblReviewNum = tblReviewNum;
+	public void setOrderNum(int orderNum) {
+		this.orderNum = orderNum;
 	}
 	public int getProdNum() {
 		return prodNum;

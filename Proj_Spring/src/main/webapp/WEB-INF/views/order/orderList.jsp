@@ -76,6 +76,13 @@
 										<div class="dFlex oNameVolumn">
 											<div class="oName"><a href="/prodRead?num=${goods.pNum}">${goods.pName}</a></div>
 											<div class="oVolumn">${goods.pVolumn}개</div>
+											<div class="reviewPost">
+											<c:choose>
+											<c:when test="${goods.reviewStatus != '1'}">
+											<a href="/reviewPost?prodNum=${goods.pNum}&orderNum=${board.num}">리뷰<br>작성하기</a>
+											</c:when>
+											</c:choose>
+											</div>
 										</div>
 									</c:forEach>
 								</c:when>

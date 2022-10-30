@@ -47,4 +47,13 @@ public class OrderServiceImp implements OrderService {
 	public List<OrderGoodsBean> OrderGoodsList (int orderNum) {
 		return this.orderDao.getOrderGoodsList(orderNum);
 	};
+	
+	@Override
+	public int modReviewStatus(int orderNum, int prodNum, String reviewStatus) {
+		OrderGoodsBean orderGoodsBean = new OrderGoodsBean();
+		orderGoodsBean.setOrderNum(orderNum);
+		orderGoodsBean.setpNum(prodNum);
+		orderGoodsBean.setReviewStatus(reviewStatus);
+		return this.orderDao.modReviewStatus(orderGoodsBean);
+	};
 }

@@ -8,6 +8,7 @@ public class OrderGoodsBean {
 	private int pNum;
 	private int pVolumn;
 	private String pName;
+	private String reviewStatus;
 	
 	private List<OrderGoodsBean> orderGoodsList;
 	
@@ -48,5 +49,11 @@ public class OrderGoodsBean {
 	}
 	public void setpName(String pName) {
 		this.pName = pName;
+	}
+	public String getReviewStatus() {
+		return reviewStatus;
+	}
+	public void setReviewStatus(String reviewStatus) {
+		this.reviewStatus = reviewStatus;
 	}
 }
