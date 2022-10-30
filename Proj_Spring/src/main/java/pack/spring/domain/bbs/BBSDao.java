@@ -48,33 +48,33 @@ public class BBSDao {
 ///////////////////////////////고객문의///////////////////////////////////			
 			//고객문의 글쓰기
 			public int insert_inq(Map<String, Object> map) {
-					return this.sqlSessionTemplate.insert("bbs_inq.insertBBS_inq",map);
+					return this.sqlSessionTemplate.insert("bbs.insertBBS_inq",map);
 			}
 			
 			//고객문의 상세보기
 			public Map<String, Object> selectDetail_inq(Map<String, Object> map){
-				return this.sqlSessionTemplate.selectOne("bbs_inq.select_inq_detail", map);
+				return this.sqlSessionTemplate.selectOne("bbs.select_inq_detail", map);
 			}
 			
 			//고객문의 목록보기
 			public List<Map<String, Object>> selectList_inq(Map<String, Object> map){
-				return this.sqlSessionTemplate.selectList("bbs_inq.select_inq_list", map);
+				return this.sqlSessionTemplate.selectList("bbs.select_inq_list", map);
 			}
 			
 			//고객문의 수정하기(가져오기)
 			public Map<String, Object> selectMod_inq(Map<String, Object> map){
-				return this.sqlSessionTemplate.selectOne("bbs_inq.select_inq_update", map);
+				return this.sqlSessionTemplate.selectOne("bbs.select_inq_update", map);
 			}
 		
 			
 			//고객문의 수정하기(보내기)
 			public int modifyinq(Map<String , Object> map){
-				return this.sqlSessionTemplate.update("bbs_inq.update_inq", map);
+				return this.sqlSessionTemplate.update("bbs.update_inq", map);
 			}
 			
 			//고객문의 삭제하기
 			public int delinq(Map<String, Object> map) {
-				return this.sqlSessionTemplate.delete("bbs_inq.delete_inq", map);
+				return this.sqlSessionTemplate.delete("bbs.delete_inq", map);
 			}
 			
 ///////////////////////////////고객문의///////////////////////////////////			

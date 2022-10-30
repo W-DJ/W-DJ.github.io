@@ -2,90 +2,97 @@
 @import url("/resources/style/style_Reset.css");
 
 /*////////////////////////////////////////////////////////////////////*/
-/*////////////////// BBS list 목록 시작 /bbs_Notice/noticebbs.jsp ////////////////// */
+/*////////////////// BBS list 목록 시작 /bbs/Notlist.jsp ////////////////// */
 /*////////////////////////////////////////////////////////////////////*/
 div#wrap {
 
 	text-align: center;
 }
 
-button.headBtn {
+/* button.headBtn {
 	text-align: center;
 	padding: 15px 100px;
 	margin: 0px;
 	background-color: rgba(255, 0, 0, 0.1);
 	border: none;
 	border-radius: 5px;
-}
+} */
 
 
-div#wrap>main#main>div.bbsList {
+div#wrap>table#NoticeTbl{
 	width: 860px;
-	padding: 20px;
-	/*border: 1px solid #f80;*/
-	margin: 0 auto;
+	padding: 2px;
+	border: 1px solid #f80;
+	border-collapse: collapse;
+	text-align: center;
+	margin: 4px;
+	font-size: 16px;
+	padding: 2px 6px;
 }
 
 
-div.bbsList div#pageInfo {
+/* div.bbsList div#pageInfo {
 	width: 100%;
 	padding: 2px 10px;
 	margin-bottom: 4px;
 	justify-content: space-between;
 }
+ */
 
-div.bbsList table#boardList {
-	width: 100%;
-	border-collapse: collapse;
-	text-align: center;
-}
 
-div.bbsList th {
+
+table#NoticeTbl>thead>tr>th {
 	padding: 10px 2px;
 	background-color: rgba(255, 0, 0, 0.1);
 }
 
-div.bbsList th:first-child,
-div.bbsList th:last-child {
+table#NoticeTbl th:first-child,
+table#NoticeTbl th:last-child {
 	width: 70px;
+	
 	border-radius: 4px;
 }
 
-div.bbsList th:nth-child(2) {
+table#NoticeTbl th:nth-child(2) {
 	width: 100px;
+	
 }
 
-div.bbsList th:nth-child(3) {
+table#NoticeTbl th:nth-child(3) {
 	width: 200px;
+	
 }
 
-div.bbsList th:nth-child(4) {
+table#NoticeTbl th:nth-child(4) {
 	width: 220px;
+	
 }
 
-div.bbsList th:nth-child(5) {
+table#NoticeTbl th:nth-child(5) {
 	width: 180px;
+	
 
 }
 
-div.bbsList tr.listTr {
-	padding: 5px 5px;
-
+/* table#NoticeTbl tbody {
+	height: 600px;
+} */
+table#NoticeTbl>tbody>tr.listTr {
+	height: 200px;
 }
-
-div.bbsList tr.listTr:hover {
+table#NoticeTbl tbody>tr.listTr:hover {
 	background-color: rgba(0, 136, 255, 0.1);
 	cursor: pointer;
 }
 
-div.bbsList tr.listTr:hover td {
+table#NoticeTbl tbody>tr.listTr:hover td {
 	color: #666;
 	font-weight: bold;
+	height: 200px;
 }
 
-div.bbsList tr.listTr>td {
+table#NoticeTbl tbody>tr.listTr>td {
 	text-align: center;
-	padding: 20px 2px 10px;
 	border-bottom: 1px solid #d2d2d2;
 }
 
@@ -93,7 +100,7 @@ div.bbsList tr.listTr>td {
 
 
 /* 리스트 페이지 버튼 공통 스타일 시작 */
-div.bbsList button.listBtnStyle {
+table#NoticeTbl button.listBtnStyle {
 	font-size: 16px;
 	font-weight: bold;
 	padding: 2px 6px;
@@ -105,23 +112,17 @@ div.bbsList button.listBtnStyle {
 
 
 /* 리스트 /bbs_Notice/noticebbs.jsp 글쓰기, 검색 영역 시작 */
-div.bbsList tr#listBtnArea td {
+/* table#NoticeTbl tr#listBtnArea td {
 	padding-top: 20px;
 }
 
-div.bbsList form#searchFrm {
+table#NoticeTbl form#searchFrm {
 	justify-content: flex-end;
 }
+ */
 
-div.bbsList form#searchFrm>div {
-	margin: 4px;
-}
 
-div.bbsList #searchFrm select,
-div.bbsList #searchFrm input {
-	font-size: 16px;
-	padding: 2px 6px;
-}
+
 
 /* 리스트 /bbs/list.jsp 글쓰기, 검색 영역 끝 */
 
@@ -129,7 +130,7 @@ div.bbsList #searchFrm input {
 
 /* 리스트 /bbs/list.jsp  페이징 영역 시작 */
 
-div.bbsList tr#listPagingArea td {
+/* div.bbsList tr#listPagingArea td {
 	padding-top: 20px;
 }
 
@@ -165,7 +166,7 @@ div.bbsList td#pagingTd span.moveBlockArea {
 	font-size: 12px;
 	margin: 0 6px;
 	display: inline-block;
-}
+} */
 
 /* 리스트 /bbs/list.jsp  페이징 영역 끝 */
 
@@ -180,15 +181,27 @@ div.bbsList td#pagingTd span.moveBlockArea {
 
 
 /*////////////////////////////////////////////////////////////////////*/
-/*////////////////// BBS 글쓰기 시작 /bbs_Notice/write.jsp ////////////////// */
+/*////////////////// BBS 글쓰기 시작 /bbs/Notwrite.jsp ////////////////// */
 /*////////////////////////////////////////////////////////////////////*/
+div#wrap_bbs {
+	width: 600px;
+	padding: 20px;
+	border: 3px solid #aaa;
+	border-radius: 6px;
+	margin: 10px auto;
+}
+
+/* hr {
+	margin: 20px auto;
+} */
+
 main#main {
-	text-align: left;
+	
 	margin: 0 auto;
 }
 
 main#main>div.bbsWrite {
-	text-align: left;
+	
 	padding: 10px 0;
 	margin-bottom: 20px;
 	width: 600px;
@@ -198,10 +211,12 @@ main#main>div.bbsWrite {
 }
 
 #main>.bbsWrite table {
-width: 100%;
+	width: 600px;
 	border-collapse: collapse;
-	text-align: left;
+	
 }
+
+
 #main>.bbsWrite table tr{
 	text-align: left;
 	
@@ -217,6 +232,9 @@ width: 100%;
 	text-align: left;
 }
 
+#main>.bbsWrite table tbody td input#aName {
+	border: none;
+}
 
 #main>.bbsWrite table tfoot td hr {
 	border: 2px solid #ccc;
@@ -265,12 +283,17 @@ width: 100%;
 }
 
 
-#main>.bbsWrite input,
-#main>.bbsWrite textarea {
+#main>.bbsWrite input
+ {
 	font-size: 17px;
-	padding: 4px 10px;
+	padding: 5px 10px;
 }
 
+#main textarea {
+	font-size: 17px;
+	padding: 5px 10px;
+	width: 550px;
+}
 #main>.bbsWrite td.contentTD {
 	vertical-align: top;
 	padding-top: 30px;
@@ -312,33 +335,25 @@ width: 100%;
 }
 
 /*////////////////////////////////////////////////////////////////////*/
-/*////////////////// BBS 글쓰기 끝 /bbs_Notice/write.jsp ////////////////// */
+/*////////////////// BBS 글쓰기 끝 /bbs/NotWrite.jsp ////////////////// */
 /*////////////////////////////////////////////////////////////////////*/
 
 
 
 
 /*////////////////////////////////////////////////////////////////////*/
-/*///////////// BBS  게시글 상세보기 페이지 시작 /bbs_Notice/read.jsp ///////////// */
+/*///////////// BBS  게시글 상세보기 페이지 시작 /bbs/Notdetail.jsp ///////////// */
 /*////////////////////////////////////////////////////////////////////*/
 
-main#main>div.bbsRead h2 {
-	text-align: center;
-	padding: 10px;
-	margin-bottom: 10px;
-	background-color: rgba(0, 136, 255, 0.1);
-}
+main#main>div.bbsDetail {
+	padding: 10px 0;
+	margin-bottom: 20px;
+	width: 600px;
+	margin: 0 auto;
+	border-color: #eeeeee;
+	}
 
-#main>.bbsRead table#readTbl {
-	width: 100%;
-	border-collapse: collapse;
-}
 
-#main>.bbsRead tbody#readTblBody th,
-#main>.bbsRead tbody#readTblBody td {
-	padding: 14px 6px;
-	border-bottom: 1px solid #eee;
-}
 
 
 /*다운로드 시작*/
@@ -353,143 +368,324 @@ main#main>div.bbsRead h2 {
 /*다운로드 끝*/
 
 
-#main>.bbsRead tbody#readTblBody th:nth-child(2n+1),
-#main>.bbsRead tbody#readTblBody td:nth-child(2n+1) {
-	width: 120px;
-	font-weight: bold;
-	text-align: center;
-	background-color: rgba(220, 220, 220, 0.2);
+/* hr {
+	margin: 20px auto;
+} */
+
+main#main {
+	
+	margin: 0 auto;
 }
 
-#main>.bbsRead tbody#readTblBody td#readContentTd {
-	text-align: left;
-	vertical-align: top;
-	height: 160px;
-	padding: 20px;
-	background-color: #fff;
+main#main>div.bbsDetail {
+	
+	padding: 10px 0;
+	margin-bottom: 20px;
+	width: 600px;
+	margin: 0 auto;
+	border-color: #eeeeee;
+
 }
 
-#main>.bbsRead tbody#readTblBody textarea#txtArea {
-	height: 160px;
-	border: none;
-	/* 테두리 선 제거*/
-	outline: none;
-	/* 클릭했을 때 나타나는 아웃라인 선 제거*/
-}
-
-#main>.bbsRead td#footTopSpace {
-	height: 30px;
-}
-
-#main>.bbsRead tfoot#readTblFoot td#articleInfoTd {
-	text-align: right;
-}
-
-#main>.bbsRead tfoot#readTblFoot td#hrTd {
-	height: 30px;
-	vertical-align: top;
-	padding-top: 10px;
-}
-
-#main>.bbsRead tfoot#readTblFoot hr {
-	border: 2px solid #eee;
-	border-top-color: #ddd;
-}
-
-#main>.bbsRead tfoot#readTblFoot td#btnAreaTd {
-	text-align: center;
-}
-
-#main>.bbsRead tfoot#readTblFoot td#btnAreaTd button {
-	width: 110px;
-	font-size: 16px;
-	font-weight: bold;
-	padding: 4px 20px;
-	cursor: pointer;
-}
-
-
-/*////////////////////////////////////////////////////////////////////*/
-/*///////////// BBS  게시글 상세보기 페이지 끝 /bbs_Notice/read.jsp ///////////// */
-/*////////////////////////////////////////////////////////////////////*/
-
-
-
-
-
-/*////////////////////////////////////////////////////////////////////*/
-/*///////////// BBS 게시글 수정 페이지 시작 /bbs_Notice/modify.jsp ///////////// */
-/*////////////////////////////////////////////////////////////////////*/
-
-main#main>div.mod h2 {
-	text-align: center;
-	padding: 10px;
-	margin-bottom: 10px;
-	background-color: rgba(0, 136, 255, 0.1);
-}
-
-
-#main>.mod table#modTbl {
-	width: 100%;
+#main>.bbsDetail table {
+	width: 550px;
 	border-collapse: collapse;
-}
-
-#main>.mod tbody#modTblBody th,
-#main>.mod tbody#modTblBody td {
-	padding: 14px 6px;
-	border-bottom: 1px solid #eee;
+	
 }
 
 
-#main>.mod tbody#modTblBody th:nth-child(1),
-#main>.mod tbody#modTblBody td:nth-child(1) {
-	width: 120px;
+#main>.bbsDetail table tbody tr{
+	text-align: left;
+	
+}
+#main>.bbsDetail table tbody tr td {
+	padding: 10px;
+	text-align: left;
+}
+
+#main>.bbsDetail table tbody td:first-child {
+	width: 100px;
 	font-weight: bold;
-	text-align: center;
-	background-color: rgba(220, 220, 220, 0.2);
+	text-align: left;
 }
 
-#main>.mod td.req::after {
+#main>.bbsDetail table tbody td input#aName {
+	border: none;
+}
+#main>.bbsDetail table tbody td input#asubject {
+	width: 400px;
+	border: none;
+}
+#main>.bbsDetail table tfoot td hr {
+	border: 2px solid #ccc;
+}
+
+#main>.bbsDetail table tfoot td {
+	width: 600px;
+	text-align: left;
+	padding: 4px 0;
+	/*border: 1px solid #aaa;*/
+}
+
+
+#main>.bbsDetail td.req::after {
 	content: " *";
 	color: #d74;
 	font-weight: bold;
 }
 
-#main>.mod tbody#modTblBody input {
+
+::-webkit-file-upload-button {
+	font-weight: bold;
+	padding: 4px 10px;
+	cursor: pointer;
+}
+
+
+#main textarea#acontent {
+	height: 140px;
+	width: 550px;
+	resize: none;
+	border: 1px solid #eee;
+}
+
+#main>.bbsDetail label {
+	margin: 0 20px;
+	cursor: pointer;
+}
+
+#main>.bbsDetail label span {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+
+#main>.bbsDetail input
+ {
+	font-size: 17px;
 	padding: 5px 10px;
 }
 
-#main>.mod tbody#modTblBody textarea#txtArea {
-	height: 160px;
+#main textarea {
+	font-size: 17px;
+	padding: 5px 10px;
+	width: 550px;
+}
+#main>.bbsDetail td.contentTD {
+	vertical-align: top;
+	padding-top: 30px;
+}
+
+
+#main>.bbsDetail span.spanFile {
 	padding: 10px;
 }
 
-#main>.mod td#footTopSpace {
-	height: 30px;
+
+#main>.bbsDetail label {
+	margin: 0 20px;
+	cursor: pointer;
 }
 
-#main>.mod tfoot td#hrTd {
-	height: 30px;
-	vertical-align: top;
-	padding-top: 10px;
+#main>.bbsDetail label span {
+	font-size: 18px;
+	font-weight: bold;
 }
 
-#main>.mod tfoot hr {
-	border: 2px solid #eee;
-	border-top-color: #ddd;
-}
-
-#main>.mod tfoot td#btnAreaTd {
-	text-align: center;
-}
-
-#main>.mod tfoot td#btnAreaTd button {
-	width: 110px;
+#main>.bbsDetail button {
 	font-size: 16px;
 	font-weight: bold;
 	padding: 4px 20px;
 	cursor: pointer;
 }
+
+#aside {
+	margin: 0 auto;
+	width: 600px;
+}
+
+#aside div#submitBtn button {
+	font-size: 16px;
+	font-weight: bold;
+	padding: 4px 20px;
+	cursor: pointer;
+}
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*///////////// BBS  게시글 상세보기 페이지 끝 /bbs/Notdetail.jsp ///////////// */
+/*////////////////////////////////////////////////////////////////////*/
+
+
+
+
+
+/*////////////////////////////////////////////////////////////////////*/
+/*///////////// BBS 게시글 수정 페이지 시작 bbs/Notupd.jsp ///////////// */
+/*////////////////////////////////////////////////////////////////////*/
+
+main#main>div.bbsUpd {
+	padding: 10px 0;
+	margin-bottom: 20px;
+	width: 600px;
+	margin: 0 auto;
+	border-color: #eeeeee;
+	}
+
+
+
+
+/*다운로드 시작*/
+#main>.bbsRead #readTblBody span#downloadFile:hover {
+	color: #555;
+	text-decoration: underline;
+	cursor: pointer;
+	display: inline-block;
+	transform: translateY(-1px);
+}
+
+/*다운로드 끝*/
+
+
+/* hr {
+	margin: 20px auto;
+} */
+
+main#main {
+	
+	margin: 0 auto;
+}
+
+main#main>div.bbsUpd {
+	
+	padding: 10px 0;
+	margin-bottom: 20px;
+	width: 600px;
+	margin: 0 auto;
+	border-color: #eeeeee;
+
+}
+
+#main>.bbsUpd table {
+	width: 550px;
+	border-collapse: collapse;
+	
+}
+
+
+#main>.bbsUpd table tbody tr{
+	text-align: left;
+	
+}
+#main>.bbsUpd table tbody tr td {
+	padding: 10px;
+	text-align: left;
+}
+#main>.bbsUpd table tbody tr td input {
+	text-align: left;
+}
+
+#main>.bbsUpd table tbody td:first-child {
+	width: 100px;
+	font-weight: bold;
+	text-align: left;
+}
+
+#main>.bbsUpd table tbody td input#aName {
+	border: none;
+}
+#main>.bbsUpd table tbody td input#asubject {
+	width: 400px;
+
+}
+#main>.bbsUpd table tfoot td hr {
+	border: 2px solid #ccc;
+}
+
+#main>.bbsUpd table tfoot td {
+	width: 600px;
+	text-align: left;
+	padding: 4px 0;
+	/*border: 1px solid #aaa;*/
+}
+
+
+#main>.bbsUpd td.req::after {
+	content: " *";
+	color: #d74;
+	font-weight: bold;
+}
+
+
+::-webkit-file-upload-button {
+	font-weight: bold;
+	padding: 4px 10px;
+	cursor: pointer;
+}
+
+
+#main>.bbsUpd label {
+	margin: 0 20px;
+	cursor: pointer;
+}
+
+#main>.bbsUpd label span {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+
+#main>.bbsUpd input
+ {
+	font-size: 17px;
+	padding: 5px 10px;
+}
+
+#main textarea {
+	font-size: 17px;
+	padding: 5px 10px;
+	width: 550px;
+}
+#main>.bbsUpd td.contentTD {
+	vertical-align: top;
+	padding-top: 30px;
+}
+
+
+#main>.bbsUpd span.spanFile {
+	padding: 10px;
+}
+
+
+#main>.bbsUpd label {
+	margin: 0 20px;
+	cursor: pointer;
+}
+
+#main>.bbsUpd label span {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#main>.bbsUpd button {
+	font-size: 16px;
+	font-weight: bold;
+	padding: 4px 20px;
+	cursor: pointer;
+}
+
+#aside {
+	margin: 0 auto;
+	width: 600px;
+}
+
+#aside div#submitBtn button {
+	font-size: 16px;
+	font-weight: bold;
+	padding: 4px 20px;
+	cursor: pointer;
+}
+
 
 /*////////////////////////////////////////////////////////////////////*/
 /*///////////// BBS 게시글 수정 페이지 끝 /bbs_Notice/modify.jsp ///////////// */

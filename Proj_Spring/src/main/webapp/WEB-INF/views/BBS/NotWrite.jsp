@@ -5,69 +5,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/resources/style/common_style.css">
+<link rel="stylesheet" href="/resources/style/style_BBS.css">
 </head>
-<style>
-div#wrap {
-	width: 600px;
-	padding: 20px;
-	border: 3px solid #aaa;
-	border-radius: 6px;
-	margin: 10px auto;
-}
-
-hr {
-	margin: 10px;
-}
-
-table#memberTbl td {
-	padding: 10px;
-}
-
-table#memberTbl td:first-child {
-	width: 120px;
-	font-size: 17px;
-	text-align: right:
-}
-
-table#memberTbl td:last-child {
-	width: 400px;
-}
-
-table#memberTbl td input {
-	font-size: 17px;
-	padding: 4px 10px;
-}
-
-button {
-	font-size: 18px;
-	padding: 4px 10px;
-	cursor: pointer;
-}
-</style>
 <body>
 
-	<div id="wrap">
-		<h1>입력 양식 화면</h1>
+	<div id="wrap_bbs">
+		<h1>공지사항</h1>
 		<hr>
-		
+
 		<form method="post">
 
-						<!-- 안녕하세요 -->
+			<!-- 안녕하세요 -->
 
 			<main id="main">
 
 				<div class="bbsWrite">
 					<table>
-						<caption>공지사항</caption>
+
 						<tbody>
 							<tr>
 
-								<td>이름<input type="text" name="aName" id="aName">
+								<td>이름<input type="text" name="aName" id="aName"
+									value="${admin.aId}" readonly>
 
 								</td>
 							</tr>
 							<tr>
-								<td>제목 <input type="text" name="asubject" id="asubject">
+								<td>제목 <input type="text" name="asubject" id="asubject" required="required">
 								</td>
 							</tr>
 
@@ -81,11 +46,11 @@ button {
 						</tbody>
 
 					</table>
-					<hr>
+
 				</div>
 
-					<textarea name="acontent" id="acontent" rows="10"></textarea>
-					<hr>
+				<textarea name="acontent" id="acontent" rows="10" placeholder="내용을 입력해주세요" required="required"></textarea>
+				<hr>
 			</main>
 			<aside id="aside" class="dFlex">
 

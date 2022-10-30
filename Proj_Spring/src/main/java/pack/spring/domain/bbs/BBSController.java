@@ -20,7 +20,7 @@ public class BBSController {
 	
 	@RequestMapping(value = "/InqWrite", method = RequestMethod.GET)
 	public ModelAndView InqWrite() {
-		return new ModelAndView("/BBS_Inq/InqWrite");
+		return new ModelAndView("/BBS/InqWrite");
 	}
 	// 모델과 뷰를 연결하는 컨트롤러 완성
 

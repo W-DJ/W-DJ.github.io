@@ -6,49 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/resources/style/common_style.css">
+<link rel="stylesheet" href="/resources/style/style_BBS.css">
 </head>
-<style>
-div#wrap {
-	width: 600px;
-	padding: 20px;
-	border: 3px solid #aaa;
-	border-radius: 6px;
-	margin: 10px auto;
-}
-
-hr {
-	margin: 10px;
-}
-
-table#memberTbl td {
-	padding: 10px;
-}
-
-table#memberTbl td:first-child {
-	width: 120px;
-	font-size: 17px;
-	text-align: right:
-}
-
-table#memberTbl td:last-child {
-	width: 400px;
-}
-
-table#memberTbl td input {
-	font-size: 17px;
-	padding: 4px 10px;
-}
-
-button {
-	font-size: 18px;
-	padding: 4px 10px;
-	cursor: pointer;
-}
-</style>
 <body>
 
-	<div id="wrap">
-		<h1>입력 양식 화면</h1>
+	<div id="wrap_bbs">
+		<h1>공지사항 수정</h1>
 		<hr>
 		
 		<form method="post" action="/Notupd">
@@ -57,20 +21,17 @@ button {
 
 			<main id="main">
 
-				<div class="bbsWrite">
+				<div class="bbsUpd">
 					<table>
-						<caption>공지사항</caption>
 						<tbody>
 							<tr>
 
-								<td>이름</td>
-								<td> 
-								<input type="text" name="aName" value="${data.aName}">
-								 </td>
+								<td>이름<input type="text" name="aName" value="${data.aName}"></td>
+								
 							</tr>
 							<tr>
-								<td>제목</td>
-								<td><input type="text" name="asubject" value="${data.asubject}"></td>
+								<td>제목<input type="text" name="asubject"  required="required" value="${data.asubject}"></td>
+								
 							</tr>
 
 
@@ -83,10 +44,10 @@ button {
 						</tbody>
 
 					</table>
-					<hr>
+					
 				</div>
 
-					<textarea name="acontent" id="acontent" rows="10" style="border: none;text-align: center;">${data.acontent}</textarea>
+					<textarea name="acontent" id="acontent" rows="10" placeholder="내용을 입력해주세요" required="required">${data.acontent}</textarea>
 					<hr>
 		<input type="hidden" name="num" value="${data.num}">
 			</main>
@@ -95,7 +56,7 @@ button {
 				<div id="submitBtn">
 					<a href="/Notlist">목록으로</a>
 					<button type="submit">수정완료</button>
-					<button type="reset" id="reset">취소</button>
+					<button type="reset" id="reset">되돌리기</button>
 				</div>
 			</aside>
 
