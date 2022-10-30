@@ -124,9 +124,12 @@
 	</select>
 	
 	
-	<select id="getWishlist" resultType="pack.spring.domain.product.WishlistBean">
+	<select id="getWishlist" parameterType="hashMap" resultType="pack.spring.domain.product.WishlistBean">
 		 <![CDATA[
-		 select * from wishlist where uId = #{uId}
+		 select wishlist.num, wishlist.uId, pNum, pName, sellPrice, sysFileName 
+		 from wishlist inner join goodsTbl on wishlist.pNum = goodsTbl.num
+		 where wishlist.uId = #{uId} order by wishlist.num
+		  limit #{pageStart}, #{perPageNum}
 		 ]]>
 	</select>
 	
@@ -138,7 +141,9 @@
 	
 	<select id="getCartList" resultType="pack.spring.domain.product.CartBean">
 		 <![CDATA[
-		 select * from cart where uId = #{uId}
+		 select cart.num, cart.uId, pNum, pVolumn, pName, sellPrice, sysFileName, stockVolumn 
+		 from cart inner join goodsTbl on cart.pNum = goodsTbl.num 
+		 where cart.uId = #{uId} order by cart.num desc
 		 ]]>
 	</select>
 	
@@ -153,5 +158,13 @@
 		delete from cart where num = #{num}
 		 ]]>
 	</delete>
+	
+	<select id="getCartForOrder" resultType="pack.spring.domain.product.CartBean">
+		 <![CDATA[
+		 select pNum, pVolumn, sellPrice, pName from cart 
+		 inner join goodsTbl on cart.pNum = goodsTbl.num 
+		 where cart.num = #{cartNum}
+		 ]]>
+	</select>
 
 </mapper>

@@ -10,4 +10,14 @@ public interface ReviewService {
 	int countBoardListTotal(Map<String, Object> map);
 	
 	List<Map<String, Object>> reviewList(Map<String, Object> map);
+	
+	ReviewBoardBean read(Map<String, Object> map);
+	
+	int mod(ReviewBoardBean reviewBoardBean);
+	
+	int del(Map<String, Object> map);
+	
+	int recommendDp(Map<String, Object> map);
+	
+	int recommend(Map<String, Object> map);
 }

@@ -35,10 +35,12 @@ public interface ProdService {
 	
 	
 	int countWishlistTotal(String uId);
-	List<WishlistBean> wishlist(String uId);
+	List<WishlistBean> wishlist(Map<String, Object> map);
 	int wishDel(int num);
 	
 	List<CartBean> cartList(String uId);
 	int cartMod (CartBean cartBean);
 	int cartDel(int num);
+	
+	List<CartBean> getCartForOrder(List<Integer> cartNumList);
 }

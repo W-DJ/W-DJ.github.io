@@ -2,6 +2,7 @@ package pack.spring.domain.product;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -120,17 +121,8 @@ public class ProdServiceImp implements ProdService {
 	};
 	
 	@Override
-	public List<WishlistBean> wishlist(String uId) {
-		List<WishlistBean> wishlist = this.prodDao.getWishlist(uId);
-		for (int i = 0; i < wishlist.size(); i++) {
-			WishlistBean wishlistRow =wishlist.get(i);
-			int pNum = wishlistRow.getpNum();
-			ProdBoardBean prodBean = this.prodDao.prodRead(pNum);
-			wishlistRow.setpName(prodBean.getpName());
-			wishlistRow.setSellPrice(prodBean.getSellPrice());
-			wishlistRow.setSysFileName(prodBean.getSysFileName());
-			wishlist.set(i, wishlistRow);
-		}
+	public List<WishlistBean> wishlist(Map<String, Object> map) {
+		List<WishlistBean> wishlist = this.prodDao.getWishlist(map);
 		return wishlist;
 	};
 	
@@ -142,21 +134,10 @@ public class ProdServiceImp implements ProdService {
 	@Override
 	public List<CartBean> cartList(String uId) {
 		List<CartBean> cartList = this.prodDao.getCartList(uId);
-		System.out.println(cartList.toString());
-		if (cartList != null) {
-			for (int i = 0; i < cartList.size(); i++) {
-				CartBean cartListRow =cartList.get(i);
-				int pNum = cartListRow.getpNum();
-				ProdBoardBean prodBean = this.prodDao.prodRead(pNum);
-				cartListRow.setpName(prodBean.getpName());
-				cartListRow.setSellPrice(prodBean.getSellPrice());
-				cartListRow.setSysFileName(prodBean.getSysFileName());
-				cartListRow.setStockVolumn(prodBean.getStockVolumn());
-				cartList.set(i, cartListRow);
-			}
-		}
 		return cartList;
 	};
+	
+	//인너조인 쓰기
 	
 	@Override
 	public int cartMod (CartBean cartBean) {
@@ -166,6 +147,17 @@ public class ProdServiceImp implements ProdService {
 	@Override
 	public int cartDel(int num) {
 		return this.prodDao.cartDel(num);
+	};
+	
+	public List<CartBean> getCartForOrder(List<Integer> cartNumList) {
+		List<CartBean> cartBeanList = new ArrayList<CartBean>();
+		
+		for (int i = 0; i < cartNumList.size(); i++) {
+			int cartNum = cartNumList.get(i);
+			CartBean cartBean = this.prodDao.getCartForOrder(cartNum);
+			cartBeanList.add(i, cartBean);
+		}
+		return cartBeanList;
 	};
 	
 }

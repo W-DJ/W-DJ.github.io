@@ -42,11 +42,11 @@
 				<when test="keyField == 'subject'.toString()">
 					and subject like concat('%',#{keyWord},'%' )
 				</when>
-				<when test="keyField == 'uName'.toString()">
-					and uName like concat('%',#{keyWord},'%' )
+				<when test="keyField == 'regName'.toString()">
+					and regName like concat('%',#{keyWord},'%' )
 				</when>
 				<when test="keyField == 'content'.toString()">
-					and subject like concat('%',#{keyWord},'%' )
+					and content like concat('%',#{keyWord},'%' )
 				</when>
 				<otherwise>
 					
@@ -54,5 +54,45 @@
 			</choose>
 			order by tblReviewNum limit #{pageStart}, #{perPageNum}
 	</select>
+	
+	<select id="read" parameterType="hashMap" resultType="pack.spring.domain.review.ReviewBoardBean">
+		<![CDATA[
+		select totalReviewNum, prodNum, regId, regName, subject, content
+		from reviewTbl where totalReviewNum = #{totalReviewNum}
+		]]>
+	</select>
+	
+	<update id="mod" parameterType="pack.spring.domain.review.ReviewBoardBean">
+		<![CDATA[
+		update reviewTbl set subject = #{subject},  content = #{content} where totalReviewNum = #{totalReviewNum}
+		]]>
+	</update>
+	
+	<delete id="del" parameterType="hashMap">
+		<![CDATA[
+		delete from reviewTbl where totalReviewNum = #{totalReviewNum}
+		]]>
+	</delete>
+	
+	<select id="recommendDp" parameterType="hashMap" resultType="Integer">
+		 <![CDATA[
+		 select count(*) from reviewRecommed where totalReviewNum = #{totalReviewNum} and presserId = #{presserId}
+		 ]]>
+	</select>
+	
+	<insert id="recommend" parameterType="hashMap">
+		<![CDATA[
+		insert into reviewRecommed (totalReviewNum, presserId, recommendTM )
+		values
+		(#{totalReviewNum}, #{presserId}, now())
+		]]>
+	</insert>
+	
+	<update id="LovePlus" parameterType="hashMap">
+		<![CDATA[
+		update reviewTbl set love = love + 1 where totalReviewNum = #{totalReviewNum}
+		]]>
+	</update>
+	
 
 </mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="order">
+
+	<insert id="insertUOrder" parameterType="pack.spring.domain.order.UOrderBean" useGeneratedKeys="true" keyProperty="num">
+		<![CDATA[
+		insert into uOrder ( orderId, delivAdd, goodsPay, delivFee, totalPay, payWay, ordetStatus, orderTM) 
+		values (#{orderId}, #{delivAdd}, #{goodsPay}, #{delivFee}, #{totalPay}, #{payWay}, '주문완료', now())
+		]]>
+	</insert>
+	
+	<insert id="insertOrderGoods" parameterType="pack.spring.domain.order.OrderGoodsBean">
+		<![CDATA[
+		insert into orderGoods (orderNum, pNum, pVolumn) 
+		values (#{orderNum}, #{pNum}, #{pVolumn})
+		]]>
+	</insert>
+	
+	<select id="countOrderList" resultType="int">
+		 <![CDATA[
+		 select count(*) from uOrder where orderId = #{uId}
+		 ]]>
+	</select>
+	
+	<select id="getUOrderList" resultType="pack.spring.domain.order.UOrderBean">
+		 <![CDATA[
+		 select num, delivAdd, goodsPay, delivFee, totalPay, payWay, ordetStatus, orderTM  
+		from uOrder where orderId = #{uId} order by num desc limit #{pageStart}, #{perPageNum}
+		 ]]>
+	</select>
+	
+	<select id="getOrderGoodsList" resultType="pack.spring.domain.order.OrderGoodsBean">
+		 <![CDATA[
+		 select pNum, pVolumn, pName from orderGoods inner join goodsTbl on orderGoods.pNum = goodsTbl.num where orderNum = #{orderNum}
+		 ]]>
+	</select>
+	
+
+</mapper>

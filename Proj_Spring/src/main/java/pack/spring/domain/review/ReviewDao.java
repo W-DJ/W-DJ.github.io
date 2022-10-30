@@ -33,4 +33,23 @@ public class ReviewDao {
 		return this.sqlSessionTemplate.selectList("review.list", map);
 	}
 	
+	public ReviewBoardBean read(Map<String, Object> map) {
+		return this.sqlSessionTemplate.selectOne("review.read", map);
+	}
+	
+	public int mod(ReviewBoardBean reviewBoardBean) {
+		return this.sqlSessionTemplate.update("review.mod", reviewBoardBean);
+	}
+	public int del(Map<String, Object> map) {
+		return this.sqlSessionTemplate.delete("review.del", map);
+	}
+	public int recommendDp(Map<String, Object> map) {
+		return (Integer) this.sqlSessionTemplate.selectOne("review.recommendDp", map);
+	}
+	public int recommend(Map<String, Object> map) {
+		return this.sqlSessionTemplate.insert("review.recommend", map);
+	}
+	public int reviewLovePlus (Map<String, Object> map) {
+		return this.sqlSessionTemplate.update("review.LovePlus", map);
+	}
 }

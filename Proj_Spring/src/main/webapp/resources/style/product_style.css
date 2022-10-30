@@ -419,9 +419,8 @@ div.prodReadWrap div#prodMain {
 }
 .prodReadWrap iframe#reviewIfm {
 	width: 100%;
-
 	overflow:auto; 
-	height:1700px;
+	min-height: 2000px;
 }
 
 

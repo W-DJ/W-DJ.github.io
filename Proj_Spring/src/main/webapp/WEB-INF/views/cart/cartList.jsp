@@ -74,7 +74,7 @@
 										</label>
 									</td>
 									<td>
-										<a href="/product/prodRead.jsp?num=${board.pNum}" class="pNamePrn">${board.pName}</a>
+										<a href="/prodRead?num=${board.pNum}" class="pNamePrn">${board.pName}</a>
 										<input type="hidden" value="${board.num}" form="multiDelFrm" class="num">
 										<input type="hidden" value="${board.num}" form="orderFrm" class="cartNumOrder">
 									</td>
@@ -155,7 +155,7 @@
 		
 		<iframe src="/footer" scrolling="no" width="100%" frameborder=0 id="footerIfm"></iframe>
 		
-		<form action="/order" id="orderFrm"></form>
+		<form action="/cartOrder" id="orderFrm"></form>
 		<form action="/cartDel" id="multiDelFrm"></form>
 		<iframe width="0" height="0" class="cartModIfr" style="display: none"></iframe>
 	</body>

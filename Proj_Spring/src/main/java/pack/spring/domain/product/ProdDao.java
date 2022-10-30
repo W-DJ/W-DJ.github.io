@@ -61,8 +61,8 @@ public class ProdDao {
 		return this.sqlSessionTemplate.selectOne("product.countWishlist", uId);
 	}
 	
-	public List<WishlistBean> getWishlist (String uId) {
-		return this.sqlSessionTemplate.selectList("product.getWishlist", uId);
+	public List<WishlistBean> getWishlist (Map<String, Object> map) {
+		return this.sqlSessionTemplate.selectList("product.getWishlist", map);
 	}
 	
 	public int wishDel (int num) {
@@ -77,5 +77,9 @@ public class ProdDao {
 	}
 	public int cartDel (int num) {
 		return this.sqlSessionTemplate.delete("product.cartDel", num);
+	}
+	
+	public CartBean getCartForOrder (int cartNum) {
+		return this.sqlSessionTemplate.selectOne("product.getCartForOrder", cartNum);
 	}
 }

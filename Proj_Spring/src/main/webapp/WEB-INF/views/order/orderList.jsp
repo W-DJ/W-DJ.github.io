@@ -1,22 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" errorPage="/err/errorProc.jsp"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>위시리스트 페이지</title>
+		<title>주문현황</title>
 		<link rel="stylesheet" href="resources/style/common_style.css">
-		<link rel="stylesheet" href="resources/style/wishlist_style.css">
+		<link rel="stylesheet" href="resources/style/order_style.css">
 		<link rel="shortcut icon" href="#">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<script src="resources/script/script_Wishlist.js"></script>
+		<script src="resources/script/script_Order.js"></script>
 		<script>
 		$(function(){
-			if('${param.cart_Msg}') {
-				window.parent.alert('${param.cart_Msg}');
-		  	}
 			$("span.pageNum").each(function(index){
 				if($(this).text() == "${pageMaker.cri.page}") {
 					$(this).addClass("nowPageNum");
@@ -31,7 +28,7 @@
 			<iframe src="/header" scrolling="no" width="100%" frameborder=0 id="headerIfm"></iframe>
 	    <!--  헤더템플릿 끝 -->   
   		</header>
-		<div id="wrap" class="dFlex wishlistWrap" >
+		<div id="wrap" class="dFlex orderListWrap" >
 		<!-- 수정함 -->
     		<div id="sideMenu">
           <ul class="List">
@@ -47,64 +44,61 @@
 	    	<!-- 실제 작업 영역 시작 -->
     		<div id="contents" class="bbsList">
 	    			<div id="title" class="dFlex">
-	    				<img src="resources/img/wishlist_icon.png" alt="위시리스트 이미지" width="40" height="40">
+	    				<img src="resources/img/주문내역.png" alt="주문내역 이미지" width="40" height="40">
 	    				<!-- 수정함 -->
-		    			<h1>위시리스트</h1>
+		    			<h1>주문내역</h1>
 	    			
 	    			</div>
 	    			<div id="pageInfo" class="dFlex">
 						<span>총 :  ${pageMaker.totalCount} 개</span>
 						<span>페이지 :  ${pageMaker.cri.page} / ${pageMaker.tempEndPage}</span>  
 					</div>	
-		    			<table id="wishlistTbl">
+		    			<table id="orderListTbl">
 							<tbody>
 								<tr>
-									<th>
-										<label>
-											<input type="checkbox" id="chkAll">
-											<span>전체선택</span>								
-										</label>
-									</th>
-									<th>상품정보</th>
-									<th>상품금액</th>
-									<th>&nbsp;</th>
+									<th>주문번호</th>
+									<th>주문상품</th>
+									<th>총지불금액</th>
+									<th>결제수단</th>
+									<th>주문상태</th>
+									<th>주문일시</th>
 								</tr>
 <c:choose>
-		<c:when test="${fn:length(wishlist) > 0}">
-					<c:forEach items="${wishlist}" var="board" varStatus="status">
-								<tr class = "wishProd">
+		<c:when test="${fn:length(uOrderList) > 0}">
+					<c:forEach items="${uOrderList}" var="board" varStatus="status">
+
+								<tr>
+									<td>${board.num}</td>
 									<td>
-										<label>
-											<input type="checkbox" class="chkOne">
-											<img src="resources/fileUpload/${board.sysFileName}" alt="상품이미지" width="100" height="100">
-										</label>
+							<c:choose>
+								<c:when test="${fn:length(board.orderGoodsList) > 0}">
+									<c:forEach items="${board.orderGoodsList}" var="goods">
+										<div class="dFlex oNameVolumn">
+											<div class="oName"><a href="/prodRead?num=${goods.pNum}">${goods.pName}</a></div>
+											<div class="oVolumn">${goods.pVolumn}개</div>
+										</div>
+									</c:forEach>
+								</c:when>
+							</c:choose>
 									</td>
-									<td>
-										<a href="/prodRead?num=${board.pNum}" class="pNamePrn">${board.pName}</a>
-										<!-- 수정함 -->
-										<input type="hidden" name ="pName" value="${board.pName}">
-										<input type="hidden" value="${board.num}" form="multiDelFrm" class="delNum">
-										<input type="hidden" value="${board.pNum}" form="cartMulInsertFrm" class="pNum">
-									</td>
-									<td class="sPrice"></td>
-									<td>
-										<button type="button" class="oneDelBtn">&times;</button>
-									</td>
+									<td class="totalPay"></td>
+									<td>${board.payWay}</td>
+									<td>${board.ordetStatus}</td>
+									<td>${board.orderTM}</td>
+		
 								</tr>
 								<script>
-								$(function () {
-									let index = "${status.index}";
-						
-									
-									let sellPrice = "${board.sellPrice}";
-									$("tr.wishProd").eq(index).find("td.sPrice").text(parseInt(sellPrice).toLocaleString()+"원");
-								});
-							</script>
-						</c:forEach>
+									$(function () {
+										let index = "${status.index}";
+										let totalPay = "${board.totalPay}";
+										$("td.totalPay").eq(index).text(parseInt(totalPay).toLocaleString()+"원");
+									});
+								</script>
+					</c:forEach>
 		</c:when>
 		<c:otherwise>
 								<tr>
-									<td colspan="4">위시리스트가 비어있습니다.</td>
+									<td colspan="6">주문내역이 없습니다.</td>
 								</tr>
 		</c:otherwise>
 </c:choose>
@@ -112,18 +106,10 @@
 					
 						</tbody>
 						<tfoot>
-							<tr>
-								<td colspan="1">
-									<button type="button" id="multiDelBtn" form="multiDelFrm">선택삭제</button>
-								</td>
-								<td colspan="3">
-									<button type="submit" class="cartInsertBtn" form="cartMulInsertFrm">장바구니에 담기</button>
-								</td>
-							</tr>
-							<tr id="listPagingArea">
+														<tr id="listPagingArea">
 							
 						<!-- 페이징 시작 -->
-								<td colspan="4" id="pagingTd">
+								<td colspan="6" id="pagingTd">
 <c:if test="${pageMaker.prev}">
 									<span class="moveBlockArea"
 										onclick="movePage('${pageMaker.startPage-1}')"> &lt; </span>
@@ -143,17 +129,13 @@
 						</tfoot>
 					</table>
 			
-			
+
 	    		</div>
 	    	<!-- 실제 작업 영역 끝 -->
+    		
+    		</div>
+    		
+    			<iframe src="/footer" scrolling="no" width="100%" frameborder=0 id="footerIfm"></iframe>
     		    	
-
-		
-		</div>
-		<!-- div#wrap -->
-		<iframe src="/footer" scrolling="no" width="100%" frameborder=0 id="footerIfm"></iframe>
-		
-		<form action="/wishDel" id="multiDelFrm"></form>
-		<form action="/cartMultiInsert" id="cartMulInsertFrm"></form>
 	</body>
 </html>

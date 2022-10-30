@@ -286,24 +286,22 @@ public class ProdController {
 	}
 
 	@RequestMapping(value = "/wishlist", method = RequestMethod.GET)
-	public ModelAndView wishlist(Criteria cri, HttpSession session) {
+	public ModelAndView wishlist(Criteria cri, HttpSession session, @RequestParam Map<String, Object> map) {
 		ModelAndView mav = new ModelAndView();
 		if (session.getAttribute("user") != null) {
 			String uId = ((MemberDTO) session.getAttribute("user")).getuId();
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(cri);
 
-			int totalCnt = this.prodService.countWishlistTotal(uId);
+			pageMaker.setTotalCount(this.prodService.countWishlistTotal(uId));
+			map.put("pageStart", cri.getPageStart());
+			map.put("perPageNum", cri.getPerPageNum());
 
-			pageMaker.setTotalCount(totalCnt);
-
-			if (totalCnt != 0) {
-				List<WishlistBean> wishlist = this.prodService.wishlist(uId);
-				mav.addObject("wishlist", wishlist);
-				mav.addObject("pageMaker", pageMaker);
-			} else {
-				mav.addObject("wishlist", null);
-			}
+			map.put("uId", uId);
+			
+			List<WishlistBean> wishlist = this.prodService.wishlist(map);
+			mav.addObject("wishlist", wishlist);
+			mav.addObject("pageMaker", pageMaker);
 			mav.setViewName("wishlist/wishlist");
 		} else {
 			mav.setViewName("redirect:/");

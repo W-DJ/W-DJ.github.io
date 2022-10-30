@@ -65,7 +65,8 @@
 								<div class="discRate"></div> 
 								<div class="oPrice"></div>
 							</div>
-							<div class="sPrice"></div> 
+							<div class="sPrice"></div>
+							<input type="hidden" value="${board.sellPrice}" id="sellPrice">
 						</div>
 	
 						<div>

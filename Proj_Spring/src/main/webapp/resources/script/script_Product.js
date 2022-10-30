@@ -245,9 +245,10 @@ $(function(){
 			let pVolumn = $("input#orderVolumn").val();
 			let pNum = $("input#num").val();
 			let pName = $("div.pName").text();
-			url = "/order?pNum="+pNum;
+			let sellPrice = $("input#sellPrice").val();
+			url = "/directOrder?pNum="+pNum;
 			url+= "&pVolumn="+pVolumn;
-			url+= "&pName="+pName;
+			url+= "&pName="+pName+"&sellPrice="+sellPrice;
 			location.href = url;		
 		}
 	});

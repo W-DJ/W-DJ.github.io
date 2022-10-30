@@ -7,33 +7,16 @@ $(function(){
 	
 	$("#writeBtn").click(function(){
 		let orderCnt = $("input#orderCnt").val();
-		if(orderCnt > 0) {
+		
 			let prodNum = $("input#prodNum").val();
 			location.href="/reviewPost?prodNum="+prodNum;	
-		} else {
-			alert("상품을 구매한 고객님만 리뷰를 작성할 수 있습니다.");
-		}
+	
 	});
 	
 	
 	/* 리뷰게시판 페이지 글쓰기 버튼 끝 /bbs/list.jsp */
 	
-	
-	/* 글쓰기 페이지 게시글 등록 시작 /bbs/write.jsp */
-	$("#regBtn").click(function(){
-		let subject = $("#subject").val().trim();		
-		
-		 if (subject == "") {
-			alert("제목은 필수입력입니다.");
-			$("#subject").focus();
-		} else {
-			$("#writeFrm").attr("action", "/bbs_Inquire/writeProc.jsp");
-			$("#writeFrm").submit();
-		}
-	
-	});	
-	
-	/* 글쓰기 페이지 게시글 등록 끝 /bbs/write.jsp */
+
 	
 	/* 상품 게시글 내용보기페이지에서 수정버튼 시작 /bbs/read.jsp */
 	$("button.modBtn").click(function(){
@@ -45,32 +28,15 @@ $(function(){
 		let p3 = $("#pKeyField").val().trim();  // p3 : keyField
 	    let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
 	
-		let url = "/bbs_Review/reviewMod.jsp?";
+		let url = "/reviewMod?";
 			url +="prodNum="+prodNum;
-			url += "&totalReviewNum="+totalReviewNum+"&nowPage="+nowPage;
+			url += "&totalReviewNum="+totalReviewNum+"&page="+nowPage;
 			url += "&keyField="+p3;
 			url += "&keyWord="+p4;
 		location.href=url;
 	});
 	
 	/* 상품 게시글 내용보기페이지에서 수정버튼 끝 /bbs/read.jsp */
-	
-	
-		/* 글쓰기 페이지 게시글 수정 시작 /bbs/modify.jsp */
-	$("#modProcBtn").click(function(){
-		let subject = $("#subject").val().trim();		
-		
-		 if (subject == "") {
-			alert("제목은 필수입력입니다.");
-			$("#subject").focus();
-		} else {
-			$("#modFrm").attr("action", "/bbs_Inquire/modifyProc.jsp");
-			$("#modFrm").submit();
-		}
-	
-	});	
-	
-	/* 글쓰기 페이지 게시글 수정 끝 /bbs/modify.jsp */
 	
 	
 	
@@ -86,9 +52,9 @@ $(function(){
 			let p3 = $("#pKeyField").val().trim();  // p3 : keyField
 		    let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
 		    
-			let url = "/bbs_Review/reviewDelProc.jsp?";
+			let url = "/reviewDel?";
 				url +="prodNum="+prodNum;
-				url += "&totalReviewNum="+totalReviewNum+"&nowPage="+nowPage;
+				url += "&totalReviewNum="+totalReviewNum+"&page="+nowPage;
 				url += "&keyField="+p3;
 				url += "&keyWord="+p4;
 			location.href=url;
@@ -101,13 +67,13 @@ $(function(){
 	
 	
 	/* 게시물 검색 시작 */
-	$("button#searchBtn").click(function(){				//검색어에서는 .trim()을 지양하는 추세
+	$("form#searchFrm").submit(function(){				//검색어에서는 .trim()을 지양하는 추세
 		let keyWord = $("#keyWord").val().trim();		//단 로그인, 회원가입 등에서는 ID에는 입력값 전후의 공백을 제거한다
+		let prodNum	= $("input#prodNum").val();
 		if (keyWord=="") {
 			alert("검색어를 입력해주세요.");
-			$("#keyWord").focus();			
-		} else {
-			$("#searchFrm").submit();
+			$("#keyWord").focus();
+			return false;		
 		}
 	});	
 
@@ -121,21 +87,32 @@ $(function(){
 		let p3 = $("#pKeyField").val().trim();  // p3 : keyField
 	    let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
 		
-		if (p4 != null && p4 != "") {
-			let url = "/bbs_Review/reviewRecomProc.jsp?";
+			let url = "/reviewRec?";
 				url +="prodNum="+prodNum;
-				url += "&totalReviewNum="+totalReviewNum+"&nowPage="+nowPage;
+				url += "&totalReviewNum="+totalReviewNum+"&page="+nowPage;
 				url += "&keyField="+p3;
 				url += "&keyWord="+p4;
 			location.href=url;		
-		} else {
-			alert("검색어를 입력해주세요");
-		}
 	});
 	
 	/* 리뷰게시물 추천버튼 끝 */
-
-	
 });
+
+function movePage(p1) {    // 페이지 이동
+	
+    let p4 = $("#pKeyWord").val().trim();  
+    
+    let prodNum	= $("input#prodNum").val();
+
+	let p5 = $("#orderBy").val();
+	let p6 = $("#typeSearch").val();
+	
+	let param = "/reviewList?prodNum="+prodNum+"&page="+p1;	    
+	     param += "&keyWord="+p4;
+		 param += "&orderBy="+p5; 
+		param += "&typeSearch="+p6;
+	location.href= param;
+
+}
 
 

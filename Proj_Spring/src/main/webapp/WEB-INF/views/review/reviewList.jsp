@@ -13,6 +13,21 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="resources/script/script_Review.js"></script>
+<script>
+$(function(){
+	if('${param.reviewMod_Msg}') {
+  		alert('${param.reviewMod_Msg}');
+  	}
+	if('${param.recommend_Msg}') {
+  		alert('${param.recommend_Msg}');
+  	}
+	$("span.pageNum").each(function(index){
+		if($(this).text() == "${pageMaker.cri.page}") {
+			$(this).addClass("nowPageNum");
+		} 
+	});
+});
+</script>
 </head>
 <body>
 	<div id="wrap" class="reviewListWrap">
@@ -41,19 +56,21 @@
 								<table class="reviewListTbl">
 									<tbody id="readTblBody">
 										<tr>
-											<td>작성자</td>
+											<td colspan="2">작성자 : ${board.regName}</td>
 										</tr>
+								
 										<tr>
-											<td>${board.regName}</td>
+											<td colspan="2">${board.regDate}</td>
 										</tr>
-										<tr>
-											<td colspan="2">${board.regTM}</td>
-										</tr>
+								 <c:choose>
+									<c:when test="${board.sysFileName}">
 										<tr>
 											<td colspan="2">
 												<img src="resources/fileUpload/${board.sysFileName}" alt="리뷰이미지" width="100" height="100"> 
 											</td>
 										</tr>
+									</c:when>
+								 </c:choose>
 										<tr>
 											<td colspan="2" id="readContentTd"><pre>${board.content}</pre></td>
 										</tr>
@@ -61,15 +78,14 @@
 											<td colspan="2" id="btnAreaTd" class="read">
 								<c:choose>
 								 <c:when test="${user.uId != null && board.regName != user.uId}">
-								 <%-- 연산식1이 true 일 때 실행결과 --%>
 												<button type="button" class="recommendBtn">도움이 돼요</button> 
 								 </c:when>
 								 </c:choose>
 												<span>${board.love}명이 추천하셨습니다.</span> 
-												<br> 
+												<br><br> 
  												<input type="hidden" class="totalReviewNum" name="totalReviewNum" value="${board.totalReviewNum}"> 
 								 <c:choose>
-								 <c:when test="${board.regName == user.uId || admin.aId != null}">
+								 <c:when test="${board.regId == user.uId || admin.aId != null}">
 												<button type="button" class="modBtn">수 정</button>
 												<button type="button" class="delBtn">삭 제</button>
 								 </c:when>
@@ -114,20 +130,20 @@
 
 								<td colspan="3">
 
-									<form name="searchFrm" class="dFlex" id="searchFrm">
+									<form class="dFlex" id="searchFrm" action="/reviewList">
 
 										<div>
 											<select name="keyField" id="keyField">
 												<option value="subject"
-													<c:if test="${search.keyField=='제목'}"> 
+													<c:if test="${search.keyField=='subject'}"> 
 													selected </c:if>
 													>제목</option>
-												<option value="uName"
-													<c:if test="${search.keyField=='이름'}"> 
+												<option value="regName"
+													<c:if test="${search.keyField=='regName'}"> 
 													selected </c:if>
 													>이름</option>
 												<option value="content"
-													<c:if test="${search.keyField=='내용'}"> 
+													<c:if test="${search.keyField=='content'}"> 
 													selected </c:if>
 													>내용</option>
 											</select>
@@ -137,11 +153,11 @@
 												size="20" maxlength="30" value="${search.keyWord}">
 										</div>
 										<div>
-											<button type="button" id="searchBtn" class="listBtnStyle">검색</button>
+											<button type="submit" id="searchBtn" class="listBtnStyle">검색</button>
 										</div>
 
+									<input type="hidden" name="prodNum" id="prodNum" value="${search.prodNum}"> 
 									</form> <!-- 상품번호 유지용 매개변수 데이터시작 --> 
-									<input type="hidden" id="prodNum" value="${search.prodNum}"> 
 									<!-- 상품번호 유지용 매개변수 데이터끝 --> 
 									<!-- 검색결과 유지용 매개변수 데이터시작 -->
 									<input type="hidden" id="nowPage" value="${pageMaker.cri.page}">
