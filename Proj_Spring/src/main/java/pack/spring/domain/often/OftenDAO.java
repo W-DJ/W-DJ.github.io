@@ -27,7 +27,5 @@ public interface OftenDAO {
 	//게시글 조회수
 	public int updateView(Map<String, Object> map);
 
-	public int listCount();
-
 
 }

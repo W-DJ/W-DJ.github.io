@@ -61,12 +61,5 @@ public class OftenDAOImp implements OftenDAO {
 		return this.sqlSessionTemplate.update("often.updateView", map);
 	}
 
-	@Override
-	public int listCount() {
-		
-		return this.sqlSessionTemplate.selectOne("often.listCnt");
-	}
-
-
 
 }

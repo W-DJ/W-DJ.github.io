@@ -5,7 +5,7 @@
 
 <select id="select_list" resultType="pack.spring.domain.often.OftenDTO">
    <![CDATA[
-	 select * from OftenTbl order by num desc
+	 select * from OftenTbl;
  	]]>
 	</select>
 	
@@ -48,13 +48,6 @@ insert into OftenTbl (aId, aName, subject, qnaType , content, regTM ,readCnt) va
 <delete id="delete" parameterType="hashMap">
   delete from OftenTbl where num = #{num}
 </delete>
-
-<select id="listCnt" resultType="Integer">
- <![CDATA[
- select count(*) from OftenTbl  
- ]]>
- 
-</select>	
 
 
 </mapper>

@@ -18,6 +18,4 @@ public interface OftenService {
 
 	public int delete(Map<String, Object> map);
 
-	public int countBoardListTotal();
-
 }

@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import pack.spring.domain.product.Criteria;
-import pack.spring.domain.product.PageMaker;
-
 
 @Controller
 public class OftenController {
@@ -23,17 +20,11 @@ public class OftenController {
 	
 	// 자주하는질문게시판 전체리스트보기
 	@RequestMapping(value="/OftenList",method=RequestMethod.GET)
-		public ModelAndView list(Criteria cri) throws Exception{
-		ModelAndView mav = new ModelAndView();
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
+		public ModelAndView list() throws Exception{
 		List<OftenDTO> list = oftenService.listAll();
-		mav.addObject("pageMaker", pageMaker);
-
+		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/often/Often_list");
 		mav.addObject("list",list);
-        
-        pageMaker.setTotalCount(this.oftenService.countBoardListTotal());
 		return mav;
 	}	
 	

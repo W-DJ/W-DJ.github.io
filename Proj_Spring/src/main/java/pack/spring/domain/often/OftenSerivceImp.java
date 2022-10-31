@@ -53,11 +53,4 @@ public class OftenSerivceImp implements OftenService {
 		return this.oftendao.delete(map);
 	}
 
-	@Override
-	public int countBoardListTotal() {
-		
-		return this.oftendao.listCount();
-	}
-   
-
 }
