@@ -9,7 +9,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>회원 목록 보기</title>
+<title>고객문의 리스트</title>
 <link rel="shortcut icon" href="#">
 <link rel="stylesheet" href="/resources/style/common_style.css">
 <link rel="stylesheet" href="/resources/style/style_BBS.css">
@@ -51,8 +51,7 @@
 
 		<div id="contents" class="bbsList">
 		<div class="moveMenu">
-			<a href="/Notlist">공지사항</a> 
-			<a href="/Inqlist">1:1문의</a>
+			<a href="/Notlist">공지사항</a> <a href="/Inqlist">1:1문의</a>
 
 		</div>
 
@@ -70,9 +69,9 @@
 
 				<c:forEach var="row" items="${data}">
 					<tr class="listTr">
-						<td>${row.num}</td>
-						<td>${row.aName}</td>
-						<td><a href="/Notdetail?num=${row.num}">${row.asubject}</a></td>
+						<td><a href="/Inqdetail?num=${row.num}">${row.num}</a></td>
+						<td><a href="/Inqdetail?num=${row.num}">${row.uName}</a></td>
+						<td><a href="/Inqdetail?num=${row.num}">${row.subject}</a></td>
 
 					</tr>
 				</c:forEach>
@@ -80,8 +79,8 @@
 			</tbody>
 		</table>
 		
-		<c:if test="${admin.aId != null}">
-				<a href="/NotWrite">글쓰기</a>
+		<c:if test="${user.uId != null}">
+				<a href="/InqWrite">글쓰기</a>
 			</c:if>
 			<a href="/">메인으로</a>
 		</div>

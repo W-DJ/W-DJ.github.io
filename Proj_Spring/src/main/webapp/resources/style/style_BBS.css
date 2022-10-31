@@ -4,9 +4,10 @@
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////// BBS list 목록 시작 /bbs/Notlist.jsp ////////////////// */
 /*////////////////////////////////////////////////////////////////////*/
-div#wrap {
+div#wrap.NotlistWrap  div#contents{
 
-	text-align: center;
+	margin: 50px auto;
+	flex: 1;
 }
 
 /* button.headBtn {
@@ -19,10 +20,10 @@ div#wrap {
 } */
 
 
-div#wrap>table#NoticeTbl{
+div#wrap>div#contents>table#NoticeTbl{
 	width: 860px;
 	padding: 2px;
-	border: 1px solid #f80;
+	border: 5px solid #f80;
 	border-collapse: collapse;
 	text-align: center;
 	margin: 4px;
@@ -41,7 +42,7 @@ div#wrap>table#NoticeTbl{
 
 
 
-table#NoticeTbl>thead>tr>th {
+div#contents>table#NoticeTbl>thead>tr>th {
 	padding: 10px 2px;
 	background-color: rgba(255, 0, 0, 0.1);
 }
@@ -49,7 +50,6 @@ table#NoticeTbl>thead>tr>th {
 table#NoticeTbl th:first-child,
 table#NoticeTbl th:last-child {
 	width: 70px;
-	
 	border-radius: 4px;
 }
 
@@ -74,11 +74,9 @@ table#NoticeTbl th:nth-child(5) {
 
 }
 
-/* table#NoticeTbl tbody {
-	height: 600px;
-} */
+
 table#NoticeTbl>tbody>tr.listTr {
-	height: 200px;
+	height: 50px;
 }
 table#NoticeTbl tbody>tr.listTr:hover {
 	background-color: rgba(0, 136, 255, 0.1);
@@ -88,12 +86,12 @@ table#NoticeTbl tbody>tr.listTr:hover {
 table#NoticeTbl tbody>tr.listTr:hover td {
 	color: #666;
 	font-weight: bold;
-	height: 200px;
 }
 
 table#NoticeTbl tbody>tr.listTr>td {
 	text-align: center;
 	border-bottom: 1px solid #d2d2d2;
+	height: 50px;
 }
 
 
@@ -172,7 +170,7 @@ div.bbsList td#pagingTd span.moveBlockArea {
 
 
 /*////////////////////////////////////////////////////////////////////*/
-/*////////////////// BBS list 목록 끝 /bbs_Notice/noticebbs.jsp ////////////////// */
+/*////////////////// BBS list 목록 끝 /bbs/Notlist.jsp ////////////////// */
 /*////////////////////////////////////////////////////////////////////*/
 
 
