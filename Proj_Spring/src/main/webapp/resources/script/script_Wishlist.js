@@ -74,14 +74,17 @@ $(function(){
 	
 	
 	/* 장바구니 다중 넣기 시작*/
-	$("button.cartInsertBtn").click(function(){
+	$("form#cartMulInsertFrm").submit(function(){
 
-
+		let chkToF = false;
 		$("input.chkOne:checked").each(function () {
 		     $(this).parents("tr").find("input.pNum").attr("name", "pNum");
-		});	
-		$("form#multiDelFrm").submit();	
-		
+			chkToF = true;
+		});
+		if (!chkToF)	 {
+			alert("선택된 상품이 없습니다.")
+			return false;			
+		}
 	});
 	/* 장바구니 다중 넣기 끝*/
 });
