@@ -12,8 +12,52 @@
 
 <insert id="insert" parameterType="hashMap" useGeneratedKeys="true" keyProperty="often">
 <![CDATA[
-insert into OftenTbl (aId, aName, subject, qnaType , content, regTM) values
- (#{aId}, #{aName}, #{subject}, #{qnaType},#{content},now());
+insert into OftenTbl (aId, aName, subject, qnaType , content, regTM ,readCnt) values
+ (#{aId}, #{aName}, #{subject}, #{qnaType},#{content},now(),0);
 ]]>
 </insert>
+
+	
+<select id="select_detail" parameterType="hashMap" resultType="hashMap">
+ <![CDATA[
+ select * from OftenTbl where num = #{num}
+ ]]>
+</select>	
+	
+<update id="updateView">
+ <![CDATA[
+ update OftenTbl set readCnt = readCnt+1 where num = #{num}
+ ]]>
+</update>
+	
+	
+	
+	
+<select id="modify_ViewMap" parameterType="hashMap" resultType="hashMap">
+ <![CDATA[
+ select * from OftenTbl where num = #{num}
+ ]]>
+</select>	
+	
+	
+<update id="update" parameterType="hashMap">
+		update OftenTbl set subject=#{subject}, content=#{content} where num=#{num} and aId=#{aId}; 
+</update>
+
+
+<delete id="delete" parameterType="hashMap">
+  delete from OftenTbl where num = #{num}
+</delete>
+
+<select id="listCnt" resultType="Integer">
+ <![CDATA[
+ select count(*) from OftenTbl  
+ ]]>
+ 
+</select>	
+
+
 </mapper>
+
+
+

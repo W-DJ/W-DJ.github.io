@@ -34,16 +34,16 @@ $(function(){
 		let chkTF = confirm("게시글을 삭제하시겠습니까?");
 		
 		if (chkTF) {
-			let nowPage = $("input#nowPage").val().trim();
-			let num = $("input#num").val().trim();
+			/*let nowPage = $("input#nowPage").val().trim();*/
+			let num = $("input#num").val();
 					
-			let p3 = $("#pKeyField").val().trim();  // p3 : keyField
-		    let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
+/*			let p3 = $("#pKeyField").val().trim();  // p3 : keyField
+		    let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord*/
 		    
-			let url = "/bbs_Often/deleteProc.jsp?";
-				url += "num="+num+"&nowPage="+nowPage;
-				url += "&keyField="+p3;
-				url += "&keyWord="+p4;
+			let url = "/Often_delete?";
+				url += "num="+num;
+				/*url += "&keyField="+p3;
+				  url += "&keyWord="+p4;*/
 			location.href=url;
 		} else {
 			alert("취소하셨습니다.");	
@@ -56,18 +56,17 @@ $(function(){
 	
 	/* 게시글 내용보기페이지에서 수정버튼 시작 /bbs/read.jsp */
 	$("td.read>button#modBtn").click(function(){
-	
-		let nowPage = $("input#nowPage").val().trim();
-		let num = $("input#num").val().trim();
+/*		let nowPage = $("input#nowPage").val().trim();*/
+		let num = $("input#num").val();
 				
-		let p3 = $("#pKeyField").val().trim();  // p3 : keyField
+/*		let p3 = $("#pKeyField").val().trim();  // p3 : keyField
 	    let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
-	
-		let url = "/bbs_Often/modify.jsp?";
+	*/
+		let url = "/Often_modify?";
 			url += "num="+num;
-			url += "&nowPage="+nowPage;
+/*			url += "&nowPage="+nowPage;
 			url += "&keyField="+p3;
-	     	url += "&keyWord="+p4; 
+	     	url += "&keyWord="+p4; */
 		location.href=url;
 	});
 	
@@ -115,7 +114,7 @@ $(function(){
 		let p3 = $("#pKeyField").val().trim();  // p3 : keyField
 	    let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
 	     
-		let url = "/bbs_Often/list.jsp?nowPage=" + param;		    
+		let url = "Often_list?nowPage=" + param;		    
 		    url += "&keyField="+p3;
 	     	url += "&keyWord="+p4 ; 
 		location.href=url;
@@ -126,8 +125,17 @@ $(function(){
 	   history.back();
 });
 
-	
+
 });
+	
+
+	
+	
+	
+	
+	
+	
+	
 	
 	
 /* 상세내용 보기 페이지 이동 시작 /bbs/list.jsp => read.jsp */
@@ -136,7 +144,7 @@ function read(p1, p2) {
 	//p2:nowPage(현재페이지)
     let p3 = $("#pKeyField").val().trim();  // p3 : keyField
     let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
-	let param = "read.jsp?num="+p1;
+	let param = "Often_read?num="+p1;
 	     param += "&nowPage="+p2;
 	     param += "&keyField="+p3;
 	     param += "&keyWord="+p4 ; 
@@ -152,36 +160,11 @@ function movePage(p1) {    // 페이지 이동
     let p3 = $("#pKeyField").val().trim();  // p3 : keyField
     let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
 
-	let param = "/bbs_Often/list.jsp?nowPage="+p1;	    
+	let param = "Often_list.jsp?nowPage="+p1;	    
 	     param += "&keyField="+p3;
 	     param += "&keyWord="+p4 ; 
 	location.href= param;
 
 }
 /* 리스트페이지 페이징 끝 /bbs/list.jsp */
-
-
-/* 리스트페이지 페이징 블럭이동 시작 /bbs/list.jsp */
-function moveBlock(p1, p2, param3) {    // 블럭 이동
-
-	let moveBlock = parseInt(p1);
-	let pagePerBlock = parseInt(p2);	
-	//alert("p1 : " + p1 + "\np2 : " + p2);
-	
-    let p3 = $("#pKeyField").val().trim();  // p3 : keyField
-    let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
-	
-	if(param3 == 'pb'){
-	     param = "/bbs_Often/list.jsp?nowPage="+(pagePerBlock*moveBlock);
-	     param += "&keyField="+p3;
-	     param += "&keyWord="+p4 ; 
-
-	}else if(param3 =='nb'){
-		 param = "/bbs_Often/list.jsp?nowPage="+(pagePerBlock*(moveBlock-1)+1);
-	     param += "&keyField="+p3;
-	     param += "&keyWord="+p4 ;
-	}
-	location.href =param;
-}
-/* 리스트페이지 페이징 블럭이동 끝 /bbs/list.jsp */
 

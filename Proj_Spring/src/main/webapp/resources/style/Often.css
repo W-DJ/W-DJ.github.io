@@ -6,10 +6,26 @@
 }
 div#wrap{
 	margin-top: 100px;
-	height: 500px;
+	height: 800px;
 	/* border: 1px solid #000; */
 }
+div#modify_wrap{
+	width: 950px;
+	margin: 0 auto;
+}
+#modifyFrm{
+	width: 600px;
+	margin: 0 auto;
+}
+#modTbl{
+	width: 600px;
+	margin: 0 auto;
+}
+#modify_wrap td.req{
+	width: 150px;
+}
 table{
+	width: 950px;
 	border-collapse : collapse;
 	text-align:center;
     margin: 30px auto 0;
@@ -18,16 +34,22 @@ table th#num{
 	width: 35px;
 	/* border: 1px solid #000; */
 }
+table th#category{
+	width: 90px;	
+}
 table th#thname{
-	width: 90px;
+	width: 70px;
 	/* border: 1px solid #000; */
 }
+table th#title{
+	width: 250px;
+}
 table th#Day{
-	width: 160px;
+	width: 140px;
 	/* border: 1px solid #000; */
 }
 table th#viewCnt{
-	width: 90px;
+	width: 100px;
 	/* border: 1px solid #000; */
 }
 table th{
@@ -35,9 +57,8 @@ table th{
 	background-color: rgba(255,0,0,0.1);
 }
 form#searchFrm{
-	margin-top: 20px;
-    /* border: 1px solid #000; */
-	transform:translateX(45px);
+	margin: 20px;
+/*      border: 1px solid #000; */
 }
 select#keyField{
 	height: 32px;
@@ -113,6 +134,72 @@ textarea{
 input#subject{
 	width: 498px;
 }
+div#listBtnArea{
+	width: 200px;
+}
+
+table#writeTbl{
+	width: 950px;
+	border-collapse : collapse;
+	text-align:center;
+    margin: 30px auto 0;
+}
+td#titleName{
+	width: 170px;
+}
+td.read_line:nth-child(odd){
+	padding: 10px 2px;
+	background-color: rgba(255,0,0,0.1);
+	border: 1px solid #000;
+}
+td.read_line:nth-child(even){
+	background-color:#fff;
+}
+
+td.regTMtd{
+	width: 200px;
+}
+
+div#listPagingArea{
+	padding-top: 20px;
+	text-align: center;
+}
+
+div#listPagingArea span {
+	width: 30px;
+	height: 30px;
+	font-weight: 12px;
+	text-align: center;
+	line-height: 30px;
+	margin: 10px 2px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+div#listPagingArea span:hover {
+	color: #aaa;
+}
+
+div#listPagingArea span.nowPageNum {
+	font-size: 16px;
+	font-weight: bold;
+	background-color: rgba(136, 136, 136, 0.1);
+	cursor: default;
+}
+
+div#listPagingArea span.moveBlockArea {
+	width: 30px;
+	height: 30px;
+	font-size: 12px;
+	margin: 0 6px;
+	display: inline-block;
+}
+
+
+
+
+
+
 
 /*//////////////////////////// 시작 ///////////////////////////////*/
 /*//////////////////////////// 끝 ///////////////////////////////*/

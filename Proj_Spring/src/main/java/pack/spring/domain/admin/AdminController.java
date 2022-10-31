@@ -30,7 +30,7 @@ public class AdminController {
 		if (adminId == null) {
 			mav.setViewName("redirect: admin/join");
 		} else {
-			mav.setViewName("redirect: admin/index");
+			mav.setViewName("redirect: /alogin");
 		}
 		return mav;
 

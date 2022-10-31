@@ -1,6 +1,7 @@
 create database test1;
 use test1;
 
+
 create table memberList(
 num           int                  							unique auto_increment,
 uId            char(20)          							primary key,

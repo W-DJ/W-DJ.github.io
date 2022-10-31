@@ -43,6 +43,10 @@
 				 	 <li>
 				 	      <button type="button" id="PrListBtn">상품게시판</button>
 				 	 </li>
+				 	 	    <li class="bar">|<li>
+				 	<li>
+				 	<button type="button" id="OftenBtn">자주묻는질문</button>
+				 	</li>
 				 </ul>
 		</c:when>
 		<c:when test= "${user.uId != null || admin.aId != null}">
@@ -76,7 +80,7 @@
 				 	</li>
 				 	<li class="bar">|<li>
 				 	<li>
-				 	<button type="button" id="OftenBtn">자주하는질문</button>
+				 	<button type="button" id="OftenBtn">자주묻는질문</button>
 				 	</li>
 				 </ul>
 				

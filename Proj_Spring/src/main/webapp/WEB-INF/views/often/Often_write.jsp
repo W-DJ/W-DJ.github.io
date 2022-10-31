@@ -30,7 +30,7 @@
 				<form name="writeFrm" enctype="multipart/form-data" 
 						  method="post" id="writeFrm">
 				
-					<table>
+					<table id="writeTBl">
 						<tbody>
             				<tr>
 								<td class="req">이름</td>  <!-- td.req 필수입력 -->
@@ -39,22 +39,22 @@
 									<input type="hidden" name="aName" value="${admin.aName}">
 								   <input type="hidden" name="aId" value="${admin.aId}">
 								</td>
-								<td>
-								<select name="qnaType" id="qnaType">
-									<option value="">문의유형</option>
-									<option value="change">취소/반품/교환</option>
-									<option value="pay">주문/결제</option>
-									<option value="event">이벤트</option>
-									<option value="something">기타</option>
-							</select>
-							</td>
 							</tr> 
 							<tr>
-								<td class="req">제목</td> <!-- td.req 필수입력 -->
+								<td class="req" id="titleName">제목</td> <!-- td.req 필수입력 -->
 								<td>
 									<input type="text" name="subject"
 									maxlength="50" id="subject">
 								</td>
+								<td>
+								<select name="qnaType" id="qnaType">
+									<option value="none">문의유형</option>
+									<option value="취소/반품/교환">취소/반품/교환</option>
+									<option value="주문/결제">주문/결제</option>
+									<option value="이벤트">이벤트</option>
+									<option value="기타">기타</option>
+							</select>
+							</td>
 							</tr>
 							<tr>
 								<td class="contentTD">내용</td>
