@@ -53,6 +53,11 @@ div#wrap.cartListWrap div#contents{
 	padding-right: 20px;
 }
 
+.cartListWrap table#cartTbl th:last-child,
+.cartListWrap table#cartTbl td:last-child {
+	border-bottom: none;
+}
+
 
 .cartListWrap table#cartTbl th:first-child{
 	width: 150px;

@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pack.spring.domain.member.MemberDTO;
+import pack.spring.domain.page.Criteria;
+import pack.spring.domain.page.PageMaker;
 
 @Controller
 public class ProdController {
@@ -105,11 +107,11 @@ public class ProdController {
 			map.put("keyWord", keyWord);
 		}
 
-		if (map.get("orderBy") == null) {
+		if (map.get("orderBy") == null || map.get("orderBy") == "") {
 			map.put("orderBy", orderBy);
 		}
 
-		if (map.get("typeSearch") == null) {
+		if (map.get("typeSearch") == null || map.get("typeSearch") == "") {
 			map.put("typeSearch", typeSearch);
 		}
 
@@ -134,7 +136,6 @@ public class ProdController {
 			mav.setViewName("redirect:/");
 		}
 		return mav;
-
 	}
 
 	@RequestMapping(value = "/prodMod", method = RequestMethod.GET)
@@ -265,7 +266,7 @@ public class ProdController {
 			cartBean.setpVolumn(pVolumn);
 			Map<String, Object> map = this.prodService.cartDpChk(cartBean);
 			if (map == null) {
-				affectRow = this.prodService.cartInsert(cartBean);
+				affectRow += this.prodService.cartInsert(cartBean);
 			} else {
 				int num = Integer.parseInt(map.get("num").toString());
 				cartBean.setNum(num);

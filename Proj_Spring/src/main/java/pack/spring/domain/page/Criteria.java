@@ -1,4 +1,4 @@
-package pack.spring.domain.product;
+package pack.spring.domain.page;
 
 public class Criteria {
 	private int page;
@@ -27,9 +27,9 @@ public class Criteria {
 	public void setPerPageNum(int pageCount) {
 		int cnt = this.perPageNum;
 		if(pageCount != cnt) {
-			this.perPageNum = cnt;
-		} else {
 			this.perPageNum = pageCount;
+		} else {
+			this.perPageNum = cnt;
 		}
 	}
 	

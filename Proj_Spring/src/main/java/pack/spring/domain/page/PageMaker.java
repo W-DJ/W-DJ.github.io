@@ -1,4 +1,4 @@
-package pack.spring.domain.product;
+package pack.spring.domain.page;
 
 public class PageMaker {
 	private Criteria cri;

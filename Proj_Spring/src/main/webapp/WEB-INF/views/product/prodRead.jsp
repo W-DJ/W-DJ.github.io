@@ -82,6 +82,7 @@
 							<iframe width="0" height="0" class="wishInsertIfr" style="display: none"></iframe>
 							<button type="button" class="wishInsertBtn size" >위시리스트 추가</button>
 							<button type="button" class="cartInsertBtn size">장바구니 담기</button>
+							<button type="button" class="prodListBtn size">목록으로 돌아가기</button>
 						</div>
 						<div>
 							<button type="button" class="directOrderBtn size">바로 구매</button>						
@@ -119,7 +120,7 @@
 			<!-- 검색어전송 시작 -->
 			<input type="hidden" id="orderBy" value="${search.orderBy}">
 			<input type="hidden" id="typeSearch" value="${search.typeSearch}">
-			<input type="hidden" id="pKeyWord" value="${serach.keyWord}">
+			<input type="hidden" id="pKeyWord" value="${param.keyWord}">
 			<!-- 검색어전송 끝 -->
 			
 			

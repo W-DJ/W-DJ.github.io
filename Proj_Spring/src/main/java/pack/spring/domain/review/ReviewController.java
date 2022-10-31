@@ -16,8 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import pack.spring.domain.member.MemberDTO;
 import pack.spring.domain.order.OrderService;
-import pack.spring.domain.product.Criteria;
-import pack.spring.domain.product.PageMaker;
+import pack.spring.domain.page.Criteria;
+import pack.spring.domain.page.PageMaker;
 import pack.spring.domain.product.ProdService;
 
 @Controller
@@ -69,6 +69,8 @@ public class ReviewController {
 	
 	@RequestMapping(value = "/reviewList", method = RequestMethod.GET)
 	public ModelAndView reviewList(Criteria cri, @RequestParam Map<String, Object> map) {
+		cri.setPerPageNum(3);
+		System.out.println(cri.getPerPageNum());
 		ModelAndView mav = new ModelAndView();
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);

@@ -14,8 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import pack.spring.domain.member.MemberDTO;
 import pack.spring.domain.product.CartBean;
-import pack.spring.domain.product.Criteria;
-import pack.spring.domain.product.PageMaker;
+import pack.spring.domain.page.Criteria;
+import pack.spring.domain.page.PageMaker;
 import pack.spring.domain.product.ProdService;
 import pack.spring.domain.product.WishlistBean;
 

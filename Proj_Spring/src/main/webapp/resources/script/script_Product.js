@@ -234,6 +234,31 @@ $(function(){
 
 	/* 위시리스트에 넣기 버튼 끝 */
 	
+	/* 상품상세페이지에서 목록으로 돌아가기 시작*/
+	$("button.prodListBtn").click(function(){
+		
+		let nowPage = $("input#nowPage").val();
+		let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
+		let p5 = $("#orderBy").val();
+		let p6 = $("#typeSearch").val();
+		let param = "/prodList?";
+		if (nowPage == null || nowPage == "") {
+			param += "keyWord="+p4;
+			 param += "&orderBy="+p5;
+			 param += "&typeSearch="+p6;
+		} else {
+			param += "page="+nowPage;
+		     param += "&keyWord="+p4;
+			 param += "&orderBy="+p5;
+			 param += "&typeSearch="+p6;			
+		}
+		location.href=param;
+	});
+
+	/* 상품상세페이지에서 목록으로 돌아가기 끝 */
+	
+	
+	
 	
 	/* 구매 버튼 시작 */
 	$("button.directOrderBtn").click(function(){
