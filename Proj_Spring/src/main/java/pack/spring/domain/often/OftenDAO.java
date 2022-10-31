@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 
+
+
 public interface OftenDAO {
 
 	//게시글 전체목록보기
-	public List<OftenDTO> listAll() throws Exception;
+	public List<OftenDTO> listAll(Map<String, Object> map) throws Exception;
 	
 	//게시글 입력
 	public int insert(Map<String, Object> map);
@@ -27,5 +29,6 @@ public interface OftenDAO {
 	//게시글 조회수
 	public int updateView(Map<String, Object> map);
 
-
+	//게시글 전체 리스트 개수
+	public int getCountBoard(Map<String, Object> map);
 }

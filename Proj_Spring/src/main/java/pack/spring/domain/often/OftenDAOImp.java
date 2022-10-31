@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+
+
 @Service
 public class OftenDAOImp implements OftenDAO {
 
@@ -16,8 +18,8 @@ public class OftenDAOImp implements OftenDAO {
 	
 	// 자주묻는질문 전체목록보기
 	@Override
-	public List<OftenDTO> listAll() throws Exception {
-		return this.sqlSessionTemplate.selectList("often.select_list");
+	public List<OftenDTO> listAll(Map<String, Object> map) throws Exception {
+		return this.sqlSessionTemplate.selectList("often.select_list", map);
 	}
 	
 	// 자주묻는질문 글쓰기
@@ -59,6 +61,12 @@ public class OftenDAOImp implements OftenDAO {
 	public int updateView(Map<String, Object> map) {
 		
 		return this.sqlSessionTemplate.update("often.updateView", map);
+	}
+
+	@Override
+	public int getCountBoard(Map<String, Object> map) {
+		
+		return this.sqlSessionTemplate.selectOne("often.countBoard",map);
 	}
 
 

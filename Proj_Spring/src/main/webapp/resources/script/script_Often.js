@@ -114,7 +114,7 @@ $(function(){
 		let p3 = $("#pKeyField").val().trim();  // p3 : keyField
 	    let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
 	     
-		let url = "Often_list?nowPage=" + param;		    
+		let url = "OftenList?page=" + param;		    
 		    url += "&keyField="+p3;
 	     	url += "&keyWord="+p4 ; 
 		location.href=url;
@@ -142,8 +142,8 @@ $(function(){
 function read(p1, p2) {
 	//p1: num(게시글의 고유번호, 고유값, 키값 => Key Value)
 	//p2:nowPage(현재페이지)
-    let p3 = $("#pKeyField").val().trim();  // p3 : keyField
-    let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
+    let p3 = $("#pKeyField").val();  // p3 : keyField
+    let p4 = $("#pKeyWord").val();  // p4 : keyWord
 	let param = "Often_read?num="+p1;
 	     param += "&nowPage="+p2;
 	     param += "&keyField="+p3;
@@ -157,12 +157,12 @@ function read(p1, p2) {
 /* 리스트페이지 페이징 시작 /bbs/list.jsp */
 function movePage(p1) {    // 페이지 이동
 	
-    let p3 = $("#pKeyField").val().trim();  // p3 : keyField
-    let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
+   let p3 = $("#pKeyField").val();  // p3 : keyField
+    let p4 = $("#pKeyWord").val();  // p4 : keyWord
 
-	let param = "Often_list.jsp?nowPage="+p1;	    
-	     param += "&keyField="+p3;
-	     param += "&keyWord="+p4 ; 
+	let param = "OftenList?page="+p1;	    
+         param += "&keyField="+p3;
+	     param += "&keyWord="+p4 ;
 	location.href= param;
 
 }

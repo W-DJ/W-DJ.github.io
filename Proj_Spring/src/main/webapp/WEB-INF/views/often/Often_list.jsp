@@ -110,7 +110,7 @@ $(function(){
 				</c:if>
 
 				<c:forEach begin="${pageMaker.startPage}"
-					end="${pageMaker.endPage }" var="pageNum">	
+					end="${pageMaker.endPage }" var="pageNum">
 					<span class="pageNum" onclick="movePage('${pageNum}')">${pageNum}</span>
 				</c:forEach>
 				<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">

@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import pack.spring.domain.page.Criteria;
+import pack.spring.domain.page.PageMaker;
+
 
 @Controller
 public class OftenController {
@@ -20,11 +23,18 @@ public class OftenController {
 	
 	// 자주하는질문게시판 전체리스트보기
 	@RequestMapping(value="/OftenList",method=RequestMethod.GET)
-		public ModelAndView list() throws Exception{
-		List<OftenDTO> list = oftenService.listAll();
+		public ModelAndView list(Criteria cri ,@RequestParam Map<String, Object> map) throws Exception{
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/often/Often_list");
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		System.out.println(oftenService.count(map));
+		pageMaker.setTotalCount(oftenService.count(map));
+		map.put("startPage", cri.getPageStart());
+		map.put("perPageNum", cri.getPerPageNum());
+		List<OftenDTO> list = oftenService.listAll(map);
 		mav.addObject("list",list);
+		mav.addObject("pageMaker", pageMaker);
+		mav.setViewName("/often/Often_list");
 		return mav;
 	}	
 	
@@ -36,7 +46,6 @@ public class OftenController {
 	@RequestMapping(value="/Often_write", method =RequestMethod.POST)
 		public ModelAndView write(@RequestParam Map<String, Object> map) throws Exception{
 		ModelAndView mav = new ModelAndView();
-
 		this.oftenService.write(map);
 	    mav.setViewName("redirect:/OftenList");
 	    return mav;

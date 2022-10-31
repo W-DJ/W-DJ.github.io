@@ -6,7 +6,7 @@ import java.util.Map;
 
 public interface OftenService {
 
-	public List<OftenDTO> listAll() throws Exception;
+	public List<OftenDTO> listAll(Map<String, Object> map) throws Exception;
 
 	public int write(Map<String, Object> map);
 
@@ -18,4 +18,5 @@ public interface OftenService {
 
 	public int delete(Map<String, Object> map);
 
+	public int count(Map<String,Object> map);
 }

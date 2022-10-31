@@ -5,7 +5,7 @@
 
 <select id="select_list" resultType="pack.spring.domain.often.OftenDTO">
    <![CDATA[
-	 select * from OftenTbl;
+	 select * from OftenTbl order by num desc limit #{startPage},#{perPageNum};
  	]]>
 	</select>
 	
@@ -49,6 +49,11 @@ insert into OftenTbl (aId, aName, subject, qnaType , content, regTM ,readCnt) va
   delete from OftenTbl where num = #{num}
 </delete>
 
+<select id="countBoard" parameterType="hashMap" resultType="Integer">
+ <![CDATA[
+ select count(*) from OftenTbl
+ ]]>
+</select>	
 
 </mapper>
 

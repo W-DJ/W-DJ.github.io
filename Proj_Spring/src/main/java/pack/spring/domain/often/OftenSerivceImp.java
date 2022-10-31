@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+
+
 @Service
 public class OftenSerivceImp implements OftenService {
 
@@ -15,9 +17,9 @@ public class OftenSerivceImp implements OftenService {
 	
 	// 자주하는질문 전체목록보기
 	@Override
-	public List<OftenDTO> listAll() throws Exception {
+	public List<OftenDTO> listAll(Map<String, Object> map) throws Exception {
 
-		return this.oftendao.listAll();
+		return this.oftendao.listAll(map);
 	}
 
 	// 자주하는질문 글쓰기
@@ -52,5 +54,13 @@ public class OftenSerivceImp implements OftenService {
 	public int delete(Map<String, Object> map) {
 		return this.oftendao.delete(map);
 	}
+
+	@Override
+	public int count(Map<String, Object> map) {
+		
+		return this.oftendao.getCountBoard(map);
+	}
+
+
 
 }
