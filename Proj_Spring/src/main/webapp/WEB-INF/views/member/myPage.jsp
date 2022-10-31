@@ -24,10 +24,10 @@
 	<div id="wrap" class="dFlex">
 		<div id="sideMenu">
           <ul class="List">
-	     <li><a href="/cart/cartList.jsp" id="cart">장바구니</a></li>
-	     <li><a href="/wishlist/wishlist.jsp" id="wish">찜 제품</a></li>
+	     <li><a href="/cartList" id="cart">장바구니</a></li>
+	     <li><a href="/wishlist" id="wish">찜 제품</a></li>
 	     <li><a href="">주문현황</a></li>
-	     <li><a href="/bbs_Inquire/list.jsp" id="inq">1대1문의</a></li>  
+	     <li><a href="/Inqlist" id="inq">1대1문의</a></li>  
 	       <hr>
 	      <li><a href="/mod" id="mod">회원정보수정</a></li>
 	      <li><a href="/memberDel" id="del">회원탈퇴</a></li>
@@ -52,10 +52,10 @@
 	<c:when test="${aId_Session != null }">
 	     <div id="sideMenu">
           <ul class="List">
-	     <li><a href="/cart/cartList.jsp" id="cart">장바구니</a></li>
-	     <li><a href="/wishlist/wishlist.jsp" id="wish">찜 제품</a></li>
+	     <li><a href="/cartList" id="cart">장바구니</a></li>
+	     <li><a href="/wishlist" id="wish">찜 제품</a></li>
 	     <li><a href="">주문현황</a></li>
-	     <li><a href="/bbs_Inquire/list.jsp" id="inq">1대1문의</a></li>  
+	     <li><a href="/Inqlist" id="inq">1대1문의</a></li>  
 	       <hr>
 	      <li><a href="/mod" id="mod">회원정보수정</a></li>
 	      <li><a href="/memberDel" id="del">회원탈퇴</a></li>

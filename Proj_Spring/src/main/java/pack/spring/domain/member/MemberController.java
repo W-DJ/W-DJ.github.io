@@ -1,6 +1,8 @@
 package pack.spring.domain.member;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -60,13 +62,17 @@ public class MemberController {
 	
 	// 마이페이지
 	@RequestMapping(value="/myPage", method=RequestMethod.GET)
-		public ModelAndView myPage(HttpSession session) throws Exception{
+		public ModelAndView myPage(HttpSession session, HttpServletRequest request) throws Exception{
 			ModelAndView mav = new ModelAndView();
 			if(session.getAttribute("user") != null) {
 				mav.setViewName("/member/myPage");
+                
 			}else {
-			    mav.setViewName("redirect:/"); 
-			} 
+			    mav.setViewName("member/dumyMsg");
+			    request.setAttribute("msg", "로그인이 필요합니다");
+			    request.setAttribute("url", "/");	
+			} 			
+
 			return mav;
 		}
 	
