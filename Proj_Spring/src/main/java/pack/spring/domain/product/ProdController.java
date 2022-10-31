@@ -159,19 +159,29 @@ public class ProdController {
 	public ModelAndView prodModSet(ProdBoardBean prodBoardBean, @RequestParam Map<String, Object> map,
 			@RequestParam List<String> sellLabelCode) {
 		ModelAndView mav = new ModelAndView();
+		int num = Integer.parseInt(map.get("num").toString());
+		int page = Integer.parseInt(map.get("page").toString());
+		mav.addObject("num", num);
+		mav.addObject("page", page);
 		mav.addObject("search", map);
 
 		String[] sellLabelName = { "BEST", "NEW", "SALE", "NONE" };
 		String sellLabel = "";
 		for (int i = 0; i < sellLabelCode.size(); i++) {
+			boolean ToF = false;
 			for (int j = 0; j < sellLabelName.length; j++) {
 				if (sellLabelCode.get(i).equals(sellLabelName[j])) {
-					sellLabel += '1';
-				} else {
-					sellLabel += '0';
-				}
+					ToF = true;
+				} 
+			}
+			if (ToF) {
+				sellLabel += 1;
+			} else {
+				sellLabel += 0;
 			}
 		}
+		System.out.println(sellLabelCode.toString());
+		System.out.println(sellLabel);
 		prodBoardBean.setSellLabel(sellLabel);
 		prodBoardBean.setNum(Integer.parseInt(map.get("num").toString()));
 		String mod_Msg = this.prodService.prodMod(prodBoardBean);
@@ -179,7 +189,7 @@ public class ProdController {
 		if (mod_Msg == null) {
 			mav.setViewName("redirect:/prodMod");
 		} else {
-			mav.setViewName("redirect:/prodList");
+			mav.setViewName("redirect:/prodRead");
 		}
 		return mav;
 	}
