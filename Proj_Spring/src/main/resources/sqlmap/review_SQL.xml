@@ -17,8 +17,8 @@
 				<when test="keyField == 'subject'.toString()">
 					and subject like concat('%',#{keyWord},'%' )
 				</when>
-				<when test="keyField == 'uName'.toString()">
-					and uName like concat('%',#{keyWord},'%' )
+				<when test="keyField == 'regName'.toString()">
+					and regName like concat('%',#{keyWord},'%' )
 				</when>
 				<when test="keyField == 'content'.toString()">
 					and subject like concat('%',#{keyWord},'%' )

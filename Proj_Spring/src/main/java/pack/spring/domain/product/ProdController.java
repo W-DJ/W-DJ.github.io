@@ -52,13 +52,17 @@ public class ProdController {
 
 		String[] sellLabelName = { "BEST", "NEW", "SALE", "NONE" };
 		String sellLabel = "";
-		for (int i = 0; i < sellLabelCode.size(); i++) {
-			for (int j = 0; j < sellLabelName.length; j++) {
+		for (int j = 0; j < sellLabelName.length; j++) {
+			boolean ToF = false;
+			for (int i = 0; i < sellLabelCode.size(); i++) {
 				if (sellLabelCode.get(i).equals(sellLabelName[j])) {
-					sellLabel += '1';
-				} else {
-					sellLabel += '0';
+					ToF = true;
 				}
+			}
+			if(ToF) {
+				sellLabel += '1';				
+			} else {
+				sellLabel += '0';	
 			}
 		}
 		prodBoardBean.setSellLabel(sellLabel);
@@ -167,17 +171,17 @@ public class ProdController {
 
 		String[] sellLabelName = { "BEST", "NEW", "SALE", "NONE" };
 		String sellLabel = "";
-		for (int i = 0; i < sellLabelCode.size(); i++) {
+		for (int j = 0; j < sellLabelName.length; j++) {
 			boolean ToF = false;
-			for (int j = 0; j < sellLabelName.length; j++) {
+			for (int i = 0; i < sellLabelCode.size(); i++) {
 				if (sellLabelCode.get(i).equals(sellLabelName[j])) {
 					ToF = true;
-				} 
+				}
 			}
-			if (ToF) {
-				sellLabel += 1;
+			if(ToF) {
+				sellLabel += '1';				
 			} else {
-				sellLabel += 0;
+				sellLabel += '0';	
 			}
 		}
 		System.out.println(sellLabelCode.toString());

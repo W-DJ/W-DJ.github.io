@@ -108,7 +108,7 @@
 							<tfoot>
 								<tr>
 									<td colspan="2">
-										<input type="hidden" name="regId" value="${aId_Session}">
+										<input type="hidden" name="regId" value="${admin.aId}">
 										<button type="submit">전송</button>
 										<button type="reset" id="reset">취소</button>
 									</td>

@@ -63,7 +63,7 @@ $(function(){
 											<td colspan="2" class="regDate"></td>
 										</tr>
 								 <c:choose>
-									<c:when test="${board.sysFileName}">
+									<c:when test="${board.sysFileName != null}">
 										<tr>
 											<td colspan="2">
 												<img src="resources/fileUpload/${board.sysFileName}" alt="리뷰이미지" width="100" height="100"> 
