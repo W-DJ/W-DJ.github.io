@@ -6,7 +6,7 @@ $(function() {
 
 
 
-		/* 공지사항 게시판 리스트 페이지 글쓰기 버튼 시작 /bbs_Notice/noticebbs.jsp */
+	/* 공지사항 게시판 리스트 페이지 글쓰기 버튼 시작 /bbs_Notice/noticebbs.jsp */
 	$("#loginAlertBtn").click(function() {
 		alert("관리자만 게시글을 작성하실 수 있습니다.");
 	});
@@ -32,7 +32,7 @@ $(function() {
 
 
 
-$("button#noticeBtn").click(function() {
+	$("button#noticeBtn").click(function() {
 
 		$("iframe#ifrNotice").css({
 			"display": "block"
@@ -44,10 +44,10 @@ $("button#noticeBtn").click(function() {
 
 		});
 	});
-$("button#reset").click(function(){
+	$("button#reset").click(function() {
 
- history.back();
-});
+		history.back();
+	});
 
 
 
@@ -69,21 +69,28 @@ $("button#reset").click(function(){
 
 
 
-	/* 글쓰기 페이지 게시글 수정 시작 /bbs_Inquire/read.jsp -> modify.jsp */
-	$("#modInqBtn").click(function() {
+	/* 글쓰기 페이지 게시글 수정 시작 /BBS/Notdetail.jsp -> Notupd.jsp */
+	$("#updNotBtn").click(function() {
 
-		let nowPageInq = $("input#nowPageInq").val().trim();
+		/*let nowPageInq = $("input#nowPageInq").val().trim();
 		let num = $("input#num").val().trim();
 
 		let url="/bbs_Inquire/modify.jsp?";
 		url += "num="+num;
 			url += "&nowPage="+nowPageInq;
+		location.href = url;*/
+
+		let num = $("input#num").val().trim();
+
+		let url = "/Notupd?";
+		url += "num=" + num;
+
 		location.href = url;
 
 
 	});
 
-	/* 글쓰기 페이지 게시글 수정 끝  /bbs_Inquire/read.jsp -> modify.jsp */
+	/* 글쓰기 페이지 게시글 수정 끝  /BBS/Notdetail.jsp -> Notupd.jsp */
 
 
 
@@ -99,9 +106,9 @@ $("button#reset").click(function(){
 		let num = $("input#num").val().trim();
 
 		let url = "/bbs_Notice/modify.jsp?";
-		url += "num="+num;
-			url += "&nowPage="+nowPage;
-			location.href=url;
+		url += "num=" + num;
+		url += "&nowPage=" + nowPage;
+		location.href = url;
 
 
 	});
@@ -111,27 +118,27 @@ $("button#reset").click(function(){
 	/* 게시글 수정페이지에서 수정내용 전송 시작 /bbs_Notice/modify.jsp */
 
 
-	$("td.update>button#modNotBtn").click(function(){
+	$("td.update>button#modNotBtn").click(function() {
 		let asubject = $("td>input#asubject").val().trim();
 
 
 
-			if (asubject == "") {
-				alert("제목은 필수입력입니다.");
-				$("#asubject").focus();
-			} else {
+		if (asubject == "") {
+			alert("제목은 필수입력입니다.");
+			$("#asubject").focus();
+		} else {
 
-				$("#modifyNotProcFrm").submit();
+			$("#modifyNotProcFrm").submit();
 
-			}
+		}
 
-	});	
+	});
 	/* 게시글 수정페이지에서 수정내용 전송 끝 /bbs_Notice/modify.jsp */
 
 
-$("#backBtn").click(function(){
+	$("#backBtn").click(function() {
 
-		location.href="/bbs_Notice/noticebbs.jsp"
+		location.href = "/bbs_Notice/noticebbs.jsp"
 	});
 
 
@@ -142,7 +149,7 @@ $("#backBtn").click(function(){
 		let chkTF = confirm("게시글을 삭제하시겠습니까?");
 
 
-		if (chkTF) {
+		/*if (chkTF) {
 			let nowPage = $("input#nowPage").val().trim();
 			let num = $("input#num").val().trim();
 
@@ -154,83 +161,94 @@ $("#backBtn").click(function(){
 			location.href = url;
 		} else {
 			alert("취소하셨습니다.");
+		}*/
+
+		if (chkTF) {
+			let Notnum = $("input#num").val().trim();
+
+			let url = "/Notdel?";
+			url += "num=" + Notnum;
+
+			location.href = url;
+		} else {
+			alert("취소하셨습니다.");
 		}
 
 	});
 	/* 게시글 삭제버튼 끝 /bbs/read.jsp */
 
-/* <공지 사항> 검색 결과를 유지한 리스트페이지 이동 시작 /bbs/read.jsp */
-	$("#listBtn").click(function(){
+	/* <공지 사항> 검색 결과를 유지한 리스트페이지 이동 시작 /bbs/read.jsp */
+	$("#listBtn").click(function() {
 		let param = $("#nowPage").val().trim();
 
 
-		let url = "/bbs_Notice/noticebbs.jsp?nowPage=" + param;		    
+		let url = "/bbs_Notice/noticebbs.jsp?nowPage=" + param;
 
-		location.href=url;
+		location.href = url;
 	});
 	/* 검색 결과를 유지한 리스트페이지 이동 끝 /bbs/read.jsp */
 
-/* Noticebbs리스트 검색 시작 /bbs_Notice/noticebbs.jsp */	
-	$("button#searchBtn").click(function(){
+	/* Noticebbs리스트 검색 시작 /bbs_Notice/noticebbs.jsp */
+	$("button#searchBtn").click(function() {
 		let keyWord = $("#keyWord").val();
 		// 검색어에서는 .trim()을 지양하는 추세
 		// 단 로그인 회원 가입 회원정보수정에서 사용하는
 		// ID에는 입력값 전후의 공백을 제거한다.
 		//alert("keyWord : " + keyWord + "/nKeyWOrd 글자수 : " +keyWord.length );
-		if (keyWord=="") {
+		if (keyWord == "") {
 			alert("검색어를 입력해주세요.");
-			$("#keyWord").focus();			
+			$("#keyWord").focus();
 		} else {
 			$("#searchFrm").submit();
 		}
-	});	
-	/* Noticebbs리스트페이지 검색 끝 /bbs_Notice/noticebbs.jsp */	
+	});
+	/* Noticebbs리스트페이지 검색 끝 /bbs_Notice/noticebbs.jsp */
 
-/* 리스트페이지 페이징 시작 /bbs/list.jsp */
-function movePage(p1) {    // 페이지 이동
+	/* 리스트페이지 페이징 시작 /bbs/list.jsp */
+	function movePage(p1) {    // 페이지 이동
 
-    let p3 = $("#pKeyField").val().trim();  // p3 : keyField
-    let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
+		let p3 = $("#pKeyField").val().trim();  // p3 : keyField
+		let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
 
-	let param = "/bbs_Notice/noticebbs.jsp?nowPage="+p1;	    
-	     param += "&keyField="+p3;
-	     param += "&keyWord="+p4 ; 
-	location.href= param;
-
-}
-/* 리스트페이지 페이징 끝 /bbs/list.jsp */
-
-
-/* 리스트페이지 페이징 블럭이동 시작 /bbs/list.jsp */
-function moveBlock(p1, p2, param3) {    // 블럭 이동 ,전 블럭의  ''마지막'' 페이지로 이동함 p1: nowBlock-1 
-
-	let pageNum = parseInt(p1);  // 이전 블럭의 시작페이지로 이동할 때 사용
-	let pagePerBlock = parseInt(p2);	 //5
-
-	alert("p1(moveBlock) : " + p1 + "\np2(pagePerBlock) : " + p2 );
-
-    let p3 = $("#pKeyField").val().trim();  // p3 : keyField
-    let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
-
-
-
-	if(param3=='pb'){
-		 param = "/bbs_Notice/noticebbs.jsp?nowPage="+(moveBlock*pagePerBlock);
-	     param += "&keyField="+p3;
-	     param += "&keyWord="+p4 ; 
-
-	}else if(param3=='nb'){
-		param = "/bbs_Notice/noticebbs.jsp?nowPage="+(pagePerBlock*(moveBlock-1)+1);
-	     param += "&keyField="+p3;
-	     param += "&keyWord="+p4 ; 
+		let param = "/bbs_Notice/noticebbs.jsp?nowPage=" + p1;
+		param += "&keyField=" + p3;
+		param += "&keyWord=" + p4;
+		location.href = param;
 
 	}
+	/* 리스트페이지 페이징 끝 /bbs/list.jsp */
+
+
+	/* 리스트페이지 페이징 블럭이동 시작 /bbs/list.jsp */
+	function moveBlock(p1, p2, param3) {    // 블럭 이동 ,전 블럭의  ''마지막'' 페이지로 이동함 p1: nowBlock-1 
+
+		let pageNum = parseInt(p1);  // 이전 블럭의 시작페이지로 이동할 때 사용
+		let pagePerBlock = parseInt(p2);	 //5
+
+		alert("p1(moveBlock) : " + p1 + "\np2(pagePerBlock) : " + p2);
+
+		let p3 = $("#pKeyField").val().trim();  // p3 : keyField
+		let p4 = $("#pKeyWord").val().trim();  // p4 : keyWord
 
 
 
-	location.href=param;
-}
-/* 리스트페이지 페이징 블럭이동 끝 /bbs/list.jsp */
+		if (param3 == 'pb') {
+			param = "/bbs_Notice/noticebbs.jsp?nowPage=" + (moveBlock * pagePerBlock);
+			param += "&keyField=" + p3;
+			param += "&keyWord=" + p4;
+
+		} else if (param3 == 'nb') {
+			param = "/bbs_Notice/noticebbs.jsp?nowPage=" + (pagePerBlock * (moveBlock - 1) + 1);
+			param += "&keyField=" + p3;
+			param += "&keyWord=" + p4;
+
+		}
+
+
+
+		location.href = param;
+	}
+	/* 리스트페이지 페이징 블럭이동 끝 /bbs/list.jsp */
 
 
 });

@@ -21,16 +21,16 @@ $(function() {
 
 
 
-	/* 1:1문의 게시판 리스트 페이지 글쓰기 버튼 시작 /bbs_Inquire/inquirebbs.jsp */
+	/* 1:1문의 게시판 리스트 페이지 글쓰기 버튼 시작 /BBS/Inqlist.jsp */
 	$("#loginAlertBtn").click(function() {
 		alert("로그인 후 게시글을 작성하실 수 있습니다.");
-		window.parent.parent.location.href = "/Member/Login.jsp";
+		location.href = "/login";
 	});
 
 
 
 	$("#inqBtn").click(function() {
-		location.href = "/bbs_Inquire/write.jsp";
+		location.href = "/InqWrite";
 	});
 
 
@@ -38,7 +38,8 @@ $(function() {
 
 
 
-	/* 1:1문의 수정페이지 게시글 등록 시작 /bbs_Inquire/write.jsp */
+	/* 1:1문의 수정페이지 게시글 등록 시작 /BBS/Inqupd.jsp */
+	/*
 	$("#regBtn").click(function() {
 		let subject = $("#subject").val().trim();
 
@@ -51,12 +52,14 @@ $(function() {
 		}
 
 	});
+	*/
 
-	/* 1:1문의 수정페이지 게시글 등록 끝 /bbs_Inquire/write.jsp */
+	/* 1:1문의 수정페이지 게시글 등록 끝 /BBS/Inqupd.jsp */
 
 
 
 	/* 1:1문의 수정페이지 게시글 입력 버튼 시작 /bbs_Inquire/read.jsp -> modify.jsp */
+	/*
 	$("#modInqBtn").click(function() {
 
 		let nowPageInq = $("input#nowPageInq").val().trim();
@@ -69,6 +72,7 @@ $(function() {
 
 
 	});
+	*/
 
 	/* 1:1문의 수정페이지게시글 입력 버튼 끝  /bbs_Inquire/read.jsp -> modify.jsp */
 
@@ -76,6 +80,7 @@ $(function() {
 	/* 1:1문의 수정페이지에서 수정내용 전송 시작 /bbs_Inquire/modify.jsp */
 
 
+	/*
 	$("td.update>button#modFinBtn").click(function(){
 
 		let subject = $("td>input#subject").val().trim();
@@ -90,6 +95,7 @@ $(function() {
 			}
 
 	});	
+	*/
 	/* 1:1문의 수정페이지에서 수정내용 전송 끝 /bbs_Inquire/modify.jsp */
 
 

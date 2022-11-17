@@ -3,7 +3,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="readCnt" value="0" />
- 
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/resources/style/style_BBS.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="/resources/script/script_Notice.js"></script>
+<script src="/resources/script/script_Inquire.js"></script>
 </head>
 <body>
 
@@ -50,41 +50,49 @@
 		<hr>
 
 		<div id="contents" class="bbsList">
-		<div class="moveMenu">
-			<a href="/Notlist">공지사항</a> <a href="/Inqlist">1:1문의</a>
+			<div class="moveMenu">
+				<a href="/Notlist">공지사항</a> <a href="/Inqlist">1:1문의</a>
 
-		</div>
+			</div>
 
-		<table id="NoticeTbl">
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>ID</th>
-					<th>제목</th>
-
-				</tr>
-			</thead>
-
-			<tbody>
-
-				<c:forEach var="row" items="${data}">
-					<tr class="listTr">
-						<td><a href="/Inqdetail?num=${row.num}">${row.num}</a></td>
-						<td><a href="/Inqdetail?num=${row.num}">${row.uName}</a></td>
-						<td><a href="/Inqdetail?num=${row.num}">${row.subject}</a></td>
+			<table id="NoticeTbl">
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>ID</th>
+						<th>제목</th>
 
 					</tr>
-				</c:forEach>
+				</thead>
 
-			</tbody>
-		</table>
+				<tbody>
+
+					<c:forEach var="row" items="${data}">
+						<tr class="listTr">
+							<td><a href="/Inqdetail?num=${row.num}">${row.num}</a></td>
+							<td><a href="/Inqdetail?num=${row.num}">${row.uName}</a></td>
+							<td><a href="/Inqdetail?num=${row.num}">${row.subject}</a></td>
+
+						</tr>
+					</c:forEach>
+
+				</tbody>
+			</table>
+
+			<c:choose>
+			
+			<c:when test="${user.uId != null}">
+				<!-- <a href="/InqWrite">글쓰기</a> -->
+				<button type="button" id="inqBtn">글쓰기</button>
+			</c:when>
+			<c:when test="${user.uId == null}">
+			<!-- <a href="/">메인으로</a> -->
+				<button type="button" id="loginAlertBtn">글쓰기</button>
 		
-		<c:if test="${user.uId != null}">
-				<a href="/InqWrite">글쓰기</a>
-			</c:if>
-			<a href="/">메인으로</a>
-		</div>
-	
+			</c:when>
+			</c:choose>
+			</div>
+
 
 
 	</div>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,16 +8,19 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/style/common_style.css">
 <link rel="stylesheet" href="/resources/style/style_BBS.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/resources/script/script_Inquire.js"></script>
 </head>
 <body>
 
 	<div id="wrap_bbs">
 		<h1>고객문의 수정</h1>
 		<hr>
-		
+
 		<form method="post" action="/Inqupd">
 
-						<!-- 안녕하세요 -->
+			
 
 			<main id="main">
 
@@ -26,7 +29,7 @@
 
 						<tbody>
 							<tr>
-<td>아이디<input type="text" name="uid" id="uid"
+								<td>아이디<input type="text" name="uid" id="uid"
 									value="${data.uid}" readonly="readonly">
 
 								</td>
@@ -34,18 +37,19 @@
 									value="${data.uName}" readonly="readonly">
 
 								</td>
-								<td>Q&A종류
-								<select name="qnaType" id="qnaType">
-								<option>배송</option>
-								<option>상품</option>
+								<td>Q&A종류 <select name="qnaType" id="qnaType">
+										<option>배송</option>
+										<option>상품</option>
 								</select>
 
 								</td>
 							</tr>
 							<tr>
-								<td>제목 <input type="text" name="subject" id="subject" required="required" value="${data.subject}">
+								<td>제목 <input type="text" name="subject" id="subject"
+									required="required" value="${data.subject}">
 								</td>
-								<td>글 비밀번호 <input type="text" name="bbsPw" id="bbsPw" value="${data.bbsPw}">
+								<td>글 비밀번호 <input type="text" name="bbsPw" id="bbsPw"
+									value="${data.bbsPw}">
 								</td>
 							</tr>
 
@@ -60,12 +64,13 @@
 						</tbody>
 
 					</table>
-					
+
 				</div>
 
-					<textarea name="content" id="content" rows="10" placeholder="내용을 입력해주세요" required="required">${data.content}</textarea>
-					<hr>
-			<input type="hidden" name="num" value="${data.num}">
+				<textarea name="content" id="content" rows="10"
+					placeholder="내용을 입력해주세요" required="required">${data.content}</textarea>
+				<hr>
+				<input type="hidden" name="num" value="${data.num}">
 			</main>
 			<aside id="aside" class="dFlex">
 
