@@ -3,7 +3,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="readCnt" value="0" />
- 
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -29,63 +29,54 @@
 
 		<div id="sideMenu">
 			<ul class="List">
-				<li><a href="/cart/cartList.jsp" id="cart">장바구니</a></li>
-				<li><a href="/wishlist/wishlist.jsp" id="wish">찜 제품</a></li>
-				<li><a href="/order/orderList.jsp">주문내역</a></li>
-				<li><a href="/bbs_Inquire/list.jsp" id="inq">1대1문의</a></li>
+				<li><a href="/cartList" id="cart">장바구니</a></li>
+				<li><a href="/wishlist" id="wish">찜 제품</a></li>
+				<li><a href="/orderList">주문내역</a></li>
+				<li><a href="/Inqlist" id="inq">1대1문의</a></li>
 				<hr>
 				<li><a href="/Member/MemberMod.jsp" id="mod">회원정보수정</a></li>
 				<li><a href="/Member/MemberDel.jsp" id="del">회원탈퇴</a></li>
 			</ul>
 		</div>
-
-		<!-- 			<nav>
-				<ul>
-					<li><a href="/">메인페이지</a></li>
-					<li><a href="/list">목록</a></li>
-					<li><a href="/create">회원가입</a></li>
-				</ul>
-			</nav> -->
-
+		<!-- 실제 작업 영역 시작 -->
 		<hr>
 
 		<div id="contents" class="bbsList">
-		<div class="moveMenu">
-			<a href="/Notlist">공지사항</a> 
-			<a href="/Inqlist">1:1문의</a>
+			<div class="moveMenu">
+				<a href="/Notlist">공지사항</a> <a href="/Inqlist">1:1문의</a>
 
-		</div>
+			</div>
 
-		<table id="NoticeTbl">
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>ID</th>
-					<th>제목</th>
-
-				</tr>
-			</thead>
-
-			<tbody>
-
-				<c:forEach var="row" items="${data}">
-					<tr class="listTr">
-						<td>${row.num}</td>
-						<td>${row.aName}</td>
-						<td><a href="/Notdetail?num=${row.num}">${row.asubject}</a></td>
+			<table id="NoticeTbl">
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>ID</th>
+						<th>제목</th>
 
 					</tr>
-				</c:forEach>
+				</thead>
 
-			</tbody>
-		</table>
-		
-		<c:if test="${admin.aId != null}">
+				<tbody>
+
+					<c:forEach var="row" items="${data}">
+						<tr class="listTr">
+							<td>${row.num}</td>
+							<td>${row.aName}</td>
+							<td><a href="/Notdetail?num=${row.num}">${row.asubject}</a></td>
+
+						</tr>
+					</c:forEach>
+
+				</tbody>
+			</table>
+
+			<c:if test="${admin.aId != null}">
 				<a href="/NotWrite">글쓰기</a>
 			</c:if>
 			<a href="/">메인으로</a>
 		</div>
-	
+
 
 
 	</div>

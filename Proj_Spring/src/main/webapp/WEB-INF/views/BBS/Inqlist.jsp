@@ -29,10 +29,10 @@
 
 		<div id="sideMenu">
 			<ul class="List">
-				<li><a href="/cart/cartList.jsp" id="cart">장바구니</a></li>
-				<li><a href="/wishlist/wishlist.jsp" id="wish">찜 제품</a></li>
-				<li><a href="/order/orderList.jsp">주문내역</a></li>
-				<li><a href="/bbs_Inquire/list.jsp" id="inq">1대1문의</a></li>
+				<li><a href="/cartList" id="cart">장바구니</a></li>
+				<li><a href="/wishlist" id="wish">찜 제품</a></li>
+				<li><a href="/orderList">주문내역</a></li>
+				<li><a href="/Inqlist" id="inq">1대1문의</a></li>
 				<hr>
 				<li><a href="/Member/MemberMod.jsp" id="mod">회원정보수정</a></li>
 				<li><a href="/Member/MemberDel.jsp" id="del">회원탈퇴</a></li>
@@ -80,18 +80,18 @@
 			</table>
 
 			<c:choose>
-			
-			<c:when test="${user.uId != null}">
-				<!-- <a href="/InqWrite">글쓰기</a> -->
-				<button type="button" id="inqBtn">글쓰기</button>
-			</c:when>
-			<c:when test="${user.uId == null}">
-			<!-- <a href="/">메인으로</a> -->
-				<button type="button" id="loginAlertBtn">글쓰기</button>
-		
-			</c:when>
+
+				<c:when test="${user.uId != null}">
+					<!-- <a href="/InqWrite">글쓰기</a> -->
+					<button type="button" id="inqBtn">글쓰기</button>
+				</c:when>
+				<c:when test="${user.uId == null}">
+					<!-- <a href="/">메인으로</a> -->
+					<button type="button" id="loginAlertBtn">글쓰기</button>
+
+				</c:when>
 			</c:choose>
-			</div>
+		</div>
 
 
 
