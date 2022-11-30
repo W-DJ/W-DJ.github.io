@@ -23,7 +23,6 @@ div#wrap.NotlistWrap  div#contents{
 div#wrap>div#contents>table#NoticeTbl{
 	width: 860px;
 	padding: 2px;
-	border: 5px solid #f80;
 	border-collapse: collapse;
 	text-align: center;
 	margin: 4px;

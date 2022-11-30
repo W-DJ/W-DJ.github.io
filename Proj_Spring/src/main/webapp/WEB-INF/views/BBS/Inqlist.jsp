@@ -12,7 +12,7 @@
 <title>고객문의 리스트</title>
 <link rel="shortcut icon" href="#">
 <link rel="stylesheet" href="/resources/style/common_style.css">
-<link rel="stylesheet" href="/resources/style/style_BBS.css">
+<link rel="stylesheet" href="/resources/style/style_BBS_Inq.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/resources/script/script_Inquire.js"></script>
