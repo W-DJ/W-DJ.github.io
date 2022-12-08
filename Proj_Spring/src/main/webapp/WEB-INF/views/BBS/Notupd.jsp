@@ -26,7 +26,7 @@
 						<tbody>
 							<tr>
 
-								<td>이름<input type="text" name="aName" value="${data.aName}"></td>
+								<td>이름<input type="text" name="aName" value="${data.aName}" readonly></td>
 								
 							</tr>
 							<tr>

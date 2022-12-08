@@ -1,25 +1,27 @@
 @charset "UTF-8";
-
 @import url("/resources/style/style_Reset.css");
 
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////// BBS list 목록 시작 /bbs/Notlist.jsp ////////////////// */
 /*////////////////////////////////////////////////////////////////////*/
-div#wrap.NotlistWrap  div#contents {
+div#wrap.InqlistWrap  div#contents{
 	margin: 50px auto;
-	flex: 1;
 }
 
-/* button.headBtn {
+ .InqlistWrap div.moveMenu {
+ margin: 20px 50px 50px 4px;
+ }
+button.headBtn {
+	font-size: 18px;
+	font-weight: bold;
 	text-align: center;
 	padding: 15px 100px;
 	margin: 0px;
 	background-color: rgba(255, 0, 0, 0.1);
 	border: none;
 	border-radius: 5px;
-} */
-
-div#wrap>div#contents>table#NoticeTbl {
+}
+div#wrap>div#contents>table#InquireTbl {
 	width: 860px;
 	padding: 2px;
 	border-collapse: collapse;
@@ -36,54 +38,66 @@ div#wrap>div#contents>table#NoticeTbl {
 	justify-content: space-between;
 }
  */
-div#contents>table#NoticeTbl>thead>tr>th {
+
+
+.InqlistWrap div.moveMenu>a {
+	padding-left: 10px;
+	font-size: 2em;
+	margin-block-start: 0.67em;
+	margin-block-end: 0.67em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+}
+
+div#contents>table#InquireTbl>thead>tr>th {
 	padding: 10px 2px;
 	background-color: rgba(255, 0, 0, 0.1);
 }
 
-table#NoticeTbl th:first-child, table#NoticeTbl th:last-child {
+table#InquireTbl th:first-child, table#InquireTbl th:last-child {
 	width: 70px;
 	border-radius: 4px;
 }
 
-table#NoticeTbl th:nth-child(2) {
+table#InquireTbl th:nth-child(2) {
 	width: 100px;
 }
 
-table#NoticeTbl th:nth-child(3) {
+table#InquireTbl th:nth-child(3) {
 	width: 200px;
 }
 
-table#NoticeTbl th:nth-child(4) {
+table#InquireTbl th:nth-child(4) {
 	width: 220px;
 }
 
-table#NoticeTbl th:nth-child(5) {
+table#InquireTbl th:nth-child(5) {
 	width: 180px;
 }
 
-table#NoticeTbl>tbody>tr.listTr {
+table#InquireTbl>tbody>tr.listTr {
 	height: 50px;
 }
 
-table#NoticeTbl tbody>tr.listTr:hover {
+table#InquireTbl tbody>tr.listTr:hover {
 	background-color: rgba(0, 136, 255, 0.1);
 	cursor: pointer;
 }
 
-table#NoticeTbl tbody>tr.listTr:hover td {
+table#InquireTbl tbody>tr.listTr:hover td {
 	color: #666;
 	font-weight: bold;
 }
 
-table#NoticeTbl tbody>tr.listTr>td {
+table#InquireTbl tbody>tr.listTr>td {
 	text-align: center;
 	border-bottom: 1px solid #d2d2d2;
 	height: 50px;
 }
 
 /* 리스트 페이지 버튼 공통 스타일 시작 */
-table#NoticeTbl button.listBtnStyle {
+table#InquireTbl button.listBtnStyle {
 	font-size: 16px;
 	font-weight: bold;
 	padding: 2px 6px;
@@ -113,12 +127,12 @@ div.bbsList button#loginAlertBtn {
 }
 /* 리스트 페이지 버튼 공통 스타일 끝 */
 
-/* 리스트 /bbs_Notice/noticebbs.jsp 글쓰기, 검색 영역 시작 */
-/* table#NoticeTbl tr#listBtnArea td {
+/* 리스트 /bbs_Inquire/Inquirebbs.jsp 글쓰기, 검색 영역 시작 */
+/* table#InquireTbl tr#listBtnArea td {
 	padding-top: 20px;
 }
 
-table#NoticeTbl form#searchFrm {
+table#InquireTbl form#searchFrm {
 	justify-content: flex-end;
 }
  */
@@ -181,10 +195,16 @@ div#wrap_bbs {
 	border-radius: 6px;
 	margin: 10px auto;
 }
+h2 {
+	text-align: center;
+	padding: 5px;
+	margin-bottom: 10px;
+	background-color:rgba(255, 0, 0, 0.1);
+}
 
-/* hr {
-	margin: 20px auto;
-} */
+ hr {
+	margin: 10px auto;
+} 
 main#main {
 	margin: 0 auto;
 }
@@ -211,14 +231,17 @@ main#main>div.bbsWrite {
 	text-align: left;
 }
 
-#main>.bbsWrite table tbody td:first-child {
+#main>.bbsWrite table tbody tr td input#uid {
 	width: 100px;
 	font-weight: bold;
 	text-align: left;
+	border: none;
 }
 
-#main>.bbsWrite table tbody td input#aName {
+#main>.bbsWrite table tbody tr td input#uName {
 	border: none;
+	font-weight: bold;
+	text-align: left;
 }
 
 #main>.bbsWrite table tfoot td hr {
@@ -248,7 +271,7 @@ main#main>div.bbsWrite {
 	cursor: pointer;
 }
 
-#main>.bbsWrite textarea#acontent {
+#main>.bbsWrite textarea#content {
 	height: 140px;
 	width: 600px;
 	resize: none;
@@ -328,6 +351,8 @@ main#main>div.bbsDetail {
 	border-color: #eeeeee;
 }
 
+
+
 /*다운로드 시작*/
 #main>.bbsRead #readTblBody span#downloadFile:hover {
 	color: #555;
@@ -355,34 +380,35 @@ main#main>div.bbsDetail {
 }
 
 #main>.bbsDetail table {
-	width: 550px;
+	width: 555px;
 	border-collapse: collapse;
 }
 
 #main>.bbsDetail table tbody tr {
 	text-align: left;
+	border-bottom: 1px solid #eee;
+	
 }
 
 #main>.bbsDetail table tbody tr td {
-	padding: 10px;
-	text-align: left;
+	padding: 20px 15px;
+	text-align: left;	
 }
 
-#main>.bbsDetail table tbody td:first-child {
-	width: 100px;
+#main>.bbsDetail table tbody tr td:first-child {
+	width: 10px;
 	font-weight: bold;
 	text-align: left;
+	background-color: rgba(220, 220, 220, 0.2);
+	
+	
 }
-
-#main>.bbsDetail table tbody td input#aName {
-	border: none;
+#main>.bbsDetail table tbody tr td:last-child {
+	width: 170px;
+	font-weight: bold;
+	text-align: left;
+	
 }
-
-#main>.bbsDetail table tbody td input#asubject {
-	width: 400px;
-	border: none;
-}
-
 #main>.bbsDetail table tfoot td hr {
 	border: 2px solid #ccc;
 }
@@ -406,9 +432,9 @@ main#main>div.bbsDetail {
 	cursor: pointer;
 }
 
-#main textarea#acontent {
+#main textarea#content {
 	height: 140px;
-	width: 550px;
+	width: 554px;
 	resize: none;
 	border: 1px solid #eee;
 }
@@ -628,11 +654,11 @@ main#main>div.bbsUpd {
 }
 
 /*////////////////////////////////////////////////////////////////////*/
-/*///////////// BBS 게시글 수정 페이지 끝 /bbs_Notice/modify.jsp ///////////// */
+/*///////////// BBS 게시글 수정 페이지 끝 /bbs_Inquire/modify.jsp ///////////// */
 /*////////////////////////////////////////////////////////////////////*/
 
 /*////////////////////////////////////////////////////////////////////*/
-/*///////////// BBS 게시글 답변글 페이지 시작 /bbs_Notice/reply.jsp ///////////// */
+/*///////////// BBS 게시글 답변글 페이지 시작 /bbs_Inquire/reply.jsp ///////////// */
 /*////////////////////////////////////////////////////////////////////*/
 main#main>div.reply h2 {
 	text-align: center;
@@ -725,5 +751,5 @@ main#main>div.reply h2 {
 }
 
 /*////////////////////////////////////////////////////////////////////*/
-/*///////////// BBS 게시글 답변글 페이지 끝 /bbs_Notice/reply.jsp ///////////// */
+/*///////////// BBS 게시글 답변글 페이지 끝 /bbs_Inquire/reply.jsp ///////////// */
 /*////////////////////////////////////////////////////////////////////*/

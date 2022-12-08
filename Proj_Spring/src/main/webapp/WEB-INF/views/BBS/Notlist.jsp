@@ -43,7 +43,8 @@
 
 		<div id="contents" class="bbsList">
 			<div class="moveMenu">
-				<a href="/Notlist">공지사항</a> <a href="/Inqlist">1:1문의</a>
+				<button id="noticeBtn" class="headBtn">공지사항</button>
+				<button id="personalBtn" class="headBtn">1:1문의</button>
 
 			</div>
 
@@ -61,8 +62,8 @@
 
 					<c:forEach var="row" items="${data}">
 						<tr class="listTr">
-							<td>${row.num}</td>
-							<td>${row.aName}</td>
+							<td><a href="/Notdetail?num=${row.num}">${row.num}</td>
+							<td><a href="/Notdetail?num=${row.num}">${row.aName}</td>
 							<td><a href="/Notdetail?num=${row.num}">${row.asubject}</a></td>
 
 						</tr>
@@ -72,9 +73,10 @@
 			</table>
 
 			<c:if test="${admin.aId != null}">
-				<a href="/NotWrite">글쓰기</a>
+								<button type="button" id="NotBtn" class="listBtnStyle">글쓰기</button>
 			</c:if>
-			<a href="/">메인으로</a>
+			
+			<button type="button" id="MainHome" class="listBtnStyle">메인으로</button>
 		</div>
 
 

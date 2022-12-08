@@ -1,20 +1,18 @@
 $(function() {
 
-	$("button#select_period_buy").click(function(){
+	 $("button#select_period_buy").click(function(){
 		location.href="/bbs_Inquire/buyList.jsp";
-	})
+	}) 
+	/* 공지사항 버튼 눌렀을 때*/
+	$("button#noticeBtn").click(function() {
+		location.href = "/Notlist";
 
+	});
+	/* 공지사항 버튼 눌렀을 때*/
 	/* 1:1 문의 버튼 눌렀을 때*/
 	$("button#personalBtn").click(function() {
 
-		$("iframe#ifrNotice").css({
-			"display": "none"
-
-		});
-		$("iframe#ifrInquire").css({
-			"display": "block"
-
-		});
+		location.href = "/Inqlist";
 
 	});
 	/* 1:1 문의 버튼 눌렀을 때*/
@@ -139,16 +137,11 @@ $(function() {
 
 
 
-	$("button#goListMainBtn").click(function(){
-
-	window.parent.location.href="/bbs_Notice/ServiceMain.jsp";
-
-	});
 
 
 /*/////////////////////////////////////////////read 답변 버튼*/
 
-$("td.read>button#inqReplyBtn").click(function(){
+ $("td.read>button#inqReplyBtn").click(function(){
 
 
 		let uId = $("input#uId_Session").val().trim();

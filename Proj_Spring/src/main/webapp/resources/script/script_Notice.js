@@ -6,44 +6,33 @@ $(function() {
 
 
 
-	/* 공지사항 게시판 리스트 페이지 글쓰기 버튼 시작 /bbs_Notice/noticebbs.jsp */
-	$("#loginAlertBtn").click(function() {
-		alert("관리자만 게시글을 작성하실 수 있습니다.");
+	/* 공지사항 게시판 리스트 페이지 글쓰기 버튼 시작 /bbs_Notice/Notlist.jsp */
+	$("#NotBtn").click(function() {
+		location.href = "/NotWrite";
 	});
-
-	$("#NoticeWriteBtn").click(function() {
-		location.href = "/bbs_Notice/write.jsp";
+	
+	$("#MainHome").click(function(){
+		location.href = "/";
 	});
-	/* 공지사항 게시판 리스트 페이지 글쓰기 버튼 끝 /bbs_Notice/noticebbs.jsp */
+	/* 공지사항 게시판 리스트 페이지 글쓰기 버튼 끝 /bbs_Notice/Notlist.jsp */
 
 
+
+
+
+	/* 공지사항 버튼 눌렀을 때*/
+	$("button#noticeBtn").click(function() {
+		location.href = "/Notlist";
+
+	});
+	/* 공지사항 버튼 눌렀을 때*/
+	/* 1:1 문의 버튼 눌렀을 때*/
 	$("button#personalBtn").click(function() {
 
-		$("iframe#ifrNotice").css({
-			"display": "none"
-
-		});
-		$("iframe#ifrInquire").css({
-			"display": "block"
-
-		});
+		location.href = "/Inqlist";
 
 	});
-
-
-
-	$("button#noticeBtn").click(function() {
-
-		$("iframe#ifrNotice").css({
-			"display": "block"
-
-		});
-
-		$("iframe#ifrInquire").css({
-			"display": "none"
-
-		});
-	});
+	/* 1:1 문의 버튼 눌렀을 때*/
 	$("button#reset").click(function() {
 
 		history.back();
@@ -267,5 +256,5 @@ function modify(p1, p2) {
 
 }
 /* 공지사항 상세내용 보기 페이지 이동 끝 /bbs_Notice/noticebbs.jsp => read.jsp  *//**
- * 
+ *
  */

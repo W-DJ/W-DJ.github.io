@@ -91,5 +91,11 @@ public class BBSServiceImp implements BBSService {
 		public int delinq(Map<String, Object> map) {
 			return this.bbsDao.delinq(map);
 		}
+
+		@Override
+		public List<BBSDto> bBSList(int num) {
+			
+			return null;
+		}
 	
 }

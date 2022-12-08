@@ -17,41 +17,22 @@
 <body>
 
 	<div id="wrap_bbs">
-		<h1>공지사항</h1>
+		<h1>${data.asubject}</h1>
 		<hr>
-
 		<form>
-
-
-
 			<main id="main">
-
 				<div class="bbsDetail">
 					<table>
-
 						<tbody>
 							<tr>
-
 								<td>이름<input type="text" name="aName" id="aName"
 									value="${data.aName}" readonly>
 							</tr>
 							<tr>
-								<td>제목<input type="text" name="asubject" id="asubject"
-									required="required" value="${data.asubject}"></td>
-
-							</tr>
-
-
-
-							<tr>
 								<td>사진첨부<input type="file" name="aupFileName"></td>
-
 							</tr>
-
 						</tbody>
-
 					</table>
-
 				</div>
 
 				<textarea name="acontent" id="acontent" rows="10"

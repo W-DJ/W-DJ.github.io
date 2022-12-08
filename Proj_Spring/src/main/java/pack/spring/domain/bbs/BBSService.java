@@ -27,5 +27,7 @@ public interface BBSService {
 		int modifyinq(Map<String, Object> map);
 	//고객문의 삭제하기
 		int delinq(Map<String, Object> map);
+	
+		List<BBSDto> bBSList (int num);
 		
 }

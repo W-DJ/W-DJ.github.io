@@ -25,7 +25,7 @@
 			id="headerIfm"></iframe>
 		<!--  헤더템플릿 끝 -->
 	</header>
-	<div id="wrap" class="dFlex NotlistWrap">
+	<div id="wrap" class="dFlex InqlistWrap">
 
 		<div id="sideMenu">
 			<ul class="List">
@@ -39,23 +39,15 @@
 			</ul>
 		</div>
 
-		<!-- 			<nav>
-				<ul>
-					<li><a href="/">메인페이지</a></li>
-					<li><a href="/list">목록</a></li>
-					<li><a href="/create">회원가입</a></li>
-				</ul>
-			</nav> -->
-
 		<hr>
 
 		<div id="contents" class="bbsList">
 			<div class="moveMenu">
-				<a href="/Notlist">공지사항</a> <a href="/Inqlist">1:1문의</a>
-
+				<button id="noticeBtn" class="headBtn">공지사항</button>
+				<button id="personalBtn" class="headBtn">1:1문의</button>
 			</div>
 
-			<table id="NoticeTbl">
+			<table id="InquireTbl">
 				<thead>
 					<tr>
 						<th>번호</th>
@@ -82,12 +74,10 @@
 			<c:choose>
 
 				<c:when test="${user.uId != null}">
-					<!-- <a href="/InqWrite">글쓰기</a> -->
-					<button type="button" id="inqBtn">글쓰기</button>
+									<button type="button" id="inqBtn">글쓰기</button>
 				</c:when>
 				<c:when test="${user.uId == null}">
-					<!-- <a href="/">메인으로</a> -->
-					<button type="button" id="loginAlertBtn">글쓰기</button>
+									<button type="button" id="loginAlertBtn">글쓰기</button>
 
 				</c:when>
 			</c:choose>
