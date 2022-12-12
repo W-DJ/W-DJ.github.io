@@ -202,9 +202,7 @@ h2 {
 	background-color:rgba(255, 0, 0, 0.1);
 }
 
- hr {
-	margin: 10px auto;
-} 
+ 
 main#main {
 	margin: 0 auto;
 }
@@ -262,7 +260,7 @@ main#main>div.bbsWrite {
 }
 
 #main>.bbsWrite input#subject {
-	width: 579px;
+	width: 400px;
 }
 
 ::-webkit-file-upload-button {
@@ -531,16 +529,10 @@ main#main {
 	margin: 0 auto;
 }
 
-main#main>div.bbsUpd {
-	padding: 10px 0;
-	margin-bottom: 20px;
-	width: 600px;
-	margin: 0 auto;
-	border-color: #eeeeee;
-}
+
 
 #main>.bbsUpd table {
-	width: 550px;
+	width: 600px;
 	border-collapse: collapse;
 }
 
@@ -553,21 +545,27 @@ main#main>div.bbsUpd {
 	text-align: left;
 }
 
-#main>.bbsUpd table tbody tr td input {
+#main>.bbsUpd table tbody tr td input#uid {
+	width: 100px;
+	font-weight: bold;
 	text-align: left;
+	border: none;
 }
 
-#main>.bbsUpd table tbody td:first-child {
-	width: 100px;
+#main>.bbsUpd table tbody tr td input#uName {
+	border: none;
 	font-weight: bold;
 	text-align: left;
 }
 
-#main>.bbsUpd table tbody td input#aName {
-	border: none;
+#main>.bbsUpd table tbody tr td:first-child {
+	font-weight: bold;
+	text-align: left;
+	
 }
 
-#main>.bbsUpd table tbody td input#asubject {
+
+#main>.bbsUpd  input#subject {
 	width: 400px;
 }
 

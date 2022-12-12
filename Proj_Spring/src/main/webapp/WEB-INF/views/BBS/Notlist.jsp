@@ -9,7 +9,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>회원 목록 보기</title>
+<title>공지사항 보기</title>
 <link rel="shortcut icon" href="#">
 <link rel="stylesheet" href="/resources/style/common_style.css">
 <link rel="stylesheet" href="/resources/style/style_BBS.css">

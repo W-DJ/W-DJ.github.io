@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/style/common_style.css">
 <link rel="stylesheet" href="/resources/style/style_BBS_Inq.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="/resources/script/script_Inquire.js"></script>
 </head>
 
 <body>

@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/style/common_style.css">
 <link rel="stylesheet" href="/resources/style/style_BBS_Inq.css">
+<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="/resources/script/script_Inquire.js"></script> -->
 </head>
 <body>
 
@@ -73,10 +75,10 @@
 				<textarea name="content" id="content" rows="10"
 					placeholder="내용을 입력해주세요" required="required"></textarea>
 
-				<input type="text" name="pos" id="pos"> <input type="text"
-					name="ref" id="ref"> <input type="text" name="depth"
-					id="depth"> <input type="text" name="ip" id="ip"> <input
-					type="text" name="readCnt" id="readCnt">
+				<input type="hidden" name="pos" id="pos" value="0"> <input type="hidden"
+					name="ref" id="ref" value="0"> <input type="hidden" name="depth"
+					id="depth" value="0"> <input type="hidden" name="ip" id="ip" value="0"> <input
+					type="hidden" name="readCnt" id="readCnt" value="0">
 
 
 
@@ -94,7 +96,7 @@
 						});
 					</script>
 					<button type="submit" id="InquireBtn">작성완료</button>
-					<button type="reset" id="reset">원상복귀</button>
+					<button type="button" id="cancel">작성취소</button>
 				</div>
 			</aside>
 

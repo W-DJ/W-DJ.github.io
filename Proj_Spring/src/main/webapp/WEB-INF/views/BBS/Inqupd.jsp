@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/style/common_style.css">
-<link rel="stylesheet" href="/resources/style/style_BBS.css">
+<link rel="stylesheet" href="/resources/style/style_BBS_Inq.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/resources/script/script_Inquire.js"></script>
@@ -20,7 +20,7 @@
 
 		<form method="post" action="/Inqupd">
 
-			
+
 
 			<main id="main">
 
@@ -28,37 +28,45 @@
 					<table>
 
 						<tbody>
+
 							<tr>
-								<td>아이디<input type="text" name="uid" id="uid"
-									value="${data.uid}" readonly="readonly">
-
-								</td>
-								<td>이름<input type="text" name="uName" id="uName"
-									value="${data.uName}" readonly="readonly">
-
-								</td>
-								<td>Q&A종류 <select name="qnaType" id="qnaType">
+								<td>아이디</td>
+								<td>${data.uid}</td>
+							</tr>
+							<tr>
+								<td>이름</td>
+								<td>${data.uName}</td>
+							</tr>
+							<tr>
+								<td>Q&A종류</td>
+								<td> <select name="qnaType" id="qnaType">
 										<option>배송</option>
 										<option>상품</option>
 								</select>
 
 								</td>
+
+
 							</tr>
 							<tr>
-								<td>제목 <input type="text" name="subject" id="subject"
-									required="required" value="${data.subject}">
-								</td>
-								<td>글 비밀번호 <input type="text" name="bbsPw" id="bbsPw"
+								<td>제목</td>
+								<td><input type="text" name="subject" id="subject"
+									required="required" value="${data.subject}"></td>
+							</tr>
+							<tr>
+								<td>글 비밀번호 </td>
+								<td><input type="text" name="bbsPw" id="bbsPw"
 									value="${data.bbsPw}">
 								</td>
 							</tr>
 
-
-
 							<tr>
-								<td>사진첨부<input type="file" name="upFileName"></td>
+								<td>사진첨부</td>
+								<td><input type="file" name="upFileName"></td>
 
 							</tr>
+
+
 
 
 						</tbody>

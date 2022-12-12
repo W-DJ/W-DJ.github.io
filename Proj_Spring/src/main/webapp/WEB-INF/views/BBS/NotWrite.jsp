@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/style/common_style.css">
 <link rel="stylesheet" href="/resources/style/style_BBS.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="/resources/script/script_Notice.js"></script>
 </head>
 <body>
 

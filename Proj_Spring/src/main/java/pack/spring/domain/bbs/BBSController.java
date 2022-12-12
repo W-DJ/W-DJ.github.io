@@ -147,7 +147,7 @@ public class BBSController {
 		Map<String, Object> InqdetailMap = this.bbsService.Inqdetail(map);
 
 		String ip = req.getRemoteAddr();
-		System.out.println(ip);
+		//System.out.println(ip);
 		ModelAndView mav = new ModelAndView();
 
 		mav.addObject("data", InqdetailMap);
